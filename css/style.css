@@ -106,7 +106,7 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 .authors { padding: 120px 0; background: var(--cream); }
 .authors__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
 .author { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 2px 18px rgba(23,24,26,.07); }
-.author img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; }
+.author img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
 .author h3 { font-family: var(--serif); font-size: 26px; padding: 24px 28px 4px; }
 .author__role { padding: 0 28px; color: var(--terra); font-style: italic; }
 .author p:last-child { padding: 14px 28px 30px; font-size: 15px; color: rgba(23,24,26,.82); }
@@ -138,8 +138,11 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 .contacts a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(243,236,223,.35); }
 .contacts a:hover { border-color: var(--cream); }
 
+.contacts__channel { margin-top: 46px; font-size: 16px; }
+
 /* ============ FOOTER ============ */
 .footer { padding: 30px 24px 40px; background: var(--teal-dark); color: rgba(243,236,223,.65); font-size: 13px; text-align: center; }
+.footer a { color: rgba(243,236,223,.85); }
 .footer__genre { margin-top: 6px; letter-spacing: .14em; text-transform: uppercase; font-size: 11px; }
 
 @media (max-width: 720px) {
