@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root{
+    --cream:#F3ECDF; --cream2:#EFE5D2; --ink:#17181A;
+    --terra:#D2401E; --terra-dark:#B23315; --mustard:#BF8A0D;
+    --teal:#2A555A; --teal-dark:#214448;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:'Segoe UI',Arial,sans-serif;
+  }
+  html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:var(--sans); color:var(--ink); background:var(--cream); }
+  .page{ width:210mm; min-height:297mm; padding:16mm 16mm 14mm; background:var(--cream); position:relative; }
+
+  /* header */
+  .topbar{ text-align:right; margin-bottom:4px; }
+  .monogram{ font-family:var(--serif); font-style:italic; font-size:14px; color:var(--teal); letter-spacing:.02em; }
+  h1{ font-family:var(--serif); font-weight:700; font-size:36px; line-height:1.02; color:var(--teal-dark); letter-spacing:-.01em; }
+  .kicker{ margin-top:8px; font-size:10.5px; letter-spacing:.19em; text-transform:uppercase; color:var(--terra); font-weight:600; }
+  .slogan{ margin-top:6px; font-family:var(--serif); font-style:italic; font-size:15px; color:rgba(23,24,26,.62); }
+
+  .hook{ margin-top:18px; font-size:12px; line-height:1.55; color:rgba(23,24,26,.86); max-width:174mm; }
+
+  /* quote */
+  .quote{ margin:26px 0 8px; display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; }
+  .q{ font-family:var(--serif); font-weight:700; font-size:34px; color:var(--terra); line-height:1; }
+  .qa{ font-family:var(--serif); font-style:italic; font-size:15px; color:rgba(23,24,26,.55); }
+
+  /* two-column */
+  .cols{ display:grid; grid-template-columns:1fr 1fr; gap:10mm; margin-top:26px; }
+  h2{ font-family:var(--serif); font-weight:700; font-size:16.5px; color:var(--teal-dark); margin-bottom:9px; }
+  .body{ font-size:11px; line-height:1.55; color:rgba(23,24,26,.85); }
+  .tech{ color:var(--terra); font-weight:600; }
+  ul.fmt{ list-style:none; }
+  ul.fmt li{ font-size:11px; line-height:1.45; color:rgba(23,24,26,.85); padding-left:14px; position:relative; margin-bottom:8px; }
+  ul.fmt li::before{ content:""; position:absolute; left:0; top:6px; width:5px; height:5px; border-radius:50%; background:var(--mustard); }
+  ul.fmt b{ color:var(--ink); }
+
+  /* doors */
+  .doors{ margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:6mm; }
+  .door{ background:var(--teal); color:var(--cream); border-radius:12px; padding:16px 18px; }
+  .dh{ font-family:var(--serif); font-size:16px; margin-bottom:4px; }
+  .dp{ font-size:10.5px; color:rgba(243,236,223,.82); letter-spacing:.02em; }
+  .doors-note{ grid-column:1 / -1; margin-top:5px; font-size:11px; color:var(--terra-dark); font-weight:600; }
+  .doors-note span{ color:rgba(23,24,26,.7); font-weight:400; }
+
+  /* who */
+  .who{ margin-top:28px; }
+  .who h2{ margin-bottom:10px; }
+  .who .cols2{ display:grid; grid-template-columns:1fr 1fr; gap:10mm; }
+  .who .name{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--ink); }
+  .who .role{ font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--terra); margin:3px 0 6px; }
+  .who p.bio{ font-size:10.5px; line-height:1.5; color:rgba(23,24,26,.82); }
+
+  /* footer */
+  footer{ margin-top:30px; background:var(--teal-dark); color:var(--cream); border-radius:14px; padding:20px 24px; }
+  .cta{ font-family:var(--serif); font-size:17px; }
+  .site{ font-family:var(--serif); font-style:italic; font-size:16px; color:#F1C7B4; margin-top:3px; }
+  .contacts{ margin-top:12px; font-size:9.5px; line-height:1.6; color:rgba(243,236,223,.9); }
+  .contacts b{ color:var(--cream); }
+  .nowrap{ white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="topbar"><span class="monogram">[Es] &amp; [Vi]</span></div>
+    <h1>«Мы должны быть воображаемы»</h1>
+    <div class="kicker">Арт-коучинг для лидеров и команд</div>
+    <div class="slogan">Искусство проявляет. Коучинг раскрывает. Вы открываете автора своей жизни.</div>
+  </header>
+
+  <p class="hook">Пересборка команды на стыке двух ремёсел: художественная практика с современным художником и групповой коучинг с&nbsp;executive-коучем. Искусство проявляет то, что не сказать словами, — коучинг переводит это в решения. Уметь рисовать не нужно: методика выстроена так, что работа получится у каждого.</p>
+
+  <div class="quote">
+    <span class="q">«Воображение важнее знания»</span>
+    <span class="qa">— Альберт Эйнштейн</span>
+  </div>
+
+  <div class="cols">
+    <section>
+      <h2>Как устроено · «5 граней Я»</h2>
+      <p class="body">5 сессий по 3 часа: <b>1,5 ч арт-практики + 1,5 ч группового коучинга</b>. Каждая техника открывает свою грань идентичности — <span class="tech">рисование цветом · абстракция · коллаж · реди-мейд · автопортрет</span>. Ведут двое: художник и коуч. Поэтому это не арт-терапия и не тренинг — работа существует только на стыке двух экспертиз.</p>
+    </section>
+    <section>
+      <h2>Форматы под задачи команды</h2>
+      <ul class="fmt">
+        <li><b>Дизрапт-трек</b> — мышление вне шаблонов для продуктовых команд.</li>
+        <li><b>Форсайт-сессия</b> — общий образ будущего, собранный руками.</li>
+        <li><b>Командная сессия</b> — диагностика паттернов команды и их разворот.</li>
+        <li><b>Трек идентичности</b> — полная программа «5 граней Я» с галереей работ.</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="doors">
+    <div class="door">
+      <div class="dh">Дверь 1 · «Цвет вместо слов»</div>
+      <div class="dp">экспресс-практика · 60–90 минут · ваша площадка</div>
+    </div>
+    <div class="door">
+      <div class="dh">Дверь 2 · «Создаём портрет лидера»</div>
+      <div class="dp">демо-сессия · 1,5 ч арт-практики + 1,5 ч коучинга</div>
+    </div>
+    <div class="doors-note">Обе двери — бесплатны, чтобы вы почувствовали формат. <span>Перед корпоративным запуском — бесплатная «химическая сессия»: задачи, ожидания, предложение под вас.</span></div>
+  </div>
+
+  <div class="who">
+    <h2>Кто ведёт</h2>
+    <div class="cols2">
+      <div>
+        <div class="name">Елена Семенова</div>
+        <div class="role">Куратор идентичности</div>
+        <p class="bio">Психолог, executive- и командный коуч, 10&nbsp;000+ часов практики. Ассоциированный коуч МШУ Сколково. 25+ лет с лидерами и командами: Сбербанк, Альфа-Банк, Роснефть, Норникель и др. Автор теста паттернов, основатель ed-tech проекта AI4G.</p>
+      </div>
+      <div>
+        <div class="name">Янита Войт</div>
+        <div class="role">Проводник в мир искусства</div>
+        <p class="bio">Художник в поле современного искусства: ICA, Суриковский институт, ВШЭ, МГУ — мастерская В.&nbsp;Дубосарского и О.&nbsp;Симатовой (CrocodilePower). Международные выставки и арт-резиденции. Сооснователь галереи. L&amp;D-методолог, 15+ лет: Банк ВТБ, Deloitte, Allianz.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="cta">Начнём с бесплатной «химической сессии» — обсудим задачи и соберём формат под вас.</div>
+    <div class="site">voobrazhaemy.ru</div>
+    <div class="contacts"><span class="nowrap"><b>Елена Семенова</b> · salmonberrry@gmail.com · @SemenovaElena</span> &nbsp;•&nbsp; <span class="nowrap"><b>Янита Войт</b> · ianita.voit@gmail.com</span> · <span class="nowrap">@ianitavoit</span> · <span class="nowrap">МАКС +7&nbsp;926&nbsp;201-93-65</span></div>
+  </footer>
+</div>
+</body>
+</html>
