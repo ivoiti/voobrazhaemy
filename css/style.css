@@ -41,6 +41,8 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 .nav__links a { text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--cream); transition: color .3s; }
 .nav.is-scrolled .nav__links a { color: var(--ink); }
 .nav__cta { background: var(--terra); color: var(--cream) !important; padding: 10px 20px; border-radius: 999px; }
+.nav__cta--teal { background: var(--teal); }
+.nav__cta--teal:hover { background: var(--teal-dark); }
 
 /* ============ HERO ============ */
 .hero { position: relative; height: 100svh; min-height: 640px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--teal-dark); }
