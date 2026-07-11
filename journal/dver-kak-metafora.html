@@ -17,6 +17,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article__like { max-width: 760px; margin: 0 auto; padding: 8px 24px 10px; display: flex; align-items: center; gap: 12px; }
+    .like-btn { background: none; border: none; cursor: pointer; font-size: 40px; line-height: 1; color: #D2401E; padding: 0; transition: transform .15s ease; }
+    .like-btn:hover { transform: scale(1.12); }
+    .like-btn.is-liked { animation: likePop .3s ease; }
+    @keyframes likePop { 0% { transform: scale(1); } 50% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    .like-hint { font-size: 15px; color: rgba(23,24,26,.6); }
+  </style>
 </head>
 <body class="page--interior">
 
@@ -55,16 +63,16 @@
 
       <h2>Представьте</h2>
 
-      <ul class="doors-list">
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_01_kluch.png" alt="">Дверь открывается, и рука протягивает ключ. Но очевидно, что он не подходит к этой двери.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_02_derevo.png" alt="">Дверь открывается, и рука держит маленькое дерево с корнями — напоминание о том, что любые изменения начинаются с опоры.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_03_maska.png" alt="">Дверь открывается, и рука выносит маску, внутри которой пустота. Кто я, если снять все роли?</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_04_chasy.png" alt="">Дверь открывается, и рука протягивает песочные часы. Время — единственный ресурс, который невозможно вернуть.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_05_ptica.png" alt="">Дверь открывается, и рука держит маленькую птицу. Свобода всегда требует решимости отпустить.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_06_kist.png" alt="">Дверь открывается, и рука выносит малярную кисть, с которой капает краска. Мир не только открывается — его можно создавать.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_07_mak.png" alt="">Дверь открывается, и рука дарит цветок мака — символ памяти, хрупкости и способности проживать утраты, сохраняя связь с жизнью.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_08_zerkalo.png" alt="">Дверь открывается, и рука показывает зеркало, в котором отражается зритель. Самое важное путешествие начинается не наружу, а внутрь.</li>
-        <li><img class="door-ico" src="../assets/img/journal/icons/door_09_shar.png" alt="">Дверь открывается, и рука держит красный воздушный шарик на тонкой веревочке — напоминание о мечтах, которые мы часто отпускаем раньше времени.</li>
+      <ul class="doors-list-plain">
+        <li>Дверь открывается, и рука протягивает ключ. Но очевидно, что он не подходит к этой двери.</li>
+        <li>Дверь открывается, и рука держит маленькое дерево с корнями — напоминание о том, что любые изменения начинаются с опоры.</li>
+        <li>Дверь открывается, и рука выносит маску, внутри которой пустота. Кто я, если снять все роли?</li>
+        <li>Дверь открывается, и рука протягивает песочные часы. Время — единственный ресурс, который невозможно вернуть.</li>
+        <li>Дверь открывается, и рука держит маленькую птицу. Свобода всегда требует решимости отпустить.</li>
+        <li>Дверь открывается, и рука выносит малярную кисть, с которой капает краска. Мир не только открывается — его можно создавать.</li>
+        <li>Дверь открывается, и рука дарит цветок мака — символ памяти, хрупкости и способности проживать утраты, сохраняя связь с жизнью.</li>
+        <li>Дверь открывается, и рука показывает зеркало, в котором отражается зритель. Самое важное путешествие начинается не наружу, а внутрь.</li>
+        <li>Дверь открывается, и рука держит красный воздушный шарик на тонкой веревочке — напоминание о мечтах, которые мы часто отпускаем раньше времени.</li>
       </ul>
 
       <figure class="article__figure" style="padding:0">
@@ -76,22 +84,17 @@
 
       <p>Потому что иногда настоящие изменения начинаются не с нового решения, а с новой метафоры. А иногда — с двери, за которой впервые становится возможным встретиться с самим собой.</p>
 
-      <h2>Что за этим стоит: что почитать и посмотреть</h2>
+      <h2>Что за этим стоит: что посмотреть</h2>
+      <p><a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA_%D0%B8_%D0%BF%D1%82%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener">«Мальчик и птица»</a> (2023), режиссер Хаяо Миядзаки, студия Ghibli. История, где вещь никогда не бывает просто вещью.</p>
 
-      <h3>Книги</h3>
-      <ul>
-        <li>Автор, название</li>
-        <li>Автор, название</li>
-        <li>Автор, название</li>
-        <li>Автор, название</li>
-      </ul>
+      <p>А методологический каркас, который переводит этот образ в работу, — цикл Колба: опыт, наблюдение, осмысление, действие.</p>
+    </div>
 
-      <h3>Фильм</h3>
-      <ul>
-        <li><a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA_%D0%B8_%D0%BF%D1%82%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener">«Мальчик и птица»</a> (2023), режиссер Хаяо Миядзаки, студия Ghibli. История, где вещь никогда не бывает просто вещью.</li>
-      </ul>
-
-      <p>А методологический каркас, который переводит этот образ в работу, — цикл Колба: опыт, наблюдение, осмысление, действие. Про сам метод подробнее в статье <a href="chto-takoe-art-coaching.html">«Что такое арт-коучинг и чем он не является»</a>.</p>
+    <div class="article__like">
+      <button id="likeBtn" type="button" aria-label="Нравится статья" class="like-btn">
+        <span class="like-heart">♡</span>
+      </button>
+      <span id="likeHint" class="like-hint">Нравится статья?</span>
     </div>
 
     <div class="article__cta">
@@ -103,14 +106,6 @@
 
   <div class="article__foot">
     <a href="../journal.html" class="article__back">← Все статьи журнала</a>
-    <div class="article__more">
-      <h4>Читать дальше</h4>
-      <ul>
-        <li><a href="chto-takoe-art-coaching.html">Что такое арт-коучинг и чем он не является</a></li>
-        <li><a href="pyat-graney-i-pyat-tehnik.html">Пять техник, пять граней Я</a></li>
-        <li><a href="chto-ostaetsya-posle-sessii.html">Что остается после сессии</a></li>
-      </ul>
-    </div>
   </div>
 </article>
 
@@ -120,5 +115,23 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script>
+(function(){
+  var KEY = 'like_dver-kak-metafora';
+  var btn = document.getElementById('likeBtn');
+  var heart = btn ? btn.querySelector('.like-heart') : null;
+  var hint = document.getElementById('likeHint');
+  if(!btn) return;
+  function liked(){ try { return localStorage.getItem(KEY) === '1'; } catch(e){ return false; } }
+  function render(){ var l = liked(); heart.textContent = l ? '♥' : '♡'; btn.classList.toggle('is-liked', l); if(hint) hint.textContent = l ? 'Спасибо!' : 'Нравится статья?'; }
+  render();
+  btn.addEventListener('click', function(){
+    var l = liked();
+    try { if(l) localStorage.removeItem(KEY); else localStorage.setItem(KEY, '1'); } catch(e){}
+    if(!l && window.ym && window.__YM_ID){ try { ym(window.__YM_ID, 'reachGoal', 'like_dver'); } catch(e){} }
+    render();
+  });
+})();
+</script>
 </body>
 </html>
