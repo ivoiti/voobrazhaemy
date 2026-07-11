@@ -31,3 +31,16 @@ document.querySelectorAll('.facet__media video').forEach((v) => {
   card.addEventListener('mouseenter', () => v.play().catch(() => {}));
   card.addEventListener('mouseleave', () => v.pause());
 });
+
+// цели Яндекс.Метрики: клик «Записаться» и переход в телеграм-канал
+document.addEventListener('click', (ev) => {
+  const a = ev.target.closest('a');
+  if (!a || typeof window.ym !== 'function') return;
+  const href = a.getAttribute('href') || '';
+  const text = (a.textContent || '').toLowerCase();
+  if (href.indexOf('dikidi.net/2105960') !== -1 || text.indexOf('записаться') !== -1) {
+    try { window.ym(110592816, 'reachGoal', 'zapis'); } catch (e) {}
+  } else if (href.indexOf('t.me/ESVIum') !== -1) {
+    try { window.ym(110592816, 'reachGoal', 'tg_channel'); } catch (e) {}
+  }
+});

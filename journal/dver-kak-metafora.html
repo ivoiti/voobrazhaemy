@@ -25,6 +25,18 @@
     @keyframes likePop { 0% { transform: scale(1); } 50% { transform: scale(1.35); } 100% { transform: scale(1); } }
     .like-hint { font-size: 15px; color: rgba(23,24,26,.6); }
   </style>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110592816', 'ym');
+    ym(110592816, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/110592816" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body class="page--interior">
 
@@ -128,7 +140,7 @@
   btn.addEventListener('click', function(){
     var l = liked();
     try { if(l) localStorage.removeItem(KEY); else localStorage.setItem(KEY, '1'); } catch(e){}
-    if(!l && window.ym && window.__YM_ID){ try { ym(window.__YM_ID, 'reachGoal', 'like_dver'); } catch(e){} }
+    if(!l && window.ym){ try { ym(110592816, 'reachGoal', 'like_dver'); } catch(e){} }
     render();
   });
 })();
