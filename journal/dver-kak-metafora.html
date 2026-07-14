@@ -24,6 +24,7 @@
     .like-btn.is-liked { animation: likePop .3s ease; }
     @keyframes likePop { 0% { transform: scale(1); } 50% { transform: scale(1.35); } 100% { transform: scale(1); } }
     .like-hint { font-size: 15px; color: rgba(23,24,26,.6); }
+    .like-btn .like-count { font-size: 20px; color: #D2401E; font-weight: 600; margin-left: 6px; vertical-align: 6px; font-variant-numeric: tabular-nums; }
   </style>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -103,8 +104,8 @@
     </div>
 
     <div class="article__like">
-      <button id="likeBtn" type="button" aria-label="Нравится статья" class="like-btn">
-        <span class="like-heart">♡</span>
+      <button id="likeBtn" type="button" data-like="dver-kak-metafora" aria-label="Нравится статья" class="like-btn">
+        <span class="like-heart">♡</span><span class="like-count"></span>
       </button>
       <span id="likeHint" class="like-hint">Нравится статья?</span>
     </div>
@@ -127,23 +128,6 @@
 </footer>
 
 <script src="../js/main.js"></script>
-<script>
-(function(){
-  var KEY = 'like_dver-kak-metafora';
-  var btn = document.getElementById('likeBtn');
-  var heart = btn ? btn.querySelector('.like-heart') : null;
-  var hint = document.getElementById('likeHint');
-  if(!btn) return;
-  function liked(){ try { return localStorage.getItem(KEY) === '1'; } catch(e){ return false; } }
-  function render(){ var l = liked(); heart.textContent = l ? '♥' : '♡'; btn.classList.toggle('is-liked', l); if(hint) hint.textContent = l ? 'Спасибо!' : 'Нравится статья?'; }
-  render();
-  btn.addEventListener('click', function(){
-    var l = liked();
-    try { if(l) localStorage.removeItem(KEY); else localStorage.setItem(KEY, '1'); } catch(e){}
-    if(!l && window.ym){ try { ym(110592816, 'reachGoal', 'like_dver'); } catch(e){} }
-    render();
-  });
-})();
-</script>
+<script src="../js/likes.js?v=1"></script>
 </body>
 </html>

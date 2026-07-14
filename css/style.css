@@ -193,7 +193,18 @@ body.page--interior { padding-top: 74px; }
 .jcard__tag { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--terra); margin-bottom: 10px; }
 .jcard__title { font-family: var(--serif); font-size: 23px; line-height: 1.2; margin-bottom: 10px; }
 .jcard__excerpt { font-size: 15px; color: rgba(23,24,26,.78); margin-bottom: 16px; }
-.jcard__more { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--terra); }
+.jcard__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.jcard__more { font-size: 14px; font-weight: 600; color: var(--terra); }
+.like-ctl { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; font-size: 14px; color: rgba(23,24,26,.55); line-height: 1; -webkit-tap-highlight-color: transparent; }
+.like-ctl .like-heart { font-size: 20px; color: var(--terra); transition: transform .15s ease; }
+.like-ctl:hover .like-heart { transform: scale(1.15); }
+.like-ctl.is-liked .like-heart { color: #D2401E; }
+.like-ctl .like-count { min-width: 8px; font-variant-numeric: tabular-nums; }
+.article__like { max-width: 760px; margin: 0 auto; padding: 8px 24px 24px; display: flex; align-items: center; gap: 14px; }
+.like-ctl--lg { gap: 10px; }
+.like-ctl--lg .like-heart { font-size: 34px; }
+.like-ctl--lg .like-count { font-size: 19px; font-weight: 600; color: var(--terra); }
+.like-hint { font-size: 15px; color: rgba(23,24,26,.6); }
 
 /* статья */
 .article { background: var(--cream); }
