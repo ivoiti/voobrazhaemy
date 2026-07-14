@@ -2,3 +2,6 @@
 voobrazhaemy-economic-verdict.pdf
 .ftpsecret
 .deploy-ftp.txt
+gh-token.txt
+cf-token.txt
+*.token
