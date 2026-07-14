@@ -5,3 +5,7 @@ voobrazhaemy-economic-verdict.pdf
 gh-token.txt
 cf-token.txt
 *.token
+
+# приватные документы — НИКОГДА не публиковать
+Карточка_предприятия_*.docx
+*.docx
