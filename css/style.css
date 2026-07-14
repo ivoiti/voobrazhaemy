@@ -200,11 +200,11 @@ body.page--interior { padding-top: 74px; }
 .like-ctl:hover .like-heart { transform: scale(1.15); }
 .like-ctl.is-liked .like-heart { color: #D2401E; }
 .like-ctl .like-count { min-width: 8px; font-variant-numeric: tabular-nums; }
-.article__like { max-width: 760px; margin: 0 auto; padding: 8px 24px 24px; display: flex; align-items: center; gap: 14px; }
-.like-ctl--lg { gap: 10px; }
-.like-ctl--lg .like-heart { font-size: 34px; }
-.like-ctl--lg .like-count { font-size: 19px; font-weight: 600; color: var(--terra); }
-.like-hint { font-size: 15px; color: rgba(23,24,26,.6); }
+.article__like { margin: 8px 0 0; padding: 30px 0 6px; display: flex; align-items: center; justify-content: center; gap: 14px; border-top: 1px solid rgba(23,24,26,.12); }
+.like-ctl--lg { gap: 12px; }
+.like-ctl--lg .like-heart { font-size: 44px; }
+.like-ctl--lg .like-count { font-size: 24px; font-weight: 600; color: var(--terra); }
+.like-hint { font-size: 16px; color: rgba(23,24,26,.6); }
 
 /* статья */
 .article { background: var(--cream); }
