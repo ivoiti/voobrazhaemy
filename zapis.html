@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Записаться на сессию — Мы должны быть воображаемы</title>
+  <meta name="description" content="Запись на открытые арт-коуч сессии проекта «Мы должны быть воображаемы». Выберите дату, забронируйте место, оплатите онлайн.">
+  <!-- ТЕСТОВАЯ СТРАНИЦА: платёжная часть на заглушке, пока не подключён PayKeeper. Не индексируем. -->
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://voobrazhaemy.ru/zapis.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+  <style>
+    /* ====== Виджет записи ====== */
+    .zhead { padding: 130px 0 40px; text-align: center; }
+    .zhead__kicker { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
+    .zhead h1 { font-family: var(--serif); font-size: clamp(30px, 5vw, 48px); line-height: 1.1; font-weight: 400; }
+    .zhead p { max-width: 620px; margin: 18px auto 0; font-size: 17px; color: rgba(23,24,26,.75); }
+
+    .zwrap { max-width: 860px; margin: 0 auto; padding: 0 24px 100px; }
+
+    /* тестовая плашка */
+    .ztest { max-width: 860px; margin: 0 auto 30px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
+
+    /* список дат */
+    .zslots { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+    .zslot { text-align: left; background: #fff; border: 1px solid rgba(23,24,26,.12); border-radius: 16px; padding: 20px; cursor: pointer; transition: border-color .2s, transform .2s, box-shadow .2s; font: inherit; color: inherit; }
+    .zslot:hover { border-color: var(--terra); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(23,24,26,.07); }
+    .zslot.is-active { border-color: var(--terra); box-shadow: 0 0 0 2px var(--terra) inset; }
+    .zslot.is-full { opacity: .5; cursor: not-allowed; }
+    .zslot__date { font-family: var(--serif); font-size: 21px; line-height: 1.15; }
+    .zslot__time { margin-top: 6px; font-size: 14px; color: rgba(23,24,26,.6); }
+    .zslot__meta { margin-top: 14px; display: flex; align-items: baseline; justify-content: space-between; }
+    .zslot__price { font-weight: 600; font-size: 16px; color: var(--ink); }
+    .zslot__left { font-size: 13px; color: var(--teal); }
+    .zslot__left--few { color: var(--terra); }
+
+    /* форма */
+    .zform { margin-top: 28px; background: var(--cream-2); border-radius: 18px; padding: 28px 26px; display: none; }
+    .zform.is-open { display: block; animation: zfade .3s ease; }
+    @keyframes zfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .zform__chosen { font-family: var(--serif); font-size: 20px; margin-bottom: 4px; }
+    .zform__chosen small { display: block; font-family: var(--sans); font-size: 14px; color: rgba(23,24,26,.6); margin-top: 4px; }
+    .zform__grid { margin-top: 18px; display: grid; gap: 14px; }
+    .zfield label { display: block; font-size: 13px; color: rgba(23,24,26,.7); margin-bottom: 6px; }
+    .zfield input, .zfield select, .zfield textarea { width: 100%; padding: 13px 15px; border: 1px solid rgba(23,24,26,.18); border-radius: 10px; font: inherit; background: #fff; }
+    .zfield input:focus, .zfield select:focus, .zfield textarea:focus { outline: none; border-color: var(--terra); }
+    .zform__pay { margin-top: 22px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .zform__total { font-family: var(--serif); font-size: 22px; }
+    .zform .btn { margin-top: 0; border: none; cursor: pointer; }
+    .zform__note { margin-top: 14px; font-size: 12px; color: rgba(23,24,26,.55); line-height: 1.5; }
+    .zform__note a { color: var(--terra); }
+
+    /* B2B */
+    .zb2b { max-width: 860px; margin: 60px auto 0; padding: 34px 26px; border-radius: 18px; background: var(--teal); color: var(--cream); }
+    .zb2b h2 { font-family: var(--serif); font-weight: 400; font-size: 26px; margin-bottom: 10px; }
+    .zb2b p { color: rgba(243,236,223,.85); font-size: 16px; max-width: 620px; }
+    .zb2b__grid { margin-top: 20px; display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+    .zb2b__grid .zfield.full { grid-column: 1 / -1; }
+    .zb2b .zfield label { color: rgba(243,236,223,.75); }
+    .zb2b .zfield input, .zb2b .zfield textarea { background: rgba(255,255,255,.95); border: none; }
+    .zb2b .btn { margin-top: 18px; }
+    .zmsg { margin-top: 16px; font-size: 15px; }
+    @media (max-width: 560px) { .zb2b__grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="page--interior">
+
+<header class="nav nav--solid" id="top">
+  <a href="index.html" class="nav__logo" style="text-decoration:none">
+    <span class="nav__mark">[Es]<span class="nav__amp">&amp;</span>[Vi]</span>
+    <span class="nav__name">мы должны быть<br>воображаемы</span>
+  </a>
+  <nav class="nav__links">
+    <a href="journal.html" class="nav__cta nav__cta--teal">Журнал</a>
+    <a href="index.html#facets">5 граней</a>
+    <a href="index.html#formats">Форматы</a>
+    <a href="zapis.html" class="nav__cta">Записаться</a>
+  </nav>
+</header>
+
+<section class="zhead">
+  <div class="container">
+    <div class="zhead__kicker">Запись на сессию</div>
+    <h1>Выберите день — и место ваше</h1>
+    <p>Открытые арт-коуч сессии проходят по выходным в мастерской «Да-да!» в центре Москвы. Группа до 12 человек, 3,5 часа, материалы включены. Опыт рисования не нужен.</p>
+  </div>
+</section>
+
+<div class="ztest">⚙️ Тестовый режим: оплата ещё не подключена (готовим PayKeeper). Даты и форма — рабочие, кнопка оплаты пока показывает заглушку.</div>
+
+<div class="zwrap">
+
+  <!-- список открытых дат (сейчас — заглушка, потом отдаёт Cloudflare Worker) -->
+  <div class="zslots" id="zslots" aria-live="polite">
+    <p style="grid-column:1/-1;color:rgba(23,24,26,.5)">Загружаем даты…</p>
+  </div>
+
+  <!-- форма записи на выбранную дату -->
+  <div class="zform" id="zform">
+    <div class="zform__chosen" id="zchosen"></div>
+    <div class="zform__grid">
+      <div class="zfield"><label for="zname">Имя</label><input id="zname" type="text" autocomplete="name" placeholder="Как к вам обращаться"></div>
+      <div class="zfield"><label for="zphone">Телефон</label><input id="zphone" type="tel" autocomplete="tel" placeholder="+7 ___ ___-__-__"></div>
+      <div class="zfield"><label for="zemail">Почта (для чека)</label><input id="zemail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="zfield"><label for="zseats">Сколько мест</label><select id="zseats"></select></div>
+    </div>
+    <div class="zform__pay">
+      <span class="zform__total" id="ztotal">15 000 ₽</span>
+      <button class="btn btn--terra" id="zpay" type="button">Перейти к оплате</button>
+    </div>
+    <div class="zform__note">
+      Оплата закрепляет за вами место. После оплаты придёт чек на почту.
+      Нажимая «Перейти к оплате», вы соглашаетесь с <a href="#" id="zoferta">условиями и офертой</a>.
+    </div>
+    <div class="zmsg" id="zmsg" style="color:var(--terra)"></div>
+  </div>
+
+  <!-- B2B: бесплатная заявка без оплаты -->
+  <div class="zb2b">
+    <h2>Для команды или компании</h2>
+    <p>Корпоративная диагностика и командные сессии — обсуждаем формат под вашу задачу. Это бесплатная заявка на разговор, без оплаты онлайн.</p>
+    <div class="zb2b__grid">
+      <div class="zfield"><label for="bname">Имя</label><input id="bname" type="text" placeholder="Ваше имя"></div>
+      <div class="zfield"><label for="bcontact">Телефон или почта</label><input id="bcontact" type="text" placeholder="Как с вами связаться"></div>
+      <div class="zfield full"><label for="btask">Пара слов о задаче</label><textarea id="btask" rows="3" placeholder="Команда, повод, что хочется"></textarea></div>
+    </div>
+    <button class="btn btn--terra" id="bsend" type="button">Оставить заявку</button>
+    <div class="zmsg" id="bmsg"></div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div>[Es] &amp; [Vi] · Мы должны быть воображаемы · арт-коучинг Елены Семеновой и Яниты Войт · <a href="https://t.me/ESVIum">телеграм-канал</a></div>
+  <div class="footer__genre">форсайт-лаборатория идентичности</div>
+</footer>
+
+<script>
+/* =========================================================================
+   СЛОЙ «БЭКЕНД». Сейчас всё на заглушках. Когда будет Cloudflare Worker +
+   PayKeeper — меняем ТОЛЬКО тело трёх функций ниже, разметку не трогаем.
+   ========================================================================= */
+const API = {
+  // GET открытых дат. Потом: fetch(WORKER_URL + '/events').then(r=>r.json())
+  async getEvents() {
+    // ЗАГЛУШКА: даты берём из графика Dikidi (сб+вс 12:00–15:30). Позже отдаёт Worker/KV.
+    return [
+      { id: 'e-0726', dateISO: '2026-07-26', title: 'Открытая арт-коуч сессия', price: 15000, capacity: 12, left: 9 },
+      { id: 'e-0801', dateISO: '2026-08-01', title: 'Открытая арт-коуч сессия', price: 15000, capacity: 12, left: 12 },
+      { id: 'e-0802', dateISO: '2026-08-02', title: 'Открытая арт-коуч сессия', price: 15000, capacity: 12, left: 4 },
+      { id: 'e-0808', dateISO: '2026-08-08', title: 'Открытая арт-коуч сессия', price: 15000, capacity: 12, left: 12 },
+      { id: 'e-0809', dateISO: '2026-08-09', title: 'Открытая арт-коуч сессия', price: 15000, capacity: 12, left: 12 },
+      { id: 'e-0815', dateISO: '2026-08-15', title: 'Открытая арт-коуч сессия', price: 15000, capacity: 12, left: 0 }
+    ];
+  },
+  // Создать платёж. Потом: POST на Worker → Worker дёргает PayKeeper → вернёт ссылку/токен формы.
+  async createPayment(booking) {
+    // ЗАГЛУШКА
+    console.log('[test] createPayment', booking);
+    return { ok: false, test: true };
+  },
+  // Отправить B2B-заявку. Потом: POST на Worker → Telegram обоим.
+  async sendLead(lead) {
+    // ЗАГЛУШКА
+    console.log('[test] sendLead', lead);
+    return { ok: false, test: true };
+  }
+};
+
+const RU_MONTHS = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const RU_WD = ['вс','пн','вт','ср','чт','пт','сб'];
+const TIME = '12:00–15:30';
+const ADDRESS = 'мастерская «Да-да!», Успенский пер., 5, Москва';
+
+function fmtDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  return { long: `${d} ${RU_MONTHS[m - 1]}`, wd: RU_WD[dt.getUTCDay()] };
+}
+function money(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
+
+let state = { events: [], chosen: null, seats: 1 };
+
+async function init() {
+  state.events = await API.getEvents();
+  renderSlots();
+}
+
+function renderSlots() {
+  const box = document.getElementById('zslots');
+  box.innerHTML = '';
+  state.events.forEach(ev => {
+    const f = fmtDate(ev.dateISO);
+    const full = ev.left <= 0;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'zslot' + (full ? ' is-full' : '');
+    btn.disabled = full;
+    btn.innerHTML =
+      `<div class="zslot__date">${f.long}<span style="font-family:var(--sans);font-size:14px;color:rgba(23,24,26,.5)"> · ${f.wd}</span></div>` +
+      `<div class="zslot__time">${TIME}</div>` +
+      `<div class="zslot__meta"><span class="zslot__price">${money(ev.price)}</span>` +
+      `<span class="zslot__left ${ev.left > 0 && ev.left <= 4 ? 'zslot__left--few' : ''}">${full ? 'мест нет' : (ev.left <= 4 ? 'осталось ' + ev.left : 'есть места')}</span></div>`;
+    if (!full) btn.addEventListener('click', () => choose(ev, btn));
+    box.appendChild(btn);
+  });
+}
+
+function choose(ev, btn) {
+  state.chosen = ev; state.seats = 1;
+  document.querySelectorAll('.zslot').forEach(s => s.classList.remove('is-active'));
+  btn.classList.add('is-active');
+  const f = fmtDate(ev.dateISO);
+  document.getElementById('zchosen').innerHTML =
+    `${ev.title} · ${f.long}, ${f.wd}<small>${TIME} · ${ADDRESS}</small>`;
+  const seatSel = document.getElementById('zseats');
+  seatSel.innerHTML = '';
+  const maxPick = Math.min(ev.left, 4);
+  for (let i = 1; i <= maxPick; i++) seatSel.innerHTML += `<option value="${i}">${i}</option>`;
+  seatSel.onchange = () => { state.seats = +seatSel.value; updateTotal(); };
+  updateTotal();
+  const form = document.getElementById('zform');
+  form.classList.add('is-open');
+  form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('zmsg').textContent = '';
+}
+
+function updateTotal() {
+  const sum = state.chosen.price * state.seats;
+  document.getElementById('ztotal').textContent = money(sum);
+  document.getElementById('zpay').textContent = `Оплатить ${money(sum)}`;
+}
+
+document.getElementById('zpay').addEventListener('click', async () => {
+  const name = document.getElementById('zname').value.trim();
+  const phone = document.getElementById('zphone').value.trim();
+  const email = document.getElementById('zemail').value.trim();
+  const msg = document.getElementById('zmsg');
+  if (!state.chosen) { msg.textContent = 'Сначала выберите дату.'; return; }
+  if (!name || !phone || !email) { msg.textContent = 'Заполните имя, телефон и почту (на неё придёт чек).'; return; }
+  const booking = { eventId: state.chosen.id, dateISO: state.chosen.dateISO, seats: state.seats, amount: state.chosen.price * state.seats, name, phone, email };
+  const res = await API.createPayment(booking);
+  if (res.test) {
+    msg.style.color = '#6b5a12';
+    msg.textContent = '⚙️ Тестовый режим: здесь откроется оплата PayKeeper. Данные записи собраны корректно (см. консоль).';
+  } else if (res.url) {
+    window.location.href = res.url; // редирект/попап PayKeeper — решим при подключении
+  }
+});
+
+document.getElementById('bsend').addEventListener('click', async () => {
+  const name = document.getElementById('bname').value.trim();
+  const contact = document.getElementById('bcontact').value.trim();
+  const task = document.getElementById('btask').value.trim();
+  const msg = document.getElementById('bmsg');
+  if (!name || !contact) { msg.style.color = '#FBE3D0'; msg.textContent = 'Оставьте имя и контакт — телефон или почту.'; return; }
+  const res = await API.sendLead({ name, contact, task });
+  msg.style.color = '#FBE3D0';
+  msg.textContent = res.test
+    ? '⚙️ Тестовый режим: заявка собрана (см. консоль). Позже она уйдёт нам в Telegram.'
+    : 'Спасибо! Мы свяжемся с вами.';
+});
+
+document.getElementById('zoferta').addEventListener('click', (e) => { e.preventDefault(); alert('Оферту и условия возврата добавим текстом от Елены.'); });
+
+init();
+</script>
+</body>
+</html>
