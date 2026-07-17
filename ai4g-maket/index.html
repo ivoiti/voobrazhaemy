@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Арт-коучинг для лидеров и команд — AI4G</title>
+<meta name="robots" content="noindex">
+<!--
+  МАКЕТ-РЫБА для страницы art-coaching на ai4g.ru (передать программисту Лены).
+  Стиль подобран под текущий ai4g: шрифты Montserrat + PT Sans, палитра #150931 / #06ea6f / #ff008a.
+  Цвета/шрифты программист заменит на актуальную дизайн-систему нового сайта.
+  ЗАГЛУШКИ помечены [[ ... ]] — заполнить: точные цитаты Арнхейма и Тейлора (даёт Лена),
+  свежие фото/кадрирование, ссылки на ролики.
+  Задача страницы: НЕ повторять B2C-лендинг сессий (он на voobrazhaemy.ru), а дать
+  короткий взрослый B2B-вход + регалии + ссылку «подробнее и запись → voobrazhaemy.ru».
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#150931;        /* тёмно-синий ai4g */
+    --ink-2:#231447;
+    --green:#06ea6f;      /* неон-акцент */
+    --pink:#ff008a;       /* маджента-акцент */
+    --blue:#0386ff;
+    --grey:#737373;
+    --line:#e7e6ee;
+    --cream:#ffdca8;
+    --sans:'PT Sans',-apple-system,sans-serif;
+    --head:'Montserrat',var(--sans);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:#fff;line-height:1.6;font-size:17px}
+  h1,h2,h3,h4,.kicker,.btn{font-family:var(--head)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;padding:16px 30px;border-radius:10px;font-weight:700;text-decoration:none;font-size:15px;letter-spacing:.02em;transition:.2s;cursor:pointer;border:none}
+  .btn--green{background:var(--green);color:var(--ink)}
+  .btn--green:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(6,234,111,.35)}
+  .btn--out{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+  .btn--out:hover{border-color:var(--green);color:var(--green)}
+  .btn--ink{background:var(--ink);color:#fff}
+  .btn--ink:hover{background:var(--ink-2)}
+  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--green)}
+
+  /* HERO */
+  .hero{background:var(--ink);color:#fff;padding:110px 0 90px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(255,0,138,.35),transparent 70%);pointer-events:none}
+  .hero__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:1}
+  .hero h1{font-size:clamp(34px,5vw,54px);line-height:1.05;font-weight:800;margin:16px 0 18px}
+  .hero h1 em{font-style:normal;color:var(--green)}
+  .hero__lead{font-size:20px;color:rgba(255,255,255,.85);max-width:520px}
+  .hero__slogan{margin-top:18px;font-family:var(--head);font-weight:600;font-size:17px;color:var(--cream)}
+  .hero__cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .ph{background:linear-gradient(135deg,#2a1a55,#150931);border:1px dashed rgba(255,255,255,.25);border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;color:rgba(255,255,255,.55);font-size:13px;padding:20px;min-height:340px}
+  .ph small{display:block;margin-top:6px;color:rgba(255,255,255,.35)}
+  .hero__img{width:100%;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.45);display:block}
+  .lead-card__img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+  .method__img{width:100%;border-radius:14px;box-shadow:0 14px 34px rgba(21,9,49,.14);display:block}
+  .method__row{display:grid;grid-template-columns:1.4fr .8fr;gap:34px;align-items:start;margin-top:8px}
+  @media(max-width:840px){.method__row{grid-template-columns:1fr}}
+
+  /* секции */
+  section.block{padding:76px 0}
+  .block--tint{background:#faf9fc}
+  .h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;line-height:1.15}
+  .lead{font-size:19px;color:#3a3350;max-width:720px;margin-top:14px}
+
+  /* метод */
+  .method__quote{margin:34px 0;padding:22px 26px;border-left:4px solid var(--pink);background:#fff;border-radius:0 12px 12px 0;font-family:var(--head);font-style:italic;font-size:20px;line-height:1.4}
+  .method__quote cite{display:block;margin-top:8px;font-style:normal;font-size:14px;color:var(--grey);font-family:var(--sans)}
+  .ph--q{border:1px dashed var(--pink);color:var(--pink);background:#fff0f7;min-height:auto;padding:18px 22px;border-radius:0 12px 12px 0;text-align:left;font-size:14px}
+
+  /* B2B форматы */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+  .card{border:1px solid var(--line);border-radius:16px;padding:26px 22px;transition:.2s;background:#fff}
+  .card:hover{border-color:var(--green);box-shadow:0 12px 30px rgba(21,9,49,.08);transform:translateY(-3px)}
+  .card__num{font-family:var(--head);font-weight:800;font-size:14px;color:var(--pink)}
+  .card h3{font-family:var(--head);font-size:20px;margin:10px 0 8px;font-weight:700}
+  .card p{font-size:15px;color:#4a4460}
+  .card__price{display:block;margin-top:14px;font-family:var(--head);font-weight:800;font-size:18px;color:var(--ink)}
+  .card__price span{color:var(--pink)}
+  .card__meta{font-size:12.5px;color:var(--grey);margin-top:4px}
+
+  /* ведущие + регалии */
+  .leads{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:36px}
+  .lead-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .lead-card__ph{min-height:230px;background:#efeef4;display:flex;align-items:center;justify-content:center;color:#a7a2b8;font-size:13px;text-align:center;border-bottom:1px solid var(--line)}
+  .lead-card__body{padding:22px 24px}
+  .lead-card__name{font-family:var(--head);font-weight:800;font-size:22px}
+  .lead-card__role{color:var(--pink);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin:6px 0 12px;font-family:var(--head)}
+  .lead-card ul{list-style:none;font-size:14.5px;color:#3f3956}
+  .lead-card li{position:relative;padding-left:18px;margin:7px 0}
+  .lead-card li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--green)}
+  .lead-card__tags{margin-top:12px;font-size:12.5px;color:var(--grey);line-height:1.7}
+
+  /* подробнее -> voobrazhaemy */
+  .more{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .more a{display:block;border:1px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;transition:.2s;background:#fff}
+  .more a:hover{border-color:var(--green);transform:translateY(-2px)}
+  .more__k{font-family:var(--head);font-weight:700;font-size:13px;color:var(--pink)}
+  .more h4{font-family:var(--head);font-size:18px;margin:8px 0 6px}
+  .more p{font-size:14px;color:#4a4460}
+  .more__arrow{margin-top:10px;color:var(--green);font-weight:700;font-size:14px}
+
+  /* финальный CTA */
+  .final{background:var(--ink);color:#fff;text-align:center;padding:70px 0}
+  .final h2{font-family:var(--head);font-size:clamp(26px,3.4vw,38px);font-weight:800}
+  .final p{color:rgba(255,255,255,.8);margin-top:12px;font-size:18px}
+  .final__cta{margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .final__contacts{margin-top:26px;font-size:14px;color:rgba(255,255,255,.6)}
+  .final__contacts a{color:var(--green);text-decoration:none}
+
+  .note{background:#fff8e6;border:1px solid #f0dca0;border-radius:10px;padding:10px 16px;font-size:13px;color:#7a5c12;margin:0 auto 0;max-width:1080px}
+
+  @media(max-width:840px){
+    .hero__grid,.leads{grid-template-columns:1fr}
+    .cards,.more{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="note wrap" style="margin-top:14px">⚙️ Макет для программиста. Фото и тексты вставлены; цвета/шрифты — под новую дизайн-систему ai4g. Осталось: ссылки на ролики о программе и финальная вычитка Лены.</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div>
+      <span class="kicker">Продукт AI4G · арт-коучинг</span>
+      <h1>Арт-коучинг для <em>лидеров и команд</em></h1>
+      <p class="hero__lead">Программа развития идентичности на стыке современного искусства и коучинга. Очно, малой группой — на вашей площадке.</p>
+      <p class="hero__slogan">Искусство проявляет. Коучинг раскрывает. Вы&nbsp;открываете автора своей жизни.</p>
+      <div class="hero__cta">
+        <a class="btn btn--green" href="https://voobrazhaemy.ru/" target="_blank" rel="noopener">Полная программа и запись →</a>
+        <a class="btn btn--out" href="#leaders">Кто ведёт</a>
+      </div>
+    </div>
+    <img class="hero__img" src="img/hero.jpg" alt="Елена Семёнова и Янита Войт — ведущие программы арт-коучинга">
+
+  </div>
+</section>
+
+<!-- ==================== МЕТОД ==================== -->
+<section class="block">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--pink)">Метод</span>
+    <h2 class="h2" style="margin-top:10px">Почему через искусство</h2>
+    <p class="lead">Участники руками создают работу — художественная практика проявляет то, что не проговаривается словами. Дальше групповой коучинг превращает увиденное в решения. Уметь рисовать не нужно: методика выстроена так, что работа получится у&nbsp;каждого.</p>
+
+    <div class="method__row">
+      <div>
+        <div class="method__quote">
+          «Рисование — исследовательский, преобразующий и генеративный инструмент»: создавая образ, человек осознаёт скрытое, переводит внутренний опыт во внешнюю форму и рождает новый смысл.
+          <cite>— Стивен Тейлор</cite>
+        </div>
+        <div class="method__quote">
+          «В визуальном всё присутствует одновременно, и его содержание представлено не линейно, а в сложной взаимосвязи, открывающей возможности для понимания».
+          <cite>— Рудольф Арнхейм</cite>
+        </div>
+      </div>
+      <img class="method__img" src="img/method-object.jpg" alt="Песочные часы и предметы — реквизит арт-коуч сессии">
+    </div>
+  </div>
+</section>
+
+<!-- ==================== B2B ФОРМАТЫ ==================== -->
+<section class="block block--tint">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--pink)">Для бизнеса</span>
+    <h2 class="h2" style="margin-top:10px">Форматы для лидеров и команд</h2>
+    <p class="lead">Без «списка на всех». Начать можно с бесплатного тест-драйва или коротких «дверей» — «Цвет вместо слов» и «Портрет лидера». Дальше — модуль под задачу или полная программа. Группа до 12, на вашей площадке.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card__num">Тест-драйв</div>
+        <h3>«Химическая сессия»</h3>
+        <p>Короткое демо перед корпоративным запуском — попробовать метод на себе и понять, как это работает для команды.</p>
+        <span class="card__price"><span>Бесплатно</span></span>
+      </div>
+      <div class="card">
+        <div class="card__num">Модуль</div>
+        <h3>Сессия под задачу</h3>
+        <p>Одна практика 3,5 часа: снять напряжение, включить креативность, проявить то, что не проговаривается на планёрках.</p>
+        <span class="card__price">150 000 ₽</span>
+        <div class="card__meta">3,5 часа · до 12 человек</div>
+      </div>
+      <div class="card">
+        <div class="card__num">Программа</div>
+        <h3>«5 граней Я»</h3>
+        <p>Полный трек из 5 сессий за 2,5 дня: развитие идентичности и нестандартного мышления как ресурс команды.</p>
+        <span class="card__price">650 000 ₽</span>
+        <div class="card__meta">5 сессий · 2,5 дня</div>
+      </div>
+    </div>
+    <div style="margin-top:30px">
+      <a class="btn btn--ink" href="mailto:info@ai4g.ru?subject=Арт-коучинг для команды">Обсудить формат для команды</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ВЕДУЩИЕ + РЕГАЛИИ ==================== -->
+<section class="block" id="leaders">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--pink)">Кто ведёт</span>
+    <h2 class="h2" style="margin-top:10px">Двое — коуч и художник</h2>
+    <p class="lead">Программа существует только на стыке. Поэтому ведут её двое.</p>
+    <div class="leads">
+
+      <div class="lead-card">
+        <img class="lead-card__img" src="img/elena.jpg" alt="Елена Семёнова">
+        <div class="lead-card__body">
+          <div class="lead-card__name">Елена Семёнова</div>
+          <div class="lead-card__role">Коуч лидеров и команд</div>
+          <ul>
+            <li>Эксперт по вертикальной трансформации лидеров, системному командному коучингу и оргразвитию</li>
+            <li>13 лет — создание системы профотбора в спецподразделения оперативно-боевого назначения (ФСБ)</li>
+            <li>25+ лет руководящего опыта: HR&amp;OD VP, операционный директор (ИТ, финансы, промышленность)</li>
+            <li>Преподаватель и автор программ: Antwerp Management School, РАНХиГС, МШУ Сколково, МГИМО, СПбГУ (ВШМ), Skillbox</li>
+            <li>Основатель ed-tech компании AI4G; консультант на ТВ (1 канал, НТВ, ТНТ)</li>
+          </ul>
+          <div class="lead-card__tags"><b>Сертификации:</b> Hogan, Gallup StrengthsFinder, SHL, TalentQ, DISC, MBTI, PDA и др. · Член Федерации профессиональных коучей и наставников.<br><b>Проекты:</b> Сбербанк, Альфа-Банк, Норникель, ГК «Самолёт», РУСАГРО, Уралсиб.</div>
+        </div>
+      </div>
+
+      <div class="lead-card">
+        <img class="lead-card__img" src="img/yanita.jpg" alt="Янита Войт">
+
+        <div class="lead-card__body">
+          <div class="lead-card__name">Янита Войт</div>
+          <div class="lead-card__role">Художник · L&amp;D-методолог</div>
+          <ul>
+            <li>Магистр изящных искусств (НИУ ВШЭ); «Новые художественные стратегии» (ICA); межкультурное общение (МГУ)</li>
+            <li>Сооснователь галереи современного искусства в Москве, автор арт-коллабораций бизнеса и арт-мира</li>
+            <li>15+ лет в проектировании корпоративного обучения и HR-проектов: Банк ВТБ, Deloitte, Allianz, «Информзащита»</li>
+            <li>Создаёт нестандартные образовательные продукты, снижающие выгорание команд</li>
+            <li>Лауреат премий «Customer Force Awards» и «Приоритет-Цифра» за инновации в корпоративном обучении</li>
+          </ul>
+          <div class="lead-card__tags"><b>Специализация:</b> креативные форматы, геймификация, дизайн образовательного опыта, трендвотчинг.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ПОДРОБНЕЕ -> voobrazhaemy ==================== -->
+<section class="block block--tint">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--pink)">Смотреть детальнее</span>
+    <h2 class="h2" style="margin-top:10px">Полностью о проекте — на сайте программы</h2>
+    <p class="lead">Метод, истории художников, визуальные практики, ролики и запись на открытые сессии живут на сайте проекта «Мы должны быть воображаемы».</p>
+    <div class="more">
+      <a href="https://voobrazhaemy.ru/journal/dver-kak-metafora.html" target="_blank" rel="noopener">
+        <div class="more__k">Метод</div>
+        <h4>Дверь как метафора</h4>
+        <p>Почему дверь стала главным образом проекта и что означают девять предметов.</p>
+        <div class="more__arrow">Читать →</div>
+      </a>
+      <a href="https://voobrazhaemy.ru/journal.html" target="_blank" rel="noopener">
+        <div class="more__k">Журнал и ролики</div>
+        <h4>Статьи и видео о программе</h4>
+        <p>Как устроен арт-коучинг, практики, истории. [[ + ссылки на ролики ]]</p>
+        <div class="more__arrow">Смотреть →</div>
+      </a>
+      <a href="https://voobrazhaemy.ru/" target="_blank" rel="noopener">
+        <div class="more__k">Запись</div>
+        <h4>Открытые сессии и даты</h4>
+        <p>Актуальное расписание и онлайн-запись — на сайте проекта.</p>
+        <div class="more__arrow">Записаться →</div>
+      </a>
+    </div>
+    <p style="margin-top:22px;font-size:14px;color:var(--grey)">Для HR и руководителей — одностраничник о программе: <a href="https://voobrazhaemy.ru/assets/onepager.pdf" target="_blank" rel="noopener" style="color:var(--pink);font-weight:700">скачать PDF ↓</a></p>
+  </div>
+</section>
+
+<!-- ==================== ФИНАЛ ==================== -->
+<section class="final">
+  <div class="wrap">
+    <h2>Обсудить арт-коучинг для вашей команды</h2>
+    <p>Короткий разговор о задаче — без обязательств.</p>
+    <div class="final__cta">
+      <a class="btn btn--green" href="mailto:info@ai4g.ru?subject=Арт-коучинг">Написать нам</a>
+      <a class="btn btn--out" href="https://voobrazhaemy.ru/" target="_blank" rel="noopener">Сайт проекта →</a>
+    </div>
+    <div class="final__contacts">
+      AI4G · <a href="mailto:info@ai4g.ru">info@ai4g.ru</a> · <a href="https://t.me/+79852000434">Telegram</a> · <a href="https://voobrazhaemy.ru">voobrazhaemy.ru</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
