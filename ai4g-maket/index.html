@@ -98,8 +98,10 @@
 
   /* подробнее -> voobrazhaemy */
   .more{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-  .more a{display:block;border:1px solid var(--line);border-radius:14px;padding:22px;text-decoration:none;transition:.2s;background:#fff}
-  .more a:hover{border-color:var(--green);transform:translateY(-2px)}
+  .more a{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:.2s;background:#fff}
+  .more a:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 12px 28px rgba(21,9,49,.1)}
+  .more__img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+  .more__body{padding:20px}
   .more__k{font-family:var(--head);font-weight:700;font-size:13px;color:var(--pink)}
   .more h4{font-family:var(--head);font-size:18px;margin:8px 0 6px}
   .more p{font-size:14px;color:#4a4460}
@@ -253,22 +255,31 @@
     <p class="lead">Метод, истории художников, визуальные практики, ролики и запись на открытые сессии живут на сайте проекта «Мы должны быть воображаемы».</p>
     <div class="more">
       <a href="https://voobrazhaemy.ru/journal/dver-kak-metafora.html" target="_blank" rel="noopener">
-        <div class="more__k">Метод</div>
-        <h4>Дверь как метафора</h4>
-        <p>Почему дверь стала главным образом проекта и что означают девять предметов.</p>
-        <div class="more__arrow">Читать →</div>
+        <img class="more__img" src="img/more1.jpg" alt="Девять дверей — метафора проекта">
+        <div class="more__body">
+          <div class="more__k">Метод</div>
+          <h4>Дверь как метафора</h4>
+          <p>Почему дверь стала главным образом проекта и что означают девять предметов.</p>
+          <div class="more__arrow">Читать →</div>
+        </div>
       </a>
       <a href="https://voobrazhaemy.ru/journal.html" target="_blank" rel="noopener">
-        <div class="more__k">Журнал и ролики</div>
-        <h4>Статьи и видео о программе</h4>
-        <p>Как устроен арт-коучинг, практики, истории. [[ + ссылки на ролики ]]</p>
-        <div class="more__arrow">Смотреть →</div>
+        <img class="more__img" src="img/more2.jpg" alt="Работы Яниты Войт — журнал проекта">
+        <div class="more__body">
+          <div class="more__k">Журнал</div>
+          <h4>Статьи и видео о программе</h4>
+          <p>Как устроен арт-коучинг, визуальные практики и истории художников.</p>
+          <div class="more__arrow">Смотреть →</div>
+        </div>
       </a>
       <a href="https://voobrazhaemy.ru/" target="_blank" rel="noopener">
-        <div class="more__k">Запись</div>
-        <h4>Открытые сессии и даты</h4>
-        <p>Актуальное расписание и онлайн-запись — на сайте проекта.</p>
-        <div class="more__arrow">Записаться →</div>
+        <img class="more__img" src="img/more3.jpg" alt="Проект «Мы должны быть воображаемы»">
+        <div class="more__body">
+          <div class="more__k">Запись</div>
+          <h4>Открытые сессии и даты</h4>
+          <p>Актуальное расписание и онлайн-запись — на сайте проекта.</p>
+          <div class="more__arrow">Записаться →</div>
+        </div>
       </a>
     </div>
     <p style="margin-top:22px;font-size:14px;color:var(--grey)">Для HR и руководителей — одностраничник о программе: <a href="https://voobrazhaemy.ru/assets/onepager.pdf" target="_blank" rel="noopener" style="color:var(--pink);font-weight:700">скачать PDF ↓</a></p>
