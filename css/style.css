@@ -130,8 +130,8 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 .format__price { color: var(--terra); font-weight: 600; margin-bottom: 14px; }
 .format__next { color: var(--teal); font-weight: 600; font-size: 15px; margin: -4px 0 12px; }
 .format__book { margin-top: 18px; }
-.format__book a[href^="https"] { display: inline-block; background: var(--terra); color: var(--cream); padding: 10px 22px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 14px; }
-.format__book a[href^="https"]:hover { background: var(--terra-dark); }
+.format__book > a { display: inline-block; background: var(--terra); color: var(--cream); padding: 11px 24px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 14px; transition: transform .2s ease, background .2s ease; }
+.format__book > a:hover { background: var(--terra-dark); transform: translateY(-2px); }
 .format__book span { display: block; margin-top: 10px; font-size: 13px; color: rgba(23,24,26,.6); }
 .format__book span a { color: var(--teal); }
 .format__download { margin-top: 16px; }

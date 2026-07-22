@@ -74,7 +74,7 @@ document.addEventListener('click', (ev) => {
   if (!a || typeof window.ym !== 'function') return;
   const href = a.getAttribute('href') || '';
   const text = (a.textContent || '').toLowerCase();
-  if (href.indexOf('dikidi.net/2105960') !== -1 || text.indexOf('записаться') !== -1) {
+  if (href.indexOf('zapis.html') !== -1 || text.indexOf('записаться') !== -1 || text.indexOf('оставить заявку') !== -1) {
     try { window.ym(110592816, 'reachGoal', 'zapis'); } catch (e) {}
   } else if (href.indexOf('t.me/ESVIum') !== -1) {
     try { window.ym(110592816, 'reachGoal', 'tg_channel'); } catch (e) {}
