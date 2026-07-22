@@ -4,69 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Практики — Мы должны быть воображаемы</title>
-  <meta name="description" content="Практики арт-коучинга проекта «Мы должны быть воображаемы»: упражнения восприятия, которыми мы пользуемся сами — свои, найденные и те, кем делятся. Первый набор — «расширенное смотрение» Михаила Матюшина (ЗОРВЕД).">
+  <meta name="description" content="Практики арт-коучинга проекта «Мы должны быть воображаемы»: упражнения восприятия, рисования и работы с образом — свои, найденные и те, кем делятся коллеги. На авторов всегда ссылаемся.">
   <link rel="canonical" href="https://voobrazhaemy.ru/praktiki.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
   <style>
-    /* ===== гамбургер-навигация ===== */
-    .nav--solid .nav__right { display: flex; align-items: center; gap: 14px; }
-    .burger { width: 44px; height: 44px; border: none; background: transparent; cursor: pointer; display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; padding: 10px; }
-    .burger span { display: block; height: 2px; background: var(--ink); border-radius: 2px; transition: .25s; }
-    .menu { position: fixed; inset: 0; background: var(--ink); color: var(--cream); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; pointer-events: none; transition: opacity .3s; }
-    .menu.is-open { opacity: 1; pointer-events: auto; }
-    .menu a { font-family: var(--serif); font-size: clamp(26px, 5vw, 40px); color: var(--cream); text-decoration: none; padding: 8px 16px; opacity: .9; transition: .2s; }
-    .menu a:hover { color: var(--terra); }
-    .menu a.soon { opacity: .4; pointer-events: none; }
-    .menu a.soon::after { content: " · скоро"; font-family: var(--sans); font-size: 13px; letter-spacing: .05em; vertical-align: middle; }
-    .menu__close { position: absolute; top: 22px; right: 26px; width: 46px; height: 46px; border: none; background: transparent; color: var(--cream); font-size: 34px; cursor: pointer; line-height: 1; }
-    body.menu-open { overflow: hidden; }
+    .lhead { padding: 130px 0 24px; text-align: center; }
+    .lhead__kicker { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
+    .lhead h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 52px); line-height: 1.08; font-weight: 400; }
+    .lhead p { max-width: 660px; margin: 18px auto 0; font-size: 17px; color: rgba(23,24,26,.75); }
 
-    /* ===== шапка ===== */
-    .phead { padding: 130px 0 20px; text-align: center; }
-    .phead__kicker { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
-    .phead h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 52px); line-height: 1.08; font-weight: 400; }
-    .phead p { max-width: 680px; margin: 18px auto 0; font-size: 17px; color: rgba(23,24,26,.75); }
+    .lwrap { max-width: 1160px; margin: 0 auto; padding: 0 24px 100px; }
+    .lfilters { position: sticky; top: 0; background: var(--cream); padding: 18px 0 14px; z-index: 20; }
+    .lsearch { max-width: 440px; margin: 0 auto 14px; display: block; }
+    .lsearch input { width: 100%; padding: 12px 18px; border: 1px solid rgba(23,24,26,.18); border-radius: 999px; font: inherit; background: #fff; }
+    .lsearch input:focus { outline: none; border-color: var(--terra); }
+    .ltypes { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .ltype { border: 1px solid rgba(23,24,26,.18); background: #fff; border-radius: 999px; padding: 9px 20px; font: inherit; font-size: 15px; cursor: pointer; transition: .2s; }
+    .ltype.is-active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .ltags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+    .ltag { border: 1px solid rgba(23,24,26,.14); background: transparent; border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 13px; color: rgba(23,24,26,.7); cursor: pointer; transition: .2s; }
+    .ltag.is-active { background: var(--teal); color: var(--cream); border-color: var(--teal); }
+    .lcount { text-align: center; font-size: 13px; color: rgba(23,24,26,.5); margin-top: 12px; }
 
-    .pwrap { max-width: 900px; margin: 0 auto; padding: 0 24px 100px; }
-
-    /* оглавление */
-    .ptoc { max-width: 900px; margin: 10px auto 0; padding: 0 24px; }
-    .ptoc__list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-    .ptoc a { border: 1px solid rgba(23,24,26,.16); border-radius: 999px; padding: 8px 18px; text-decoration: none; color: var(--ink); font-size: 14px; }
-    .ptoc a:hover { border-color: var(--terra); color: var(--terra); }
-
-    /* набор практик */
-    .pset { margin-top: 44px; background: #fff; border: 1px solid rgba(23,24,26,.1); border-radius: 20px; padding: 34px 32px; }
-    .pset__tag { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--terra); }
-    .pset__title { font-family: var(--serif); font-size: clamp(24px, 3.6vw, 34px); line-height: 1.12; margin: 8px 0 4px; }
-    .pset__author { font-size: 15px; color: rgba(23,24,26,.6); }
-    .pset__author a { color: var(--teal); }
-    .pset__intro { font-size: 16.5px; color: #33342f; line-height: 1.6; margin-top: 16px; }
-    .pset__intro em { font-style: normal; color: var(--terra); }
-
-    .plist { margin-top: 26px; display: grid; gap: 16px; }
-    .pcard { border: 1px solid rgba(23,24,26,.1); border-radius: 14px; padding: 20px 22px; background: var(--cream-2, #f7f3ea); }
-    .pcard__num { font-family: var(--serif); font-size: 15px; color: var(--terra); font-weight: 600; }
-    .pcard__name { font-family: var(--serif); font-size: 21px; margin: 2px 0 10px; }
-    .pcard h4 { font-family: var(--sans); font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: rgba(23,24,26,.5); margin: 12px 0 5px; }
-    .pcard p { font-size: 15px; color: #33342f; line-height: 1.55; }
-    .pcard ul { margin: 4px 0 0; padding-left: 0; list-style: none; }
-    .pcard li { position: relative; padding-left: 16px; font-size: 15px; color: #33342f; margin: 4px 0; }
-    .pcard li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
-
-    .pblock { margin-top: 30px; }
-    .pblock h3 { font-family: var(--serif); font-size: 22px; margin-bottom: 10px; }
-    .pblock ul { list-style: none; padding: 0; }
-    .pblock li { position: relative; padding-left: 18px; margin: 7px 0; font-size: 16px; color: #33342f; line-height: 1.5; }
-    .pblock li::before { content: ""; position: absolute; left: 0; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: var(--terra); }
-    .psource { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(23,24,26,.12); font-size: 14px; color: rgba(23,24,26,.6); }
-    .psource a { color: var(--teal); }
+    .lgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 26px; margin-top: 22px; }
+    .lcard { background: #fff; border: 1px solid rgba(23,24,26,.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; }
+    .lcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(23,24,26,.1); }
+    .lcard__imgwrap { position: relative; }
+    .lcard__img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    .lcard__type { position: absolute; top: 12px; left: 12px; background: rgba(23,24,26,.82); color: var(--cream); font-size: 12px; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; }
+    .lcard__body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .lcard__title { font-family: var(--serif); font-size: 21px; line-height: 1.2; }
+    .lcard__author { font-size: 13px; color: rgba(23,24,26,.55); margin-top: 4px; }
+    .lcard__about { font-size: 14.5px; color: #3a3b3d; margin-top: 12px; line-height: 1.5; flex: 1; }
+    .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .lcard__tag { font-size: 12px; color: var(--teal); background: rgba(42,85,90,.08); border-radius: 999px; padding: 3px 10px; }
+    .lcard__more { margin-top: 14px; font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--terra); }
+    .lnote { max-width: 1160px; margin: 0 auto 20px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
   </style>
 </head>
 <body class="page--interior">
@@ -93,148 +72,25 @@
   <a href="index.html#formats">Форматы</a>
 </nav>
 
-<section class="phead">
+<section class="lhead">
   <div class="container">
-    <div class="phead__kicker">Практики</div>
+    <div class="lhead__kicker">Практики</div>
     <h1>Упражнения, которыми мы пользуемся</h1>
-    <p>Здесь мы собираем практики восприятия и творчества — свои, найденные и те, кем делятся коллеги. На авторов всегда ссылаемся. Раздел будет расти.</p>
+    <p>Практики восприятия, рисования и работы с образом — свои, найденные и те, кем делятся коллеги. На авторов всегда ссылаемся. Раздел будет расти.</p>
   </div>
 </section>
 
-<div class="ptoc">
-  <div class="ptoc__list">
-    <a href="#matyushin">Расширенное смотрение · Михаил Матюшин</a>
+<div class="lwrap">
+  <div class="lnote">⚙️ Раздел наполняется. Практики добавляем в разные категории — свои и найденные.</div>
+
+  <div class="lfilters">
+    <label class="lsearch"><input type="search" id="lsearch" placeholder="Поиск: название, автор, тема…" autocomplete="off"></label>
+    <div class="ltypes" id="ltypes"></div>
+    <div class="ltags" id="ltags"></div>
+    <div class="lcount" id="lcount"></div>
   </div>
-</div>
 
-<div class="pwrap">
-
-  <article class="pset" id="matyushin">
-    <div class="pset__tag">Восприятие · найденная практика</div>
-    <h2 class="pset__title">Расширенное смотрение (ЗОРВЕД)</h2>
-    <div class="pset__author">Метод <a href="https://ru.wikipedia.org/wiki/Матюшин,_Михаил_Васильевич" target="_blank" rel="noopener">Михаила Матюшина</a> (1861–1934) — художника, музыканта, педагога и исследователя</div>
-    <p class="pset__intro">В 1920–1930-х Матюшин разрабатывал практики «расширенного смотрения», легшие в основу его концепции <em>ЗОРВЕД</em> (Зрение + Ведение). Его цель — изменить сам способ восприятия мира. Мы пользуемся этими упражнениями в работе. <em>Попробуете?</em></p>
-
-    <div class="plist">
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 1</div>
-        <div class="pcard__name">Сначала пространство</div>
-        <p><b>Задача:</b> отказаться от привычки сразу искать объекты.</p>
-        <h4>Как выполнять</h4>
-        <p>Войдите в помещение, музей, храм или любое большое пространство. Не ищите глазами людей, картины, мебель или детали. Попробуйте увидеть только:</p>
-        <ul><li>общий объём</li><li>воздух</li><li>глубину</li><li>направление пространства</li><li>распределение света</li></ul>
-        <p style="margin-top:8px">Лишь спустя минуту начинайте различать предметы.</p>
-        <h4>Что развивается</h4>
-        <ul><li>пространственное восприятие</li><li>внимание к целому</li><li>снижение автоматического распознавания объектов</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 2 · главное упражнение</div>
-        <div class="pcard__name">180 градусов</div>
-        <h4>Как выполнять</h4>
-        <p>Смотрите прямо перед собой, не переводите взгляд. Одновременно замечайте всё, что попадает в периферическое зрение, — не рассматривая детали. Задача — ощущать всю панораму сразу. Начинайте с 20–30 секунд.</p>
-        <h4>Что развивается</h4>
-        <ul><li>периферическое зрение</li><li>устойчивое внимание</li><li>ощущение большого пространства</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 3</div>
-        <div class="pcard__name">Смотреть из центра</div>
-        <h4>Как выполнять</h4>
-        <p>Зафиксируйте взгляд на одной точке. Не двигайте глазами. Одновременно принимайте всё изображение вокруг. Ничего не называйте — просто позвольте картине войти целиком.</p>
-        <h4>Что развивается</h4>
-        <ul><li>целостное восприятие</li><li>способность удерживать сложную визуальную сцену</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 4</div>
-        <div class="pcard__name">Большое и малое</div>
-        <p>Матюшин считал ошибкой видеть только детали.</p>
-        <h4>Как выполнять</h4>
-        <p>На улице или в природе сначала увидьте весь пейзаж, затем большие массы, затем линии — и лишь потом отдельные предметы. После этого снова вернитесь ко всему пространству.</p>
-        <h4>Что развивается</h4>
-        <ul><li>переключение между масштабами восприятия</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 5</div>
-        <div class="pcard__name">Отражения</div>
-        <h4>Как выполнять</h4>
-        <p>Встаньте возле воды или перед большим стеклом. Попробуйте одновременно видеть здания, небо, отражение и пространство между ними. Не переключайтесь — удерживайте всё как единую композицию.</p>
-        <h4>Что развивается</h4>
-        <ul><li>нестандартное восприятие пространства</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 6</div>
-        <div class="pcard__name">Вертикальная комната</div>
-        <p>Матюшин выполнял её лёжа.</p>
-        <h4>Как выполнять</h4>
-        <p>Лягте на бок, посмотрите на стену. Теперь воспринимайте её не как поверхность, а как пространство. Замечайте момент, когда стена перестаёт быть плоскостью.</p>
-        <h4>Что развивается</h4>
-        <ul><li>разрушение привычной схемы восприятия</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 7</div>
-        <div class="pcard__name">Поворот</div>
-        <h4>Как выполнять</h4>
-        <p>Идя по улице, резко обернитесь; на несколько секунд максимально полно воспримите весь открывшийся вид; снова повернитесь вперёд — и сохраните ощущение предыдущего пространства.</p>
-        <h4>Что развивается</h4>
-        <ul><li>объёмная пространственная память</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 8</div>
-        <div class="pcard__name">Круговое пространство</div>
-        <h4>Как выполнять</h4>
-        <p>Идите вперёд и одновременно представляйте: улицу позади, небо над собой, пространство по бокам и то, что впереди. Постепенно появляется ощущение, что вы находитесь внутри большого объёма, а не движетесь по узкому коридору.</p>
-        <h4>Что развивается</h4>
-        <ul><li>пространственное мышление</li><li>панорамное внимание</li><li>чувство собственной включённости в среду</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 9</div>
-        <div class="pcard__name">Прохожий</div>
-        <h4>Как выполнять</h4>
-        <p>Заметьте человека, идущего навстречу. Запомните его движение, скорость, направление, ритм. После того как он пройдёт мимо, мысленно удерживайте его траекторию, не оборачиваясь, — и одновременно сохраняйте внимание к тому, что впереди.</p>
-        <h4>Что развивается</h4>
-        <ul><li>удержание нескольких потоков внимания</li><li>пространственная память</li><li>ощущение непрерывности происходящего</li></ul>
-      </div>
-
-      <div class="pcard">
-        <div class="pcard__num">Практика 10</div>
-        <div class="pcard__name">Небо</div>
-        <h4>Как выполнять</h4>
-        <p>Лягте под деревьями. Смотрите только в небо — достаточно долго. Позвольте исчезнуть привычным категориям: верх, низ, передний план, задний план.</p>
-        <h4>Что развивается</h4>
-        <ul><li>изменённое чувство пространства</li></ul>
-      </div>
-
-    </div>
-
-    <div class="pblock">
-      <h3>Основные принципы метода</h3>
-      <ul>
-        <li>Сначала пространство, потом предметы.</li>
-        <li>Видеть целое раньше деталей.</li>
-        <li>Использовать периферическое зрение как основной инструмент.</li>
-        <li>Менять привычные условия восприятия.</li>
-        <li>Отказываться от автоматического узнавания объектов.</li>
-        <li>Расширять поле внимания до ощущения окружающего пространства как единого целого.</li>
-        <li>Развивать способность одновременно удерживать несколько уровней восприятия.</li>
-      </ul>
-    </div>
-
-    <div class="pblock">
-      <h3>Почему это актуально сегодня</h3>
-      <p style="font-size:16px;color:#33342f;line-height:1.6">С точки зрения современной когнитивной психологии и нейроэстетики упражнения Матюшина — тренировка ключевых навыков: расширение поля внимания, ослабление автоматической категоризации объектов, усиление периферического восприятия, развитие пространственного мышления и сенсорной открытости. А это питает творческое мышление и способность находить новые связи — выходить за пределы привычных когнитивных схем.</p>
-    </div>
-
-    <div class="psource">Источник: Матюшин М. «Творческий путь художника». Метод <a href="https://ru.wikipedia.org/wiki/Матюшин,_Михаил_Васильевич" target="_blank" rel="noopener">Михаила Матюшина</a> — мы используем эти практики в работе.</div>
-  </article>
-
+  <div class="lgrid" id="lgrid"></div>
 </div>
 
 <footer class="footer">
@@ -243,12 +99,57 @@
 </footer>
 
 <script>
+/* данные практик (позже — из файла/таблицы) */
+const PRAK = [
+  { slug:'matyushin-zorved', cat:'Восприятие', title:'Расширенное смотрение (ЗОРВЕД)', author:'Михаил Матюшин',
+    about:'10 упражнений: видеть целое раньше деталей, включать периферическое зрение и менять привычный способ смотреть на мир.',
+    tags:['восприятие','пространство','периферическое зрение','наблюдательность','Матюшин'],
+    img:'assets/practices/matyushin-zorved.jpg', href:'praktika-matyushin.html' },
+];
+
+let state = { cat:'Все', tags:[], q:'' };
+function cats(){ return ['Все', ...new Set(PRAK.map(p=>p.cat))]; }
+function allTags(){ const s=new Set(); PRAK.forEach(p=>p.tags.forEach(t=>s.add(t))); return [...s].sort((a,b)=>a.localeCompare(b,'ru')); }
+
+function renderControls(){
+  const tw=document.getElementById('ltypes'); tw.innerHTML='';
+  cats().forEach(c=>{ const b=document.createElement('button'); b.className='ltype'+(state.cat===c?' is-active':''); b.textContent=c; b.onclick=()=>{state.cat=c; render();}; tw.appendChild(b); });
+  const gw=document.getElementById('ltags'); gw.innerHTML='';
+  allTags().forEach(t=>{ const b=document.createElement('button'); b.className='ltag'+(state.tags.includes(t)?' is-active':''); b.textContent='#'+t; b.onclick=()=>{ state.tags.includes(t)?state.tags=state.tags.filter(x=>x!==t):state.tags.push(t); render(); }; gw.appendChild(b); });
+}
+function match(p){
+  if(!(state.cat==='Все'||p.cat===state.cat)) return false;
+  if(!(state.tags.length===0 || p.tags.some(t=>state.tags.includes(t)))) return false;
+  if(state.q){ const hay=(p.title+' '+p.author+' '+p.about+' '+p.tags.join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
+  return true;
+}
+function render(){
+  renderControls();
+  const g=document.getElementById('lgrid'); g.innerHTML='';
+  const items=PRAK.filter(match);
+  document.getElementById('lcount').textContent = items.length+' из '+PRAK.length;
+  items.forEach(p=>{
+    const a=document.createElement('a'); a.className='lcard'; a.href=p.href;
+    a.innerHTML =
+      `<div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="${p.img}" alt="${p.title}"><span class="lcard__type">${p.cat}</span></div>`+
+      `<div class="lcard__body">`+
+      `<div class="lcard__title">${p.title}</div>`+
+      `<div class="lcard__author">${p.author}</div>`+
+      `<div class="lcard__about">${p.about}</div>`+
+      `<div class="lcard__tags">${p.tags.map(t=>`<span class="lcard__tag">#${t}</span>`).join('')}</div>`+
+      `<div class="lcard__more">Открыть практику →</div>`+
+      `</div>`;
+    g.appendChild(a);
+  });
+}
+document.getElementById('lsearch').addEventListener('input', e=>{ state.q=e.target.value.trim().toLowerCase(); render(); });
+
 const menu=document.getElementById('menu');
-function openMenu(){ menu.classList.add('is-open'); document.body.classList.add('menu-open'); menu.setAttribute('aria-hidden','false'); }
-function closeMenu(){ menu.classList.remove('is-open'); document.body.classList.remove('menu-open'); menu.setAttribute('aria-hidden','true'); }
-document.getElementById('burger').onclick=openMenu;
-document.getElementById('menuClose').onclick=closeMenu;
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+document.getElementById('burger').onclick=()=>{ menu.classList.add('is-open'); document.body.classList.add('menu-open'); };
+document.getElementById('menuClose').onclick=()=>{ menu.classList.remove('is-open'); document.body.classList.remove('menu-open'); };
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ menu.classList.remove('is-open'); document.body.classList.remove('menu-open'); } });
+
+render();
 </script>
 </body>
 </html>
