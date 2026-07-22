@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Библиотека — Мы должны быть воображаемы</title>
+  <meta name="description" content="Библиотека проекта «Мы должны быть воображаемы»: книги, метафорические карты и журналы, на которых стоит наш метод арт-коучинга — рисование, арт-терапия, психология, современное искусство.">
+  <link rel="canonical" href="https://voobrazhaemy.ru/biblioteka.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+  <style>
+    /* ===== гамбургер-навигация ===== */
+    .nav--solid .nav__right { display: flex; align-items: center; gap: 14px; }
+    .burger { width: 44px; height: 44px; border: none; background: transparent; cursor: pointer; display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; padding: 10px; }
+    .burger span { display: block; height: 2px; background: var(--ink); border-radius: 2px; transition: .25s; }
+    .menu { position: fixed; inset: 0; background: var(--ink); color: var(--cream); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .menu.is-open { opacity: 1; pointer-events: auto; }
+    .menu a { font-family: var(--serif); font-size: clamp(26px, 5vw, 40px); color: var(--cream); text-decoration: none; padding: 8px 16px; opacity: .9; transition: .2s; }
+    .menu a:hover { color: var(--terra); }
+    .menu a.soon { opacity: .4; pointer-events: none; }
+    .menu a.soon::after { content: " · скоро"; font-family: var(--sans); font-size: 13px; letter-spacing: .05em; vertical-align: middle; }
+    .menu__close { position: absolute; top: 22px; right: 26px; width: 46px; height: 46px; border: none; background: transparent; color: var(--cream); font-size: 34px; cursor: pointer; line-height: 1; }
+    body.menu-open { overflow: hidden; }
+
+    /* ===== шапка раздела ===== */
+    .lhead { padding: 130px 0 24px; text-align: center; }
+    .lhead__kicker { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--terra); margin-bottom: 14px; }
+    .lhead h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 52px); line-height: 1.08; font-weight: 400; }
+    .lhead p { max-width: 660px; margin: 18px auto 0; font-size: 17px; color: rgba(23,24,26,.75); }
+
+    /* ===== фильтры ===== */
+    .lwrap { max-width: 1160px; margin: 0 auto; padding: 0 24px 100px; }
+    .lfilters { position: sticky; top: 0; background: var(--cream); padding: 18px 0 14px; z-index: 20; }
+    .lsearch { max-width: 440px; margin: 0 auto 14px; display: block; }
+    .lsearch input { width: 100%; padding: 12px 18px; border: 1px solid rgba(23,24,26,.18); border-radius: 999px; font: inherit; background: #fff; }
+    .lsearch input:focus { outline: none; border-color: var(--terra); }
+    .ltypes { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .ltype { border: 1px solid rgba(23,24,26,.18); background: #fff; border-radius: 999px; padding: 9px 20px; font: inherit; font-size: 15px; cursor: pointer; transition: .2s; }
+    .ltype.is-active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .ltags { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+    .ltag { border: 1px solid rgba(23,24,26,.14); background: transparent; border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 13px; color: rgba(23,24,26,.7); cursor: pointer; transition: .2s; }
+    .ltag.is-active { background: var(--teal); color: var(--cream); border-color: var(--teal); }
+    .lcount { text-align: center; font-size: 13px; color: rgba(23,24,26,.5); margin-top: 12px; }
+
+    /* ===== карточки ===== */
+    .lgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 26px; margin-top: 22px; }
+    .lcard { background: #fff; border: 1px solid rgba(23,24,26,.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+    .lcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(23,24,26,.1); }
+    .lcard__imgwrap { position: relative; }
+    .lcard__img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+    .lcard__type { position: absolute; top: 12px; left: 12px; background: rgba(23,24,26,.82); color: var(--cream); font-size: 12px; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; }
+    .lcard__body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .lcard__title { font-family: var(--serif); font-size: 20px; line-height: 1.2; }
+    .lcard__author { font-size: 13px; color: rgba(23,24,26,.55); margin-top: 4px; }
+    .lcard__about { font-size: 14.5px; color: #3a3b3d; margin-top: 12px; line-height: 1.5; }
+    .lcard__why { font-size: 14px; color: var(--ink); margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--terra); line-height: 1.5; }
+    .lcard__why b { font-family: var(--sans); font-weight: 600; }
+    .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .lcard__tag { font-size: 12px; color: var(--teal); background: rgba(42,122,120,.08); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+    .lnote { max-width: 1160px; margin: 0 auto 20px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
+  </style>
+</head>
+<body class="page--interior">
+
+<header class="nav nav--solid" id="top">
+  <a href="index.html" class="nav__logo" style="text-decoration:none">
+    <span class="nav__mark">[Es]<span class="nav__amp">&amp;</span>[Vi]</span>
+    <span class="nav__name">мы должны быть<br>воображаемы</span>
+  </a>
+  <div class="nav__right">
+    <a href="zapis.html" class="nav__cta">Записаться</a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <button class="menu__close" id="menuClose" aria-label="Закрыть">×</button>
+  <a href="index.html">Главная</a>
+  <a href="journal.html">Журнал</a>
+  <a href="praktiki.html">Практики</a>
+  <a href="biblioteka.html">Библиотека</a>
+  <a class="soon" href="#" aria-disabled="true">Манифест</a>
+  <a href="index.html#facets">5 граней</a>
+  <a href="index.html#formats">Форматы</a>
+</nav>
+
+<section class="lhead">
+  <div class="container">
+    <div class="lhead__kicker">Библиотека</div>
+    <h1>На чём стоит наш метод</h1>
+    <p>Наш арт-коучинг стоит на литературе, искусстве и исследованиях. Здесь — книги, метафорические карты и журналы из мастерской, которыми мы правда пользуемся. Полка растёт: мы с Еленой пополняем её постоянно.</p>
+  </div>
+</section>
+
+<div class="lwrap">
+  <div class="lnote">⚙️ Пилот раздела — 10 позиций для примера. Дальше наполняем через таблицу; всего в мастерской ~80 книг и колод (и «вагоны» дома).</div>
+
+  <div class="lfilters">
+    <label class="lsearch"><input type="search" id="lsearch" placeholder="Поиск: название, автор, тема…" autocomplete="off"></label>
+    <div class="ltypes" id="ltypes"></div>
+    <div class="ltags" id="ltags"></div>
+    <div class="lcount" id="lcount"></div>
+  </div>
+
+  <div class="lgrid" id="lgrid"></div>
+</div>
+
+<footer class="footer">
+  <div>[Es] &amp; [Vi] · Мы должны быть воображаемы · арт-коучинг Елены Семеновой и Яниты Войт · <a href="https://t.me/ESVIum">телеграм-канал</a></div>
+  <div class="footer__genre">форсайт-лаборатория идентичности</div>
+</footer>
+
+<script>
+/* ===== данные (пилот). Позже — из Google-таблицы той же формы ===== */
+const LIB = [
+  { slug:'serendip', type:'Книги', title:'Путешествие трёх королевичей Серендипских', author:'Издательство Ивана Лимбаха',
+    about:'Старинная восточная сказка в итальянском переложении — та самая история, из которой родилось слово «серендипность»: искусство неожиданных открытий.',
+    why:'Серендипность — про умение замечать то, чего не искал. Ровно это тренирует художественная практика.',
+    tags:['искусство','литература','серендипность'] },
+  { slug:'emocii-na-holste', type:'Карты', title:'Эмоции на холсте', author:'Ирина Фёдорова · 100 карт',
+    about:'Метафорические ассоциативные карты (МАК), собранные вокруг исследования эмоций и внутреннего мира.',
+    why:'Помогают называть и проявлять чувства, которые не проговариваются словами.',
+    tags:['МАК','эмоции','психология'] },
+  { slug:'vybor', type:'Карты', title:'Выбор', author:'Екатерина Каменская · худ. Cristina Bernazzani',
+    about:'МАК-колода про ситуации выбора, развилки и решения.',
+    why:'Помогает увидеть варианты, о которых не думалось, — в обход рациональных защит.',
+    tags:['МАК','решения'] },
+  { slug:'cvety', type:'Карты', title:'Цветы', author:'Анна Демидова, Наталья Лужкова',
+    about:'Набор МАК про связь эмоционального состояния с образами природы и символикой цвета.',
+    why:'Мягкий вход в разговор о состоянии — через природу, а не «в лоб».',
+    tags:['МАК','природа'] },
+  { slug:'mak-polny-kurs', type:'Книги', title:'Метафорические ассоциативные карты. Полный курс для практики', author:'Михаил Ингерлейб',
+    about:'Практическое руководство по работе с МАК: техники, схемы, применение в консультировании.',
+    why:'Методическая база под нашу работу с картами.',
+    tags:['МАК','психология'] },
+  { slug:'prostoe-risovanie', type:'Книги', title:'Простое рисование', author:'Дмитрий Горелышев',
+    about:'Книга-практикум о рисовании через наблюдение и простые упражнения, без «таланта».',
+    why:'Подтверждает наш принцип: рисовать может каждый. Снимает страх чистого листа.',
+    tags:['рисование'] },
+  { slug:'iskusstvo-art-terapii', type:'Книги', title:'Искусство арт-терапии', author:'Джудит А. Рубин',
+    about:'Фундаментальный труд об арт-терапии — теория, история и практика.',
+    why:'Научная опора метода «искусство как инструмент».',
+    tags:['арт-терапия','психология'] },
+  { slug:'tvorit-nelzya-boyatsya', type:'Книги', title:'Творить нельзя бояться', author:'Дэвид Бейлс, Тед Орланд',
+    about:'Классика (ориг. «Art & Fear») о страхах на творческом пути и о том, как продолжать делать.',
+    why:'Про смелость создавать — сердцевина арт-коучинга.',
+    tags:['креативность','психология'] },
+  { slug:'youngzine', type:'Журналы', title:'YOUNGZINE', author:'независимый арт-зин',
+    about:'Молодёжный журнал о современной визуальной культуре.',
+    why:'Насмотренность и живой язык современного искусства.',
+    tags:['искусство','журналы'] },
+  { slug:'softmachine', type:'Журналы', title:'SOFTMACHINE', author:'арт/фэшн-журнал',
+    about:'Журнал о визуальной культуре, стиле и современном образе.',
+    why:'Референсы и насмотренность для практик.',
+    tags:['искусство','журналы'] },
+];
+
+const TYPES = ['Все','Книги','Карты','Журналы'];
+let state = { type:'Все', tags:[], q:'' };
+
+function allTags(){ const s=new Set(); LIB.forEach(i=>i.tags.forEach(t=>s.add(t))); return [...s].sort((a,b)=>a.localeCompare(b,'ru')); }
+
+function renderControls(){
+  const tw=document.getElementById('ltypes'); tw.innerHTML='';
+  TYPES.forEach(t=>{ const b=document.createElement('button'); b.className='ltype'+(state.type===t?' is-active':''); b.textContent=t; b.onclick=()=>{state.type=t; render();}; tw.appendChild(b); });
+  const gw=document.getElementById('ltags'); gw.innerHTML='';
+  allTags().forEach(t=>{ const b=document.createElement('button'); b.className='ltag'+(state.tags.includes(t)?' is-active':''); b.textContent='#'+t; b.onclick=()=>{ state.tags.includes(t)?state.tags=state.tags.filter(x=>x!==t):state.tags.push(t); render(); }; gw.appendChild(b); });
+}
+
+function match(i){
+  if (!(state.type==='Все'||i.type===state.type)) return false;
+  if (!(state.tags.length===0 || i.tags.some(t=>state.tags.includes(t)))) return false;
+  if (state.q){ const hay=(i.title+' '+i.author+' '+i.about+' '+i.why+' '+i.tags.join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
+  return true;
+}
+
+function render(){
+  renderControls();
+  const g=document.getElementById('lgrid'); g.innerHTML='';
+  const items=LIB.filter(match);
+  document.getElementById('lcount').textContent = items.length + ' из ' + LIB.length;
+  items.forEach(i=>{
+    const c=document.createElement('article'); c.className='lcard';
+    c.innerHTML =
+      `<div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/${i.slug}.jpg" alt="${i.title}"><span class="lcard__type">${i.type}</span></div>`+
+      `<div class="lcard__body">`+
+      `<div class="lcard__title">${i.title}</div>`+
+      `<div class="lcard__author">${i.author}</div>`+
+      `<div class="lcard__about">${i.about}</div>`+
+      `<div class="lcard__why"><b>Зачем нам:</b> ${i.why}</div>`+
+      `<div class="lcard__tags">${i.tags.map(t=>`<span class="lcard__tag" data-tag="${t}">#${t}</span>`).join('')}</div>`+
+      `</div>`;
+    c.querySelectorAll('.lcard__tag').forEach(el=>el.onclick=()=>{ const t=el.dataset.tag; if(!state.tags.includes(t)){state.tags.push(t); render(); window.scrollTo({top:0,behavior:'smooth'});} });
+    g.appendChild(c);
+  });
+}
+
+/* меню-гамбургер */
+const menu=document.getElementById('menu');
+function openMenu(){ menu.classList.add('is-open'); document.body.classList.add('menu-open'); menu.setAttribute('aria-hidden','false'); }
+function closeMenu(){ menu.classList.remove('is-open'); document.body.classList.remove('menu-open'); menu.setAttribute('aria-hidden','true'); }
+document.getElementById('lsearch').addEventListener('input', e=>{ state.q=e.target.value.trim().toLowerCase(); render(); });
+document.getElementById('burger').onclick=openMenu;
+document.getElementById('menuClose').onclick=closeMenu;
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+
+render();
+</script>
+</body>
+</html>

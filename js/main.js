@@ -80,3 +80,14 @@ document.addEventListener('click', (ev) => {
     try { window.ym(110592816, 'reachGoal', 'tg_channel'); } catch (e) {}
   }
 });
+
+/* гамбургер-меню (общее) */
+(function(){
+  var b=document.getElementById('burger'), m=document.getElementById('menu'), c=document.getElementById('menuClose');
+  if(!b||!m) return;
+  function openM(){ m.classList.add('is-open'); document.body.classList.add('menu-open'); m.setAttribute('aria-hidden','false'); }
+  function closeM(){ m.classList.remove('is-open'); document.body.classList.remove('menu-open'); m.setAttribute('aria-hidden','true'); }
+  b.addEventListener('click', openM);
+  if(c) c.addEventListener('click', closeM);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
+})();

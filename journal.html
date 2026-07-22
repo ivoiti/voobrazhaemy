@@ -37,13 +37,22 @@
     <span class="nav__mark">[Es]<span class="nav__amp">&amp;</span>[Vi]</span>
     <span class="nav__name">мы должны быть<br>воображаемы</span>
   </a>
-  <nav class="nav__links">
-    <a href="journal.html" class="nav__cta nav__cta--teal">Журнал</a>
-    <a href="index.html#facets">5 граней</a>
-    <a href="index.html#formats">Форматы</a>
-    <a href="index.html#contacts" class="nav__cta">Записаться</a>
-  </nav>
+  <div class="nav__right">
+    <a href="zapis.html" class="nav__cta">Записаться</a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
 </header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <button class="menu__close" id="menuClose" aria-label="Закрыть">×</button>
+  <a href="index.html">Главная</a>
+  <a href="journal.html">Журнал</a>
+  <a href="praktiki.html">Практики</a>
+  <a href="biblioteka.html">Библиотека</a>
+  <a class="soon" href="#" aria-disabled="true">Манифест</a>
+  <a href="index.html#facets">5 граней</a>
+  <a href="index.html#formats">Форматы</a>
+</nav>
 
 <section class="jhead">
   <div class="container">

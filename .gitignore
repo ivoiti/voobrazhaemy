@@ -9,3 +9,6 @@ cf-token.txt
 # приватные документы — НИКОГДА не публиковать
 Карточка_предприятия_*.docx
 *.docx
+paykeeper-*.txt
+telegram-bot.txt
+Библиотека/
