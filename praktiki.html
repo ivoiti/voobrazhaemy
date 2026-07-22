@@ -41,10 +41,11 @@
     .lcard__body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
     .lcard__title { font-family: var(--serif); font-size: 21px; line-height: 1.2; }
     .lcard__author { font-size: 13px; color: rgba(23,24,26,.55); margin-top: 4px; }
-    .lcard__about { font-size: 14.5px; color: #3a3b3d; margin-top: 12px; line-height: 1.5; flex: 1; }
+    .lcard__how { font-size: 14.5px; color: #3a3b3d; margin-top: 12px; line-height: 1.55; flex: 1; }
+    .lcard__dev { font-size: 13.5px; color: var(--ink); margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--terra); line-height: 1.5; }
+    .lcard__dev b { font-family: var(--sans); font-weight: 600; }
     .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
     .lcard__tag { font-size: 12px; color: var(--teal); background: rgba(42,85,90,.08); border-radius: 999px; padding: 3px 10px; }
-    .lcard__more { margin-top: 14px; font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--terra); }
     .lnote { max-width: 1160px; margin: 0 auto 20px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
   </style>
 </head>
@@ -81,7 +82,7 @@
 </section>
 
 <div class="lwrap">
-  <div class="lnote">⚙️ Раздел наполняется. Практики добавляем в разные категории — свои и найденные.</div>
+  <div class="lnote">Первый набор — «расширенное смотрение» Михаила Матюшина. <a href="praktika-matyushin.html" style="color:#6b5a12;font-weight:700;text-decoration:underline">О методе (ЗОРВЕД) →</a></div>
 
   <div class="lfilters">
     <label class="lsearch"><input type="search" id="lsearch" placeholder="Поиск: название, автор, тема…" autocomplete="off"></label>
@@ -100,11 +101,48 @@
 
 <script>
 /* данные практик (позже — из файла/таблицы) */
+const SRC = 'Михаил Матюшин · ЗОРВЕД';
 const PRAK = [
-  { slug:'matyushin-zorved', cat:'Восприятие', title:'Расширенное смотрение (ЗОРВЕД)', author:'Михаил Матюшин',
-    about:'10 упражнений: видеть целое раньше деталей, включать периферическое зрение и менять привычный способ смотреть на мир.',
-    tags:['восприятие','пространство','периферическое зрение','наблюдательность','Матюшин'],
-    img:'assets/practices/matyushin-zorved.jpg', href:'praktika-matyushin.html' },
+  { slug:'mat-01', cat:'Восприятие', title:'Сначала пространство', source:SRC,
+    how:'Войдите в большое пространство и не ищите предметы. Сначала увидьте только объём, воздух, глубину и свет — и лишь спустя минуту начните различать вещи.',
+    develops:['пространственное восприятие','внимание к целому','меньше автоматизма в узнавании'],
+    tags:['восприятие','пространство','внимание','Матюшин'] },
+  { slug:'mat-02', cat:'Восприятие', title:'180 градусов', source:SRC+' · главное упражнение',
+    how:'Смотрите прямо перед собой, не переводя взгляд, и одновременно замечайте всё, что попадает в периферическое зрение. Ощущайте всю панораму сразу. Начните с 20–30 секунд.',
+    develops:['периферическое зрение','устойчивое внимание','ощущение большого пространства'],
+    tags:['периферическое зрение','внимание','панорама','Матюшин'] },
+  { slug:'mat-03', cat:'Восприятие', title:'Смотреть из центра', source:SRC,
+    how:'Зафиксируйте взгляд на одной точке и не двигайте глазами. Одновременно принимайте всё изображение вокруг, ничего не называя, — позвольте картине войти целиком.',
+    develops:['целостное восприятие','удержание сложной сцены'],
+    tags:['восприятие','целостность','Матюшин'] },
+  { slug:'mat-04', cat:'Восприятие', title:'Большое и малое', source:SRC,
+    how:'На улице или в природе сначала увидьте весь пейзаж, затем большие массы, затем линии — и лишь потом отдельные предметы. После вернитесь ко всему пространству.',
+    develops:['переключение между масштабами восприятия'],
+    tags:['восприятие','масштаб','пейзаж','Матюшин'] },
+  { slug:'mat-05', cat:'Восприятие', title:'Отражения', source:SRC,
+    how:'У воды или большого стекла попробуйте одновременно видеть здания, небо, отражение и пространство между ними — как единую композицию, не переключаясь.',
+    develops:['нестандартное восприятие пространства'],
+    tags:['отражения','пространство','композиция','Матюшин'] },
+  { slug:'mat-06', cat:'Восприятие', title:'Вертикальная комната', source:SRC,
+    how:'Лягте на бок и посмотрите на стену. Воспринимайте её не как поверхность, а как пространство. Замечайте момент, когда стена перестаёт быть плоскостью.',
+    develops:['разрушение привычной схемы восприятия'],
+    tags:['восприятие','пространство','Матюшин'] },
+  { slug:'mat-07', cat:'Восприятие', title:'Поворот', source:SRC,
+    how:'Идя по улице, резко обернитесь и на несколько секунд максимально полно воспримите открывшийся вид. Повернитесь вперёд — и сохраните ощущение предыдущего пространства.',
+    develops:['объёмная пространственная память'],
+    tags:['пространство','память','движение','Матюшин'] },
+  { slug:'mat-08', cat:'Восприятие', title:'Круговое пространство', source:SRC,
+    how:'Идите вперёд и одновременно представляйте улицу позади, небо над собой, пространство по бокам и впереди. Появляется ощущение, что вы внутри большого объёма, а не в узком коридоре.',
+    develops:['пространственное мышление','панорамное внимание','включённость в среду'],
+    tags:['пространство','панорама','движение','Матюшин'] },
+  { slug:'mat-09', cat:'Восприятие', title:'Прохожий', source:SRC,
+    how:'Заметьте идущего навстречу человека — движение, скорость, направление, ритм. Когда он пройдёт, мысленно удерживайте его траекторию, не оборачиваясь, и одновременно смотрите вперёд.',
+    develops:['несколько потоков внимания','пространственная память','непрерывность'],
+    tags:['внимание','движение','память','Матюшин'] },
+  { slug:'mat-10', cat:'Восприятие', title:'Небо', source:SRC,
+    how:'Лягте под деревьями и долго смотрите только в небо. Позвольте исчезнуть привычным категориям: верх, низ, передний и задний план.',
+    develops:['изменённое чувство пространства'],
+    tags:['небо','пространство','покой','Матюшин'] },
 ];
 
 let state = { cat:'Все', tags:[], q:'' };
@@ -120,7 +158,7 @@ function renderControls(){
 function match(p){
   if(!(state.cat==='Все'||p.cat===state.cat)) return false;
   if(!(state.tags.length===0 || p.tags.some(t=>state.tags.includes(t)))) return false;
-  if(state.q){ const hay=(p.title+' '+p.author+' '+p.about+' '+p.tags.join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
+  if(state.q){ const hay=(p.title+' '+p.source+' '+p.how+' '+p.develops.join(' ')+' '+p.tags.join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
   return true;
 }
 function render(){
@@ -129,17 +167,17 @@ function render(){
   const items=PRAK.filter(match);
   document.getElementById('lcount').textContent = items.length+' из '+PRAK.length;
   items.forEach(p=>{
-    const a=document.createElement('a'); a.className='lcard'; a.href=p.href;
-    a.innerHTML =
-      `<div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="${p.img}" alt="${p.title}"><span class="lcard__type">${p.cat}</span></div>`+
+    const c=document.createElement('article'); c.className='lcard';
+    c.innerHTML =
+      `<div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/${p.slug}.jpg" alt="${p.title}"><span class="lcard__type">${p.cat}</span></div>`+
       `<div class="lcard__body">`+
       `<div class="lcard__title">${p.title}</div>`+
-      `<div class="lcard__author">${p.author}</div>`+
-      `<div class="lcard__about">${p.about}</div>`+
+      `<div class="lcard__author">${p.source}</div>`+
+      `<div class="lcard__how">${p.how}</div>`+
+      `<div class="lcard__dev"><b>Развивает:</b> ${p.develops.join(' · ')}</div>`+
       `<div class="lcard__tags">${p.tags.map(t=>`<span class="lcard__tag">#${t}</span>`).join('')}</div>`+
-      `<div class="lcard__more">Открыть практику →</div>`+
       `</div>`;
-    g.appendChild(a);
+    g.appendChild(c);
   });
 }
 document.getElementById('lsearch').addEventListener('input', e=>{ state.q=e.target.value.trim().toLowerCase(); render(); });
