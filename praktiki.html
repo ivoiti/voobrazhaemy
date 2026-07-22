@@ -47,7 +47,7 @@
     .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
     .lcard__tag { font-size: 12px; color: var(--teal); background: rgba(42,85,90,.08); border-radius: 999px; padding: 3px 10px; }
     .lnote { max-width: 1160px; margin: 0 auto 14px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
-    .pmethod { max-width: 900px; margin: 0 auto 22px; border: 1px solid rgba(23,24,26,.12); border-radius: 14px; background: #fff; overflow: hidden; }
+    .pmethod { max-width: 900px; margin: 44px auto 0; border: 1px solid rgba(23,24,26,.12); border-radius: 14px; background: #fff; overflow: hidden; }
     .pmethod > summary { cursor: pointer; list-style: none; padding: 16px 22px; font-family: var(--serif); font-size: 18px; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px; }
     .pmethod > summary::-webkit-details-marker { display: none; }
     .pmethod > summary::after { content: "+"; color: var(--terra); font-size: 24px; line-height: 1; }
@@ -90,12 +90,19 @@
   <div class="container">
     <div class="lhead__kicker">Практики</div>
     <h1>Упражнения, которыми мы пользуемся</h1>
-    <p>Практики восприятия, рисования и работы с образом — свои, найденные и те, кем делятся коллеги. На авторов всегда ссылаемся. Раздел будет расти.</p>
+    <p>Практики восприятия, рисования и работы с образом — свои, найденные и то, чем делятся коллеги.</p>
   </div>
 </section>
 
 <div class="lwrap">
-  <div class="lnote">Первый набор — «расширенное смотрение» Михаила Матюшина.</div>
+  <div class="lfilters">
+    <label class="lsearch"><input type="search" id="lsearch" placeholder="Поиск: название, автор, тема…" autocomplete="off"></label>
+    <div class="ltypes" id="ltypes"></div>
+    <div class="ltags" id="ltags"></div>
+    <div class="lcount" id="lcount"></div>
+  </div>
+
+  <div class="lgrid" id="lgrid"></div>
 
   <details class="pmethod">
     <summary>Подробнее о методе: расширенное смотрение (ЗОРВЕД)</summary>
@@ -116,15 +123,6 @@
       <div class="pmethod__src">Источник: Матюшин М. «Творческий путь художника». Мы используем эти практики в работе. <a href="praktika-matyushin.html">Открыть полную версию →</a></div>
     </div>
   </details>
-
-  <div class="lfilters">
-    <label class="lsearch"><input type="search" id="lsearch" placeholder="Поиск: название, автор, тема…" autocomplete="off"></label>
-    <div class="ltypes" id="ltypes"></div>
-    <div class="ltags" id="ltags"></div>
-    <div class="lcount" id="lcount"></div>
-  </div>
-
-  <div class="lgrid" id="lgrid"></div>
 </div>
 
 <footer class="footer">
