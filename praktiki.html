@@ -46,7 +46,20 @@
     .lcard__dev b { font-family: var(--sans); font-weight: 600; }
     .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
     .lcard__tag { font-size: 12px; color: var(--teal); background: rgba(42,85,90,.08); border-radius: 999px; padding: 3px 10px; }
-    .lnote { max-width: 1160px; margin: 0 auto 20px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
+    .lnote { max-width: 1160px; margin: 0 auto 14px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
+    .pmethod { max-width: 900px; margin: 0 auto 22px; border: 1px solid rgba(23,24,26,.12); border-radius: 14px; background: #fff; overflow: hidden; }
+    .pmethod > summary { cursor: pointer; list-style: none; padding: 16px 22px; font-family: var(--serif); font-size: 18px; color: var(--ink); display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+    .pmethod > summary::-webkit-details-marker { display: none; }
+    .pmethod > summary::after { content: "+"; color: var(--terra); font-size: 24px; line-height: 1; }
+    .pmethod[open] > summary::after { content: "\2013"; }
+    .pmethod__body { padding: 0 22px 22px; font-size: 15.5px; color: #33342f; line-height: 1.62; }
+    .pmethod__body p { margin-bottom: 10px; }
+    .pmethod__body h4 { font-family: var(--serif); font-size: 18px; margin: 16px 0 8px; }
+    .pmethod__body ul { list-style: none; padding: 0; }
+    .pmethod__body li { position: relative; padding-left: 16px; margin: 5px 0; }
+    .pmethod__body li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--terra); }
+    .pmethod__src { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(23,24,26,.1); font-size: 13.5px; color: rgba(23,24,26,.6); }
+    .pmethod__src a { color: var(--teal); }
   </style>
 </head>
 <body class="page--interior">
@@ -82,7 +95,27 @@
 </section>
 
 <div class="lwrap">
-  <div class="lnote">Первый набор — «расширенное смотрение» Михаила Матюшина. <a href="praktika-matyushin.html" style="color:#6b5a12;font-weight:700;text-decoration:underline">О методе (ЗОРВЕД) →</a></div>
+  <div class="lnote">Первый набор — «расширенное смотрение» Михаила Матюшина.</div>
+
+  <details class="pmethod">
+    <summary>Подробнее о методе: расширенное смотрение (ЗОРВЕД)</summary>
+    <div class="pmethod__body">
+      <p><b>ЗОРВЕД</b> (Зрение + Ведение) — концепция художника <a href="https://ru.wikipedia.org/wiki/Матюшин,_Михаил_Васильевич" target="_blank" rel="noopener">Михаила Матюшина</a> (1861–1934): музыканта, живописца, педагога и исследователя. В 1920–1930-х он разрабатывал практики «расширенного смотрения», чтобы изменить сам способ восприятия мира — видеть целое раньше деталей и использовать периферическое зрение как основной инструмент.</p>
+      <h4>Основные принципы</h4>
+      <ul>
+        <li>Сначала пространство, потом предметы.</li>
+        <li>Видеть целое раньше деталей.</li>
+        <li>Периферическое зрение — основной инструмент.</li>
+        <li>Менять привычные условия восприятия.</li>
+        <li>Отказываться от автоматического узнавания объектов.</li>
+        <li>Расширять поле внимания до ощущения всего пространства как единого целого.</li>
+        <li>Удерживать несколько уровней восприятия одновременно.</li>
+      </ul>
+      <h4>Почему это актуально сегодня</h4>
+      <p>С точки зрения когнитивной психологии и нейроэстетики упражнения Матюшина — тренировка ключевых навыков: расширение поля внимания, ослабление автоматической категоризации, усиление периферического восприятия, развитие пространственного мышления и сенсорной открытости. А это питает творческое мышление и способность находить новые связи — выходить за пределы привычных схем.</p>
+      <div class="pmethod__src">Источник: Матюшин М. «Творческий путь художника». Мы используем эти практики в работе. <a href="praktika-matyushin.html">Открыть полную версию →</a></div>
+    </div>
+  </details>
 
   <div class="lfilters">
     <label class="lsearch"><input type="search" id="lsearch" placeholder="Поиск: название, автор, тема…" autocomplete="off"></label>
