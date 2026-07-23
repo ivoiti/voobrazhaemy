@@ -42,9 +42,9 @@
     .lcard__img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
     .lcard__type { position: absolute; top: 12px; left: 12px; background: rgba(23,24,26,.82); color: var(--cream); font-size: 12px; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; }
     .lcard__body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
-    .lcard__title { font-family: var(--serif); font-size: 20px; line-height: 1.2; }
+    .lcard__title { font-family: var(--serif); font-size: 20px; line-height: 1.2; margin: 0; font-weight: 400; }
     .lcard__author { font-size: 13px; color: rgba(23,24,26,.55); margin-top: 4px; }
-    .lcard__about { font-size: 14.5px; color: #3a3b3d; margin-top: 12px; line-height: 1.5; }
+    .lcard__about { font-size: 14.5px; color: #3a3b3d; margin: 12px 0 0; line-height: 1.5; }
     .lcard__why { font-size: 14px; color: var(--ink); margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--terra); line-height: 1.5; }
     .lcard__why b { font-family: var(--sans); font-weight: 600; }
     .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
@@ -92,7 +92,728 @@
     <div class="lcount" id="lcount"></div>
   </div>
 
-  <div class="lgrid" id="lgrid"></div>
+  <div class="lgrid" id="lgrid">
+  <article class="lcard" data-type="Книги" data-tags="искусство|литература|серендипити">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/serendip.jpg" alt="Путешествие трёх королевичей Серендипских"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Путешествие трёх королевичей Серендипских</h3>
+      <div class="lcard__author">Издательство Ивана Лимбаха</div>
+      <p class="lcard__about">Старинная восточная сказка в итальянском переложении — та самая история, из которой родилось слово «серендипити»: искусство неожиданных открытий.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Серендипити — про умение замечать то, чего не искал. Ровно это тренирует художественная практика.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="искусство">#искусство</span><span class="lcard__tag" data-tag="литература">#литература</span><span class="lcard__tag" data-tag="серендипити">#серендипити</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|эмоции|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/emocii-na-holste.jpg" alt="Эмоции на холсте"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Эмоции на холсте</h3>
+      <div class="lcard__author">Ирина Фёдорова · 100 карт</div>
+      <p class="lcard__about">Метафорические ассоциативные карты (МАК), собранные вокруг исследования эмоций и внутреннего мира.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Помогают называть и проявлять чувства, которые не проговариваются словами.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="эмоции">#эмоции</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|решения">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/vybor.jpg" alt="Выбор"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Выбор</h3>
+      <div class="lcard__author">Екатерина Каменская · худ. Cristina Bernazzani</div>
+      <p class="lcard__about">МАК-колода про ситуации выбора, развилки и решения.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Помогает увидеть варианты, о которых не думалось, — в обход рациональных защит.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="решения">#решения</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|природа">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/cvety.jpg" alt="Цветы"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Цветы</h3>
+      <div class="lcard__author">Анна Демидова, Наталья Лужкова</div>
+      <p class="lcard__about">Набор МАК про связь эмоционального состояния с образами природы и символикой цвета.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Мягкий вход в разговор о состоянии — через природу, а не «в лоб».</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="природа">#природа</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="МАК|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mak-polny-kurs.jpg" alt="Метафорические ассоциативные карты. Полный курс для практики"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Метафорические ассоциативные карты. Полный курс для практики</h3>
+      <div class="lcard__author">Михаил Ингерлейб</div>
+      <p class="lcard__about">Практическое руководство по работе с МАК: техники, схемы, применение в консультировании.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Методическая база под нашу работу с картами.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/prostoe-risovanie.jpg" alt="Простое рисование"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Простое рисование</h3>
+      <div class="lcard__author">Дмитрий Горелышев</div>
+      <p class="lcard__about">Книга-практикум о рисовании через наблюдение и простые упражнения, без «таланта».</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Подтверждает наш принцип: рисовать может каждый. Снимает страх чистого листа.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="арт-терапия|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/iskusstvo-art-terapii.jpg" alt="Искусство арт-терапии"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Искусство арт-терапии</h3>
+      <div class="lcard__author">Джудит А. Рубин</div>
+      <p class="lcard__about">Фундаментальный труд об арт-терапии — теория, история и практика.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Научная опора метода «искусство как инструмент».</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="креативность|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/tvorit-nelzya-boyatsya.jpg" alt="Творить нельзя бояться"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Творить нельзя бояться</h3>
+      <div class="lcard__author">Дэвид Бейлс, Тед Орланд</div>
+      <p class="lcard__about">Классика (ориг. «Art &amp; Fear») о страхах на творческом пути и о том, как продолжать делать.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про смелость создавать — сердцевина арт-коучинга.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="креативность">#креативность</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Журналы" data-tags="современное искусство|журналы|арт-зин|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/youngzine.jpg" alt="YOUNGZINE"><span class="lcard__type">Журналы</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">YOUNGZINE</h3>
+      <div class="lcard__author">независимый арт-зин</div>
+      <p class="lcard__about">Молодёжный журнал о современной визуальной культуре.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Насмотренность и живой язык современного искусства.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="современное искусство">#современное искусство</span><span class="lcard__tag" data-tag="журналы">#журналы</span><span class="lcard__tag" data-tag="арт-зин">#арт-зин</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Журналы" data-tags="современное искусство|журналы|венецианская биеннале|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/softmachine.jpg" alt="SOFTMACHINE"><span class="lcard__type">Журналы</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">SOFTMACHINE</h3>
+      <div class="lcard__author">арт/фэшн-журнал</div>
+      <p class="lcard__about">Журнал о визуальной культуре, стиле и современном образе.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Референсы и насмотренность для практик.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="современное искусство">#современное искусство</span><span class="lcard__tag" data-tag="журналы">#журналы</span><span class="lcard__tag" data-tag="венецианская биеннале">#венецианская биеннале</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|мечта|будущее">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/put-k-mechte.jpg" alt="Путь к мечте"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Путь к мечте</h3>
+      <div class="lcard__author">метафорические ассоциативные карты</div>
+      <p class="lcard__about">МАК-колода с образами-историями про путь, выбор и мечту.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Мягкий вход в разговор о желаемом будущем — через образ, а не «в лоб».</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="мечта">#мечта</span><span class="lcard__tag" data-tag="будущее">#будущее</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|академизм">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/forma-obem-proporcii.jpg" alt="Форма. Объём. Пропорции"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Форма. Объём. Пропорции</h3>
+      <div class="lcard__author">Денис Чернов · школа рисования</div>
+      <p class="lcard__about">Базовый учебник академического рисунка: как видеть форму, объём и пропорции.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> «Ставит глаз» — учит видеть структуру за предметом.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="академизм">#академизм</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|портрет">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/portrety-50-shagov.jpg" alt="Создаём портреты людей. 50 шаг за шагом"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Создаём портреты людей. 50 шаг за шагом</h3>
+      <div class="lcard__author">Лиз Эрзог</div>
+      <p class="lcard__about">Портрет по шагам — от построения до светотени.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Портрет — одна из наших практик; здесь техническая база.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="портрет">#портрет</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|для начинающих">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/vy-nauchites-risovat.jpg" alt="Вы научитесь рисовать к концу этой книги"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Вы научитесь рисовать к концу этой книги</h3>
+      <div class="lcard__author">Джейк Спайсер</div>
+      <p class="lcard__about">Дружелюбный курс рисования для тех, кто «совсем не умеет».</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Снимает страх и доказывает: рисовать может каждый.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="для начинающих">#для начинающих</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|образы">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/metaforicheskie-zhivotnye.jpg" alt="Метафорические животные"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Метафорические животные</h3>
+      <div class="lcard__author">Л. И. Кононова</div>
+      <p class="lcard__about">МАК для тех, кто хочет понять себя и других — через образы животных.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Животное как метафора роли, состояния, инстинкта.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="образы">#образы</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|природа|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/derevo-obraz.jpg" alt="Дерево как образ человека"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Дерево как образ человека</h3>
+      <div class="lcard__author">Г. Кац, Е. Мухаматулина · Генезис</div>
+      <p class="lcard__about">МАК, где дерево — метафора человека и его жизненного пути.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Разговор о себе через понятный природный образ.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="природа">#природа</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|эмоции">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/dusha.jpg" alt="Душа. Сборник 4 в 1"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Душа. Сборник 4 в 1</h3>
+      <div class="lcard__author">Екатерина Каменская</div>
+      <p class="lcard__about">Большая МАК-колода про внутренний мир и состояния.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Богатый визуальный материал для глубокой работы.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="эмоции">#эмоции</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|честность|эмоции">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/golos-pravdy.jpg" alt="Голос правды. О чём ты молчишь?"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Голос правды. О чём ты молчишь?</h3>
+      <div class="lcard__author">Екатерина Каменская</div>
+      <p class="lcard__about">МАК про то, что не проговаривается словами.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Выводит на поверхность умолчания и честность с собой.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="честность">#честность</span><span class="lcard__tag" data-tag="эмоции">#эмоции</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="креативность|упражнения|рисование|блокнот|дневник|практики рисования|арт-практики">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/beri-i-risuj.jpg" alt="Бери и рисуй!"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Бери и рисуй!</h3>
+      <div class="lcard__author">Анна Любимова · 60+ упражнений</div>
+      <p class="lcard__about">Упражнения на каждый день для фантазии и креатива.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Разминка воображения и лекарство от страха чистого листа.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="креативность">#креативность</span><span class="lcard__tag" data-tag="упражнения">#упражнения</span><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="блокнот">#блокнот</span><span class="lcard__tag" data-tag="дневник">#дневник</span><span class="lcard__tag" data-tag="практики рисования">#практики рисования</span><span class="lcard__tag" data-tag="арт-практики">#арт-практики</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|портрет|эмоции">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/uchimsya-risovat-lica.jpg" alt="Учимся рисовать лица и эмоции"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Учимся рисовать лица и эмоции</h3>
+      <div class="lcard__author">Кристофер Харт</div>
+      <p class="lcard__about">Руководство по рисованию головы, лиц и выражений.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Эмоция на лице — материал для работы с образом.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="портрет">#портрет</span><span class="lcard__tag" data-tag="эмоции">#эмоции</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="искусство|орнамент|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/viktorianskie-uzory.jpg" alt="Викторианские узоры и орнаменты"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Викторианские узоры и орнаменты</h3>
+      <div class="lcard__author">источник вдохновения</div>
+      <p class="lcard__about">Альбом орнаментов XIX века.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Насмотренность; паттерн как визуальный язык.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="искусство">#искусство</span><span class="lcard__tag" data-tag="орнамент">#орнамент</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="искусство|литература|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/atlas-mayakov.jpg" alt="Кругосветный атлас маяков"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Кругосветный атлас маяков</h3>
+      <div class="lcard__author">Хосе Луис Гонсалес Масиас</div>
+      <p class="lcard__about">Иллюстрированные истории маяков со всего мира.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Маяк как метафора ориентира; красивая насмотренность.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="искусство">#искусство</span><span class="lcard__tag" data-tag="литература">#литература</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="арт-терапия|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/osnovnye-praktiki-artterapii.jpg" alt="Основные практики арт-терапии"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Основные практики арт-терапии</h3>
+      <div class="lcard__author">Лия Гузман</div>
+      <p class="lcard__about">Методы арт-терапии, в том числе работа с тревогой и ПТСР.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Методическая опора наших практик.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="современное искусство|перформанс|практики современного искусства|история искусства|Голдберг|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/iskusstvo-performansa.jpg" alt="Искусство перформанса. От футуризма до наших дней"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Искусство перформанса. От футуризма до наших дней</h3>
+      <div class="lcard__author">Роузли Голдберг</div>
+      <p class="lcard__about">История перформанса как художественного действия.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Расширяет представление о том, что вообще может быть искусством.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="современное искусство">#современное искусство</span><span class="lcard__tag" data-tag="перформанс">#перформанс</span><span class="lcard__tag" data-tag="практики современного искусства">#практики современного искусства</span><span class="lcard__tag" data-tag="история искусства">#история искусства</span><span class="lcard__tag" data-tag="Голдберг">#Голдберг</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Таро" data-tags="таро|мандалы|раскраски">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mandaly-taro.jpg" alt="Мандалы Таро"><span class="lcard__type">Таро</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Мандалы Таро</h3>
+      <div class="lcard__author">раскраска-мандалы</div>
+      <p class="lcard__about">Мандалы на мотивы арканов Таро — раскрашивание как созерцание.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Работа с символом через цвет и внимание.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="таро">#таро</span><span class="lcard__tag" data-tag="мандалы">#мандалы</span><span class="lcard__tag" data-tag="раскраски">#раскраски</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="арт-терапия|дневник">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/iskusstvo-obreteniya-sebya.jpg" alt="Искусство обретения себя. Экспрессивный дневник"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Искусство обретения себя. Экспрессивный дневник</h3>
+      <div class="lcard__author">Люсия Каппаччионе</div>
+      <p class="lcard__about">Практики экспрессивного дневника — письмо и рисунок вместе.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Дневник как путь к себе через образ.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="дневник">#дневник</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="МАК|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mak-buk.jpg" alt="МАК-БУК. Настольная книга по практикам с МАК"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">МАК-БУК. Настольная книга по практикам с МАК</h3>
+      <div class="lcard__author">Анна Моисеенко</div>
+      <p class="lcard__about">Практическое пособие по работе с метафорическими картами.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Техники для наших сессий с картами.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="креативность|спонтанность|блокнот|дневник|практики рисования|арт-практики">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/the-line.jpg" alt="The Line"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">The Line</h3>
+      <div class="lcard__author">Keri Smith</div>
+      <p class="lcard__about">Блокнот-практика от автора «Уничтожь меня»: веди линию, не отрывая руки.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Снимает контроль и запускает спонтанность.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="креативность">#креативность</span><span class="lcard__tag" data-tag="спонтанность">#спонтанность</span><span class="lcard__tag" data-tag="блокнот">#блокнот</span><span class="lcard__tag" data-tag="дневник">#дневник</span><span class="lcard__tag" data-tag="практики рисования">#практики рисования</span><span class="lcard__tag" data-tag="арт-практики">#арт-практики</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="раскраски|арт-терапия|антистресс">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/natasha-vstavaj.jpg" alt="Наташа, вставай!"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Наташа, вставай!</h3>
+      <div class="lcard__author">раскраска-антистресс · арт-терапия</div>
+      <p class="lcard__about">Раскраска-антистресс с котами и фирменным юмором.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Раскрашивание как вход в состояние: руки заняты, голова отпускает.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="раскраски">#раскраски</span><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="антистресс">#антистресс</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|игра|для начинающих">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/superblok-minecraft.jpg" alt="Суперблок для рисования. Рисуй свой Майнкрафт"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Суперблок для рисования. Рисуй свой Майнкрафт</h3>
+      <div class="lcard__author">эксклюзивное издание</div>
+      <p class="lcard__about">Блок заданий по рисованию в эстетике Майнкрафта — по клеточкам и пикселям.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Игровой язык, через который в рисование заходят те, кто «не умеет».</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="игра">#игра</span><span class="lcard__tag" data-tag="для начинающих">#для начинающих</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="раскраски|арт-терапия|метафора">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/volshebnaya-priroda.jpg" alt="Волшебная природа человека"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Волшебная природа человека</h3>
+      <div class="lcard__author">арт-терапия · илл. Ирина Бабушкина</div>
+      <p class="lcard__about">Метафорические раскраски про внутреннюю природу человека.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Раскрашивая символ, проговариваешь с собой то, что словами не даётся.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="раскраски">#раскраски</span><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="метафора">#метафора</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="креативность|упражнения">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/super-tochki.jpg" alt="Супер-точки"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Супер-точки</h3>
+      <div class="lcard__author">Патрисия Моффетт</div>
+      <p class="lcard__about">Книга-конструктор креативности: головоломки, раскраски, оптические иллюзии, 3D из бумаги.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Раскачивает воображение с неожиданных сторон.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="креативность">#креативность</span><span class="lcard__tag" data-tag="упражнения">#упражнения</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|фигура|наброски">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/prostoe-risovanie-figura.jpg" alt="Простое рисование. Фигура человека"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Простое рисование. Фигура человека</h3>
+      <div class="lcard__author">Дмитрий Горелышев · 18+</div>
+      <p class="lcard__about">Упражнения для набросков фигуры — с натуры и без. Продолжение «Простого рисования».</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Фигура человека — база; учит смотреть и не бояться живого тела.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="фигура">#фигура</span><span class="lcard__tag" data-tag="наброски">#наброски</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="карты-вопросы|рефлексия">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/voprosy-505.jpg" alt="505 коучинговых вопросов"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">505 коучинговых вопросов</h3>
+      <div class="lcard__author">Школа коучинга Константина Довлатова</div>
+      <p class="lcard__about">Колода карточек-вопросов, которые двигают разговор с собой вглубь.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Точный вопрос иногда делает больше, чем совет.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="карты-вопросы">#карты-вопросы</span><span class="lcard__tag" data-tag="рефлексия">#рефлексия</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="карты-вопросы|будущее">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/kak-budushchee.jpg" alt="КАК. Будущее"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">КАК. Будущее</h3>
+      <div class="lcard__author">С. Грачёва, И. Шмелёв · 200 вопросов</div>
+      <p class="lcard__about">Ассоциативные карты-вопросы про образ будущего — 200 стратегических формулировок.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Помогают собрать разговор о том, куда идём, из вопросов, а не готовых ответов.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="карты-вопросы">#карты-вопросы</span><span class="lcard__tag" data-tag="будущее">#будущее</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|путь">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/moj-put.jpg" alt="Мой путь"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Мой путь</h3>
+      <div class="lcard__author">метафорические карты</div>
+      <p class="lcard__about">МАК-колода про личный путь, этапы и повороты.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Образ пути помогает увидеть, где ты сейчас и куда тянет.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="путь">#путь</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|образы">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mak-36-syuzhetov.jpg" alt="Метафорические карты. 36 сюжетов"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Метафорические карты. 36 сюжетов</h3>
+      <div class="lcard__author">36 карт</div>
+      <p class="lcard__about">Компактная МАК-колода с многогранными глубинными сюжетами — для личной и парной работы.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Немного карт, много смыслов — удобно для короткой практики.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="образы">#образы</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Таро" data-tags="таро|раскраски|символ">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/color-your-tarot.jpg" alt="Color Your Tarot"><span class="lcard__type">Таро</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Color Your Tarot</h3>
+      <div class="lcard__author">Таро-раскраска</div>
+      <p class="lcard__about">Классические арканы Таро, которые нужно раскрасить самому.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Раскрашивая аркан, присваиваешь символ — он становится твоим.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="таро">#таро</span><span class="lcard__tag" data-tag="раскраски">#раскраски</span><span class="lcard__tag" data-tag="символ">#символ</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="открытки|образы|серендипити">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/poslaniya-vselennoj.jpg" alt="Послания Вселенной"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Послания Вселенной</h3>
+      <div class="lcard__author">набор открыток</div>
+      <p class="lcard__about">Набор художественных открыток-посланий с насыщенными образами.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Случайное «послание» как повод остановиться и прислушаться к себе.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="открытки">#открытки</span><span class="lcard__tag" data-tag="образы">#образы</span><span class="lcard__tag" data-tag="серендипити">#серендипити</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|юмор|эмоции">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/eto-prosto-zhizn.jpg" alt="Это просто жизнь"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Это просто жизнь</h3>
+      <div class="lcard__author">худ. Рина Зенюк · MACards</div>
+      <p class="lcard__about">МАК с синими котами Рины Зенюк — тёплые, живые, узнаваемые.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Юмор и теплота снимают напряжение и открывают разговор.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="юмор">#юмор</span><span class="lcard__tag" data-tag="эмоции">#эмоции</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|методика">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mak-tehniki-shemy.jpg" alt="МАК-техники в схемах №1"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">МАК-техники в схемах №1</h3>
+      <div class="lcard__author">сост. Евгения Баксан · MACARDS</div>
+      <p class="lcard__about">Набор карточек с техниками работы с МАК, разложенными по схемам.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Шпаргалка по приёмам для наших сессий с картами.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="методика">#методика</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Таро" data-tags="таро|символ">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/karty-taro-universalnoe.jpg" alt="Карты Таро. Универсальное"><span class="lcard__type">Таро</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Карты Таро. Универсальное</h3>
+      <div class="lcard__author">16+</div>
+      <p class="lcard__about">Универсальная колода Таро для вопросов к себе.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Символ и расклад как зеркало ситуации.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="таро">#таро</span><span class="lcard__tag" data-tag="символ">#символ</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|природа|образы">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/universum.jpg" alt="Универсум"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Универсум</h3>
+      <div class="lcard__author">метафорические ассоциативные карты</div>
+      <p class="lcard__about">МАК с образами человека среди природы и зверей.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про связь с миром и своё место в нём.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="природа">#природа</span><span class="lcard__tag" data-tag="образы">#образы</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|опора|самопознание">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/podderzhivaya-sebya.jpg" alt="Поддерживая себя"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Поддерживая себя</h3>
+      <div class="lcard__author">заметки психолога · MACards</div>
+      <p class="lcard__about">Карты-заметки о жизни и самопознании с иллюстрациями.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Мягкое напоминание, что себя стоит поддерживать.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="опора">#опора</span><span class="lcard__tag" data-tag="самопознание">#самопознание</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="открытки|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/idi-po-zhizni-legko.jpg" alt="Иди по жизни легко"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Иди по жизни легко</h3>
+      <div class="lcard__author">Ирина Авидон · Речь</div>
+      <p class="lcard__about">Набор психологических открыток-образов.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Лёгкий вход в разговор о состоянии — через картинку.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="открытки">#открытки</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|ресурсы|опора">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/istochnik-sily.jpg" alt="Источник силы. Многообразие ресурсов"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Источник силы. Многообразие ресурсов</h3>
+      <div class="lcard__author">А. Ю. Гращенкова · Речь</div>
+      <p class="lcard__about">МАК про ресурсы — внутренние и внешние опоры человека.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Помогают найти, из чего черпать силу.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="ресурсы">#ресурсы</span><span class="lcard__tag" data-tag="опора">#опора</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="карты-вопросы|разговор">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/zeytz-otkroveniya.jpg" alt="ZEYTZ. Откровения"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">ZEYTZ. Откровения</h3>
+      <div class="lcard__author">карточки для разговора</div>
+      <p class="lcard__about">Карточки с вопросами, чтобы лучше узнать друг друга.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Разговор по-настоящему — через вопросы, которые обычно не задаём.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="карты-вопросы">#карты-вопросы</span><span class="lcard__tag" data-tag="разговор">#разговор</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="карты|игра|искусство">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/elementy-kontrabanda.jpg" alt="Элементы. Межлокальная контрабанда"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Элементы. Межлокальная контрабанда</h3>
+      <div class="lcard__author">postart.ru</div>
+      <p class="lcard__about">Арт-карточная игра с образами и текстами на грани искусства и провокации.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Расшатывает привычный взгляд и запускает воображение.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="карты">#карты</span><span class="lcard__tag" data-tag="игра">#игра</span><span class="lcard__tag" data-tag="искусство">#искусство</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|деньги|сценарии">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/milliony.jpg" alt="Миллионы. Как заработать и не потерять?"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Миллионы. Как заработать и не потерять?</h3>
+      <div class="lcard__author">МАК · бизнес·семья·личность</div>
+      <p class="lcard__about">МАК-колода про отношения с деньгами — бизнес, семья, личность.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Деньги — тоже про образы и сценарии; с них удобно начать разговор.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="деньги">#деньги</span><span class="lcard__tag" data-tag="сценарии">#сценарии</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="МАК" data-tags="МАК|образ себя">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/jeforel.jpg" alt="JEFÖREL"><span class="lcard__type">МАК</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">JEFÖREL</h3>
+      <div class="lcard__author">метафорические ассоциативные карты</div>
+      <p class="lcard__about">МАК с яркой фэшн-эстетикой и женскими образами.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про образ себя, стиль и внутреннюю опору.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="образ себя">#образ себя</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|портрет">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/risuem-portrety-tehniki.jpg" alt="Рисуем портреты в разных техниках. Полный самоучитель"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Рисуем портреты в разных техниках. Полный самоучитель</h3>
+      <div class="lcard__author">АСТ</div>
+      <p class="lcard__about">Самоучитель портрета в разных материалах — от карандаша до живописи.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Техническая база под портретные практики.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="портрет">#портрет</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|портрет|эмоции">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/emocionalnyj-portret.jpg" alt="Эмоциональный портрет"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Эмоциональный портрет</h3>
+      <div class="lcard__author">Поль Левейль</div>
+      <p class="lcard__about">Пошаговая методика построения и рисования лица с характером.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Учит показывать не черты, а эмоцию — то, что нам важно.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="портрет">#портрет</span><span class="lcard__tag" data-tag="эмоции">#эмоции</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|практика">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/nastolnaya-kniga-hudozhnika.jpg" alt="Настольная книга художника"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Настольная книга художника</h3>
+      <div class="lcard__author">Карина Кино</div>
+      <p class="lcard__about">Учимся рисовать вместе с Кариной Кино — материалы, приёмы, вдохновение.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Тёплый настольный спутник для регулярной практики.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="практика">#практика</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|портрет|стиль">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/portret-bazovyj-kurs.jpg" alt="Портрет. Базовый курс по рисованию людей"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Портрет. Базовый курс по рисованию людей</h3>
+      <div class="lcard__author">3dtotal · Бомбора</div>
+      <p class="lcard__about">Основы рисунка человека и поиск своего стиля, с работами современных художников.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> От базы — к собственному почерку.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="портрет">#портрет</span><span class="lcard__tag" data-tag="стиль">#стиль</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Журналы" data-tags="современное искусство|венецианская биеннале|скульптура|Keresztes|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/zsofia-keresztes.jpg" alt="Zsófia Keresztes. After Dreams"><span class="lcard__type">Журналы</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Zsófia Keresztes. After Dreams</h3>
+      <div class="lcard__author">Венецианская биеннале · павильон Венгрии</div>
+      <p class="lcard__about">Каталог павильона Венгрии на 59-й Венецианской биеннале.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Насмотренность на уровне большого современного искусства.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="современное искусство">#современное искусство</span><span class="lcard__tag" data-tag="венецианская биеннале">#венецианская биеннале</span><span class="lcard__tag" data-tag="скульптура">#скульптура</span><span class="lcard__tag" data-tag="Keresztes">#Keresztes</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="акварель|цвет|арт-терапия">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/akvarelnye-praktiki.jpg" alt="Акварельные практики"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Акварельные практики</h3>
+      <div class="lcard__author">Джин Хэйнс</div>
+      <p class="lcard__about">Сила цвета для настроения и внутренней опоры — акварель как практика.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Цвет и вода как способ прийти в ресурс.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="акварель">#акварель</span><span class="lcard__tag" data-tag="цвет">#цвет</span><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|материалы|для начинающих">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/risovat-mozhno-vsem.jpg" alt="Рисовать можно всем!"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Рисовать можно всем!</h3>
+      <div class="lcard__author">Анна Эгида · Kalacheva School</div>
+      <p class="lcard__about">Учимся работать любым материалом — серия мастер-классов.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Подтверждает наш принцип: материал не важен, важно начать.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="материалы">#материалы</span><span class="lcard__tag" data-tag="для начинающих">#для начинающих</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="оригами|бумага|форма">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/origami-klam.jpg" alt="Оригами. Магия японского искусства"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Оригами. Магия японского искусства</h3>
+      <div class="lcard__author">Аделина Клам · 50 моделей</div>
+      <p class="lcard__about">Авторская система складывания из бумаги — 50 моделей.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Руки, бумага и внимание — медитативная практика формы.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="оригами">#оригами</span><span class="lcard__tag" data-tag="бумага">#бумага</span><span class="lcard__tag" data-tag="форма">#форма</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="современное искусство|инсталляции|практики современного искусства|теория искусства|Бишоп|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/iskusstvo-installyacii.jpg" alt="Искусство инсталляции"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Искусство инсталляции</h3>
+      <div class="lcard__author">Клэр Бишоп</div>
+      <p class="lcard__about">История и теория инсталляции как формы современного искусства.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Расширяет границы того, что мы называем произведением.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="современное искусство">#современное искусство</span><span class="lcard__tag" data-tag="инсталляции">#инсталляции</span><span class="lcard__tag" data-tag="практики современного искусства">#практики современного искусства</span><span class="lcard__tag" data-tag="теория искусства">#теория искусства</span><span class="lcard__tag" data-tag="Бишоп">#Бишоп</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|графика|реализм">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/vyzov-realnosti.jpg" alt="Вызов реальности"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Вызов реальности</h3>
+      <div class="lcard__author">Марк Крилли</div>
+      <p class="lcard__about">Секреты точных графических работ от мастера гиперреализма.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про дисциплину взгляда и терпение руки.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="графика">#графика</span><span class="lcard__tag" data-tag="реализм">#реализм</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Журналы" data-tags="кино|журналы|современное искусство|насмотренность">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/ornament-zhurnal.jpg" alt="ORNAMENT"><span class="lcard__type">Журналы</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">ORNAMENT</h3>
+      <div class="lcard__author">журнал о кино</div>
+      <p class="lcard__about">Независимый журнал о кино — визуальный, с характером.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Кино как язык образов; насмотренность и вкус.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="кино">#кино</span><span class="lcard__tag" data-tag="журналы">#журналы</span><span class="lcard__tag" data-tag="современное искусство">#современное искусство</span><span class="lcard__tag" data-tag="насмотренность">#насмотренность</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="психология|метафора|теория">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/metafora-psihoterapevta.jpg" alt="Метафора в практике психотерапевта"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Метафора в практике психотерапевта</h3>
+      <div class="lcard__author">Никлас Торнеке</div>
+      <p class="lcard__about">Как язык и метафора работают в психотерапии (предисл. Стивена Хейса).</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Теория метафоры — под наш метод «искусство как язык».</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="психология">#психология</span><span class="lcard__tag" data-tag="метафора">#метафора</span><span class="lcard__tag" data-tag="теория">#теория</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="МАК|психология|методика">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/psihoterapiya-mak.jpg" alt="Психотерапия и метафорические карты"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Психотерапия и метафорические карты</h3>
+      <div class="lcard__author">Михаил Ингерлейб</div>
+      <p class="lcard__about">Алгоритмы работы с картами на наглядных примерах.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Ещё одна методическая опора для сессий с МАК.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="МАК">#МАК</span><span class="lcard__tag" data-tag="психология">#психология</span><span class="lcard__tag" data-tag="методика">#методика</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="мандалы|раскраски|медитация">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mandaly-tajn-bytiya.jpg" alt="Мандалы тайн бытия"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Мандалы тайн бытия</h3>
+      <div class="lcard__author">Кора Антарова</div>
+      <p class="lcard__about">Мандалы-раскраски с медитациями, практиками и аффирмациями.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Раскрашивание мандалы как способ собраться и замедлиться.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="мандалы">#мандалы</span><span class="lcard__tag" data-tag="раскраски">#раскраски</span><span class="lcard__tag" data-tag="медитация">#медитация</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|привычка|для начинающих">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/risovat-sejchas.jpg" alt="Всё, что нужно сейчас — рисовать"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Всё, что нужно сейчас — рисовать</h3>
+      <div class="lcard__author">Дэнни Грегори</div>
+      <p class="lcard__about">Начни с ручкой, бумагой и этой книгой — рисование как ежедневная привычка.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про то, что рисовать можно прямо сейчас, из того, что под рукой.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="привычка">#привычка</span><span class="lcard__tag" data-tag="для начинающих">#для начинающих</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="мандалы|раскраски|символ">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/mandaly-narodov-mira.jpg" alt="Мандалы народов мира"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Мандалы народов мира</h3>
+      <div class="lcard__author">Катя Лафаки</div>
+      <p class="lcard__about">Мандалы и символы разных культур для раскрашивания.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Символ как общий язык — и повод притормозить.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="мандалы">#мандалы</span><span class="lcard__tag" data-tag="раскраски">#раскраски</span><span class="lcard__tag" data-tag="символ">#символ</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="коллаж|техника|для начинающих">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/kollazh.jpg" alt="Коллаж"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Коллаж</h3>
+      <div class="lcard__author">Н. В. Дубровская</div>
+      <p class="lcard__about">Техники коллажа: как собирать образ из обрывков и фактур.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Коллаж — быстрый способ выразить состояние без «умения рисовать».</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="коллаж">#коллаж</span><span class="lcard__tag" data-tag="техника">#техника</span><span class="lcard__tag" data-tag="для начинающих">#для начинающих</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="арт-терапия|рисунок|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/metod-piktogramm.jpg" alt="Метод пиктограмм. Как превратить рисунок в магию"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Метод пиктограмм. Как превратить рисунок в магию</h3>
+      <div class="lcard__author">Ольга Кудрешова</div>
+      <p class="lcard__about">Диагностика и терапия через простой рисунок-пиктограмму.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про то, как каракуля становится ключом к разговору.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="рисунок">#рисунок</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="арт-терапия|психология">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/art-terapiya-konsultirovanie.jpg" alt="Арт-терапия в практике психологического консультирования"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Арт-терапия в практике психологического консультирования</h3>
+      <div class="lcard__author">О. И. Каяшева</div>
+      <p class="lcard__about">Практическое пособие по арт-терапии в консультировании.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Методическая опора для нашей работы.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="арт-терапия">#арт-терапия</span><span class="lcard__tag" data-tag="психология">#психология</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|креативность|привычка">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/risuj-kazhdyj-den.jpg" alt="Рисуй каждый день!"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Рисуй каждый день!</h3>
+      <div class="lcard__author">Крис Ридделл</div>
+      <p class="lcard__about">Рисуй, раскрашивай, дополняй, придумывай — альбом-провокация.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Ежедневная разминка воображения без правил.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="креативность">#креативность</span><span class="lcard__tag" data-tag="привычка">#привычка</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="рисование|упражнения|привычка">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/odin-risunok-v-den.jpg" alt="Один рисунок в день"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Один рисунок в день</h3>
+      <div class="lcard__author">Николай Воронцов</div>
+      <p class="lcard__about">Задания на каждый день: дорисуй, раскрась, придумай.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Маленький шаг в день — и рука перестаёт бояться.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="рисование">#рисование</span><span class="lcard__tag" data-tag="упражнения">#упражнения</span><span class="lcard__tag" data-tag="привычка">#привычка</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-type="Книги" data-tags="креативность|стрит-арт|смелость">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/ostav-poslanie-miru.jpg" alt="Оставь своё послание миру"><span class="lcard__type">Книги</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Оставь своё послание миру</h3>
+      <div class="lcard__author">Keri Smith</div>
+      <p class="lcard__about">Набор для стрит-арта от автора «Уничтожь меня» — для веселья и некоммерческого захвата мира.</p>
+      <div class="lcard__why"><b>Зачем нам:</b> Про смелость высказаться в публичном пространстве.</div>
+      <div class="lcard__tags"><span class="lcard__tag" data-tag="креативность">#креативность</span><span class="lcard__tag" data-tag="стрит-арт">#стрит-арт</span><span class="lcard__tag" data-tag="смелость">#смелость</span></div>
+    </div>
+  </article>
+  </div>
 </div>
 
 <footer class="footer">
@@ -101,305 +822,12 @@
 </footer>
 
 <script>
-/* ===== данные (пилот). Позже — из Google-таблицы той же формы ===== */
-const LIB = [
-  { slug:'serendip', type:'Книги', title:'Путешествие трёх королевичей Серендипских', author:'Издательство Ивана Лимбаха',
-    about:'Старинная восточная сказка в итальянском переложении — та самая история, из которой родилось слово «серендипити»: искусство неожиданных открытий.',
-    why:'Серендипити — про умение замечать то, чего не искал. Ровно это тренирует художественная практика.',
-    tags:['искусство','литература','серендипити'] },
-  { slug:'emocii-na-holste', type:'МАК', title:'Эмоции на холсте', author:'Ирина Фёдорова · 100 карт',
-    about:'Метафорические ассоциативные карты (МАК), собранные вокруг исследования эмоций и внутреннего мира.',
-    why:'Помогают называть и проявлять чувства, которые не проговариваются словами.',
-    tags:['МАК','эмоции','психология'] },
-  { slug:'vybor', type:'МАК', title:'Выбор', author:'Екатерина Каменская · худ. Cristina Bernazzani',
-    about:'МАК-колода про ситуации выбора, развилки и решения.',
-    why:'Помогает увидеть варианты, о которых не думалось, — в обход рациональных защит.',
-    tags:['МАК','решения'] },
-  { slug:'cvety', type:'МАК', title:'Цветы', author:'Анна Демидова, Наталья Лужкова',
-    about:'Набор МАК про связь эмоционального состояния с образами природы и символикой цвета.',
-    why:'Мягкий вход в разговор о состоянии — через природу, а не «в лоб».',
-    tags:['МАК','природа'] },
-  { slug:'mak-polny-kurs', type:'Книги', title:'Метафорические ассоциативные карты. Полный курс для практики', author:'Михаил Ингерлейб',
-    about:'Практическое руководство по работе с МАК: техники, схемы, применение в консультировании.',
-    why:'Методическая база под нашу работу с картами.',
-    tags:['МАК','психология'] },
-  { slug:'prostoe-risovanie', type:'Книги', title:'Простое рисование', author:'Дмитрий Горелышев',
-    about:'Книга-практикум о рисовании через наблюдение и простые упражнения, без «таланта».',
-    why:'Подтверждает наш принцип: рисовать может каждый. Снимает страх чистого листа.',
-    tags:['рисование'] },
-  { slug:'iskusstvo-art-terapii', type:'Книги', title:'Искусство арт-терапии', author:'Джудит А. Рубин',
-    about:'Фундаментальный труд об арт-терапии — теория, история и практика.',
-    why:'Научная опора метода «искусство как инструмент».',
-    tags:['арт-терапия','психология'] },
-  { slug:'tvorit-nelzya-boyatsya', type:'Книги', title:'Творить нельзя бояться', author:'Дэвид Бейлс, Тед Орланд',
-    about:'Классика (ориг. «Art & Fear») о страхах на творческом пути и о том, как продолжать делать.',
-    why:'Про смелость создавать — сердцевина арт-коучинга.',
-    tags:['креативность','психология'] },
-  { slug:'youngzine', type:'Журналы', title:'YOUNGZINE', author:'независимый арт-зин',
-    about:'Молодёжный журнал о современной визуальной культуре.',
-    why:'Насмотренность и живой язык современного искусства.',
-    tags:['современное искусство','журналы','арт-зин','насмотренность'] },
-  { slug:'softmachine', type:'Журналы', title:'SOFTMACHINE', author:'арт/фэшн-журнал',
-    about:'Журнал о визуальной культуре, стиле и современном образе.',
-    why:'Референсы и насмотренность для практик.',
-    tags:['современное искусство','журналы','венецианская биеннале','насмотренность'] },
-
-  { slug:'put-k-mechte', type:'МАК', title:'Путь к мечте', author:'метафорические ассоциативные карты',
-    about:'МАК-колода с образами-историями про путь, выбор и мечту.',
-    why:'Мягкий вход в разговор о желаемом будущем — через образ, а не «в лоб».',
-    tags:['МАК','мечта','будущее'] },
-  { slug:'forma-obem-proporcii', type:'Книги', title:'Форма. Объём. Пропорции', author:'Денис Чернов · школа рисования',
-    about:'Базовый учебник академического рисунка: как видеть форму, объём и пропорции.',
-    why:'«Ставит глаз» — учит видеть структуру за предметом.',
-    tags:['рисование','академизм'] },
-  { slug:'portrety-50-shagov', type:'Книги', title:'Создаём портреты людей. 50 шаг за шагом', author:'Лиз Эрзог',
-    about:'Портрет по шагам — от построения до светотени.',
-    why:'Портрет — одна из наших практик; здесь техническая база.',
-    tags:['рисование','портрет'] },
-  { slug:'vy-nauchites-risovat', type:'Книги', title:'Вы научитесь рисовать к концу этой книги', author:'Джейк Спайсер',
-    about:'Дружелюбный курс рисования для тех, кто «совсем не умеет».',
-    why:'Снимает страх и доказывает: рисовать может каждый.',
-    tags:['рисование','для начинающих'] },
-  { slug:'metaforicheskie-zhivotnye', type:'МАК', title:'Метафорические животные', author:'Л. И. Кононова',
-    about:'МАК для тех, кто хочет понять себя и других — через образы животных.',
-    why:'Животное как метафора роли, состояния, инстинкта.',
-    tags:['МАК','образы'] },
-  { slug:'derevo-obraz', type:'МАК', title:'Дерево как образ человека', author:'Г. Кац, Е. Мухаматулина · Генезис',
-    about:'МАК, где дерево — метафора человека и его жизненного пути.',
-    why:'Разговор о себе через понятный природный образ.',
-    tags:['МАК','природа','психология'] },
-  { slug:'dusha', type:'МАК', title:'Душа. Сборник 4 в 1', author:'Екатерина Каменская',
-    about:'Большая МАК-колода про внутренний мир и состояния.',
-    why:'Богатый визуальный материал для глубокой работы.',
-    tags:['МАК','эмоции'] },
-  { slug:'golos-pravdy', type:'МАК', title:'Голос правды. О чём ты молчишь?', author:'Екатерина Каменская',
-    about:'МАК про то, что не проговаривается словами.',
-    why:'Выводит на поверхность умолчания и честность с собой.',
-    tags:['МАК','честность','эмоции'] },
-  { slug:'beri-i-risuj', type:'Книги', title:'Бери и рисуй!', author:'Анна Любимова · 60+ упражнений',
-    about:'Упражнения на каждый день для фантазии и креатива.',
-    why:'Разминка воображения и лекарство от страха чистого листа.',
-    tags:['креативность','упражнения','рисование','блокнот','дневник','практики рисования','арт-практики'] },
-  { slug:'uchimsya-risovat-lica', type:'Книги', title:'Учимся рисовать лица и эмоции', author:'Кристофер Харт',
-    about:'Руководство по рисованию головы, лиц и выражений.',
-    why:'Эмоция на лице — материал для работы с образом.',
-    tags:['рисование','портрет','эмоции'] },
-  { slug:'viktorianskie-uzory', type:'Книги', title:'Викторианские узоры и орнаменты', author:'источник вдохновения',
-    about:'Альбом орнаментов XIX века.',
-    why:'Насмотренность; паттерн как визуальный язык.',
-    tags:['искусство','орнамент','насмотренность'] },
-  { slug:'atlas-mayakov', type:'Книги', title:'Кругосветный атлас маяков', author:'Хосе Луис Гонсалес Масиас',
-    about:'Иллюстрированные истории маяков со всего мира.',
-    why:'Маяк как метафора ориентира; красивая насмотренность.',
-    tags:['искусство','литература','насмотренность'] },
-  { slug:'osnovnye-praktiki-artterapii', type:'Книги', title:'Основные практики арт-терапии', author:'Лия Гузман',
-    about:'Методы арт-терапии, в том числе работа с тревогой и ПТСР.',
-    why:'Методическая опора наших практик.',
-    tags:['арт-терапия','психология'] },
-  { slug:'iskusstvo-performansa', type:'Книги', title:'Искусство перформанса. От футуризма до наших дней', author:'Роузли Голдберг',
-    about:'История перформанса как художественного действия.',
-    why:'Расширяет представление о том, что вообще может быть искусством.',
-    tags:['современное искусство','перформанс','практики современного искусства','история искусства','Голдберг','насмотренность'] },
-  { slug:'mandaly-taro', type:'Таро', title:'Мандалы Таро', author:'раскраска-мандалы',
-    about:'Мандалы на мотивы арканов Таро — раскрашивание как созерцание.',
-    why:'Работа с символом через цвет и внимание.',
-    tags:['таро','мандалы','раскраски'] },
-  { slug:'iskusstvo-obreteniya-sebya', type:'Книги', title:'Искусство обретения себя. Экспрессивный дневник', author:'Люсия Каппаччионе',
-    about:'Практики экспрессивного дневника — письмо и рисунок вместе.',
-    why:'Дневник как путь к себе через образ.',
-    tags:['арт-терапия','дневник'] },
-  { slug:'mak-buk', type:'Книги', title:'МАК-БУК. Настольная книга по практикам с МАК', author:'Анна Моисеенко',
-    about:'Практическое пособие по работе с метафорическими картами.',
-    why:'Техники для наших сессий с картами.',
-    tags:['МАК','психология'] },
-  { slug:'the-line', type:'Книги', title:'The Line', author:'Keri Smith',
-    about:'Блокнот-практика от автора «Уничтожь меня»: веди линию, не отрывая руки.',
-    why:'Снимает контроль и запускает спонтанность.',
-    tags:['креативность','спонтанность','блокнот','дневник','практики рисования','арт-практики'] },
-
-  /* ===== пополнение (партия 2, 22.07.2026) ===== */
-  { slug:'natasha-vstavaj', type:'Книги', title:'Наташа, вставай!', author:'раскраска-антистресс · арт-терапия',
-    about:'Раскраска-антистресс с котами и фирменным юмором.',
-    why:'Раскрашивание как вход в состояние: руки заняты, голова отпускает.',
-    tags:['раскраски','арт-терапия','антистресс'] },
-  { slug:'superblok-minecraft', type:'Книги', title:'Суперблок для рисования. Рисуй свой Майнкрафт', author:'эксклюзивное издание',
-    about:'Блок заданий по рисованию в эстетике Майнкрафта — по клеточкам и пикселям.',
-    why:'Игровой язык, через который в рисование заходят те, кто «не умеет».',
-    tags:['рисование','игра','для начинающих'] },
-  { slug:'volshebnaya-priroda', type:'Книги', title:'Волшебная природа человека', author:'арт-терапия · илл. Ирина Бабушкина',
-    about:'Метафорические раскраски про внутреннюю природу человека.',
-    why:'Раскрашивая символ, проговариваешь с собой то, что словами не даётся.',
-    tags:['раскраски','арт-терапия','метафора'] },
-  { slug:'super-tochki', type:'Книги', title:'Супер-точки', author:'Патрисия Моффетт',
-    about:'Книга-конструктор креативности: головоломки, раскраски, оптические иллюзии, 3D из бумаги.',
-    why:'Раскачивает воображение с неожиданных сторон.',
-    tags:['креативность','упражнения'] },
-  { slug:'prostoe-risovanie-figura', type:'Книги', title:'Простое рисование. Фигура человека', author:'Дмитрий Горелышев · 18+',
-    about:'Упражнения для набросков фигуры — с натуры и без. Продолжение «Простого рисования».',
-    why:'Фигура человека — база; учит смотреть и не бояться живого тела.',
-    tags:['рисование','фигура','наброски'] },
-  { slug:'voprosy-505', type:'МАК', title:'505 коучинговых вопросов', author:'Школа коучинга Константина Довлатова',
-    about:'Колода карточек-вопросов, которые двигают разговор с собой вглубь.',
-    why:'Точный вопрос иногда делает больше, чем совет.',
-    tags:['карты-вопросы','рефлексия'] },
-  { slug:'kak-budushchee', type:'МАК', title:'КАК. Будущее', author:'С. Грачёва, И. Шмелёв · 200 вопросов',
-    about:'Ассоциативные карты-вопросы про образ будущего — 200 стратегических формулировок.',
-    why:'Помогают собрать разговор о том, куда идём, из вопросов, а не готовых ответов.',
-    tags:['карты-вопросы','будущее'] },
-  { slug:'moj-put', type:'МАК', title:'Мой путь', author:'метафорические карты',
-    about:'МАК-колода про личный путь, этапы и повороты.',
-    why:'Образ пути помогает увидеть, где ты сейчас и куда тянет.',
-    tags:['МАК','путь'] },
-  { slug:'mak-36-syuzhetov', type:'МАК', title:'Метафорические карты. 36 сюжетов', author:'36 карт',
-    about:'Компактная МАК-колода с многогранными глубинными сюжетами — для личной и парной работы.',
-    why:'Немного карт, много смыслов — удобно для короткой практики.',
-    tags:['МАК','образы'] },
-  { slug:'color-your-tarot', type:'Таро', title:'Color Your Tarot', author:'Таро-раскраска',
-    about:'Классические арканы Таро, которые нужно раскрасить самому.',
-    why:'Раскрашивая аркан, присваиваешь символ — он становится твоим.',
-    tags:['таро','раскраски','символ'] },
-  { slug:'poslaniya-vselennoj', type:'МАК', title:'Послания Вселенной', author:'набор открыток',
-    about:'Набор художественных открыток-посланий с насыщенными образами.',
-    why:'Случайное «послание» как повод остановиться и прислушаться к себе.',
-    tags:['открытки','образы','серендипити'] },
-  { slug:'eto-prosto-zhizn', type:'МАК', title:'Это просто жизнь', author:'худ. Рина Зенюк · MACards',
-    about:'МАК с синими котами Рины Зенюк — тёплые, живые, узнаваемые.',
-    why:'Юмор и теплота снимают напряжение и открывают разговор.',
-    tags:['МАК','юмор','эмоции'] },
-  { slug:'mak-tehniki-shemy', type:'МАК', title:'МАК-техники в схемах №1', author:'сост. Евгения Баксан · MACARDS',
-    about:'Набор карточек с техниками работы с МАК, разложенными по схемам.',
-    why:'Шпаргалка по приёмам для наших сессий с картами.',
-    tags:['МАК','методика'] },
-  { slug:'karty-taro-universalnoe', type:'Таро', title:'Карты Таро. Универсальное', author:'16+',
-    about:'Универсальная колода Таро для вопросов к себе.',
-    why:'Символ и расклад как зеркало ситуации.',
-    tags:['таро','символ'] },
-  { slug:'universum', type:'МАК', title:'Универсум', author:'метафорические ассоциативные карты',
-    about:'МАК с образами человека среди природы и зверей.',
-    why:'Про связь с миром и своё место в нём.',
-    tags:['МАК','природа','образы'] },
-  { slug:'podderzhivaya-sebya', type:'МАК', title:'Поддерживая себя', author:'заметки психолога · MACards',
-    about:'Карты-заметки о жизни и самопознании с иллюстрациями.',
-    why:'Мягкое напоминание, что себя стоит поддерживать.',
-    tags:['МАК','опора','самопознание'] },
-  { slug:'idi-po-zhizni-legko', type:'МАК', title:'Иди по жизни легко', author:'Ирина Авидон · Речь',
-    about:'Набор психологических открыток-образов.',
-    why:'Лёгкий вход в разговор о состоянии — через картинку.',
-    tags:['открытки','психология'] },
-  { slug:'istochnik-sily', type:'МАК', title:'Источник силы. Многообразие ресурсов', author:'А. Ю. Гращенкова · Речь',
-    about:'МАК про ресурсы — внутренние и внешние опоры человека.',
-    why:'Помогают найти, из чего черпать силу.',
-    tags:['МАК','ресурсы','опора'] },
-  { slug:'zeytz-otkroveniya', type:'МАК', title:'ZEYTZ. Откровения', author:'карточки для разговора',
-    about:'Карточки с вопросами, чтобы лучше узнать друг друга.',
-    why:'Разговор по-настоящему — через вопросы, которые обычно не задаём.',
-    tags:['карты-вопросы','разговор'] },
-  { slug:'elementy-kontrabanda', type:'МАК', title:'Элементы. Межлокальная контрабанда', author:'postart.ru',
-    about:'Арт-карточная игра с образами и текстами на грани искусства и провокации.',
-    why:'Расшатывает привычный взгляд и запускает воображение.',
-    tags:['карты','игра','искусство'] },
-  { slug:'milliony', type:'МАК', title:'Миллионы. Как заработать и не потерять?', author:'МАК · бизнес·семья·личность',
-    about:'МАК-колода про отношения с деньгами — бизнес, семья, личность.',
-    why:'Деньги — тоже про образы и сценарии; с них удобно начать разговор.',
-    tags:['МАК','деньги','сценарии'] },
-  { slug:'jeforel', type:'МАК', title:'JEFÖREL', author:'метафорические ассоциативные карты',
-    about:'МАК с яркой фэшн-эстетикой и женскими образами.',
-    why:'Про образ себя, стиль и внутреннюю опору.',
-    tags:['МАК','образ себя'] },
-  { slug:'risuem-portrety-tehniki', type:'Книги', title:'Рисуем портреты в разных техниках. Полный самоучитель', author:'АСТ',
-    about:'Самоучитель портрета в разных материалах — от карандаша до живописи.',
-    why:'Техническая база под портретные практики.',
-    tags:['рисование','портрет'] },
-  { slug:'emocionalnyj-portret', type:'Книги', title:'Эмоциональный портрет', author:'Поль Левейль',
-    about:'Пошаговая методика построения и рисования лица с характером.',
-    why:'Учит показывать не черты, а эмоцию — то, что нам важно.',
-    tags:['рисование','портрет','эмоции'] },
-  { slug:'nastolnaya-kniga-hudozhnika', type:'Книги', title:'Настольная книга художника', author:'Карина Кино',
-    about:'Учимся рисовать вместе с Кариной Кино — материалы, приёмы, вдохновение.',
-    why:'Тёплый настольный спутник для регулярной практики.',
-    tags:['рисование','практика'] },
-  { slug:'portret-bazovyj-kurs', type:'Книги', title:'Портрет. Базовый курс по рисованию людей', author:'3dtotal · Бомбора',
-    about:'Основы рисунка человека и поиск своего стиля, с работами современных художников.',
-    why:'От базы — к собственному почерку.',
-    tags:['рисование','портрет','стиль'] },
-  { slug:'zsofia-keresztes', type:'Журналы', title:'Zsófia Keresztes. After Dreams', author:'Венецианская биеннале · павильон Венгрии',
-    about:'Каталог павильона Венгрии на 59-й Венецианской биеннале.',
-    why:'Насмотренность на уровне большого современного искусства.',
-    tags:['современное искусство','венецианская биеннале','скульптура','Keresztes','насмотренность'] },
-  { slug:'akvarelnye-praktiki', type:'Книги', title:'Акварельные практики', author:'Джин Хэйнс',
-    about:'Сила цвета для настроения и внутренней опоры — акварель как практика.',
-    why:'Цвет и вода как способ прийти в ресурс.',
-    tags:['акварель','цвет','арт-терапия'] },
-  { slug:'risovat-mozhno-vsem', type:'Книги', title:'Рисовать можно всем!', author:'Анна Эгида · Kalacheva School',
-    about:'Учимся работать любым материалом — серия мастер-классов.',
-    why:'Подтверждает наш принцип: материал не важен, важно начать.',
-    tags:['рисование','материалы','для начинающих'] },
-  { slug:'origami-klam', type:'Книги', title:'Оригами. Магия японского искусства', author:'Аделина Клам · 50 моделей',
-    about:'Авторская система складывания из бумаги — 50 моделей.',
-    why:'Руки, бумага и внимание — медитативная практика формы.',
-    tags:['оригами','бумага','форма'] },
-  { slug:'iskusstvo-installyacii', type:'Книги', title:'Искусство инсталляции', author:'Клэр Бишоп',
-    about:'История и теория инсталляции как формы современного искусства.',
-    why:'Расширяет границы того, что мы называем произведением.',
-    tags:['современное искусство','инсталляции','практики современного искусства','теория искусства','Бишоп','насмотренность'] },
-  { slug:'vyzov-realnosti', type:'Книги', title:'Вызов реальности', author:'Марк Крилли',
-    about:'Секреты точных графических работ от мастера гиперреализма.',
-    why:'Про дисциплину взгляда и терпение руки.',
-    tags:['рисование','графика','реализм'] },
-  { slug:'ornament-zhurnal', type:'Журналы', title:'ORNAMENT', author:'журнал о кино',
-    about:'Независимый журнал о кино — визуальный, с характером.',
-    why:'Кино как язык образов; насмотренность и вкус.',
-    tags:['кино','журналы','современное искусство','насмотренность'] },
-  { slug:'metafora-psihoterapevta', type:'Книги', title:'Метафора в практике психотерапевта', author:'Никлас Торнеке',
-    about:'Как язык и метафора работают в психотерапии (предисл. Стивена Хейса).',
-    why:'Теория метафоры — под наш метод «искусство как язык».',
-    tags:['психология','метафора','теория'] },
-  { slug:'psihoterapiya-mak', type:'Книги', title:'Психотерапия и метафорические карты', author:'Михаил Ингерлейб',
-    about:'Алгоритмы работы с картами на наглядных примерах.',
-    why:'Ещё одна методическая опора для сессий с МАК.',
-    tags:['МАК','психология','методика'] },
-  { slug:'mandaly-tajn-bytiya', type:'Книги', title:'Мандалы тайн бытия', author:'Кора Антарова',
-    about:'Мандалы-раскраски с медитациями, практиками и аффирмациями.',
-    why:'Раскрашивание мандалы как способ собраться и замедлиться.',
-    tags:['мандалы','раскраски','медитация'] },
-  { slug:'risovat-sejchas', type:'Книги', title:'Всё, что нужно сейчас — рисовать', author:'Дэнни Грегори',
-    about:'Начни с ручкой, бумагой и этой книгой — рисование как ежедневная привычка.',
-    why:'Про то, что рисовать можно прямо сейчас, из того, что под рукой.',
-    tags:['рисование','привычка','для начинающих'] },
-  { slug:'mandaly-narodov-mira', type:'Книги', title:'Мандалы народов мира', author:'Катя Лафаки',
-    about:'Мандалы и символы разных культур для раскрашивания.',
-    why:'Символ как общий язык — и повод притормозить.',
-    tags:['мандалы','раскраски','символ'] },
-  { slug:'kollazh', type:'Книги', title:'Коллаж', author:'Н. В. Дубровская',
-    about:'Техники коллажа: как собирать образ из обрывков и фактур.',
-    why:'Коллаж — быстрый способ выразить состояние без «умения рисовать».',
-    tags:['коллаж','техника','для начинающих'] },
-  { slug:'metod-piktogramm', type:'Книги', title:'Метод пиктограмм. Как превратить рисунок в магию', author:'Ольга Кудрешова',
-    about:'Диагностика и терапия через простой рисунок-пиктограмму.',
-    why:'Про то, как каракуля становится ключом к разговору.',
-    tags:['арт-терапия','рисунок','психология'] },
-  { slug:'art-terapiya-konsultirovanie', type:'Книги', title:'Арт-терапия в практике психологического консультирования', author:'О. И. Каяшева',
-    about:'Практическое пособие по арт-терапии в консультировании.',
-    why:'Методическая опора для нашей работы.',
-    tags:['арт-терапия','психология'] },
-  { slug:'risuj-kazhdyj-den', type:'Книги', title:'Рисуй каждый день!', author:'Крис Ридделл',
-    about:'Рисуй, раскрашивай, дополняй, придумывай — альбом-провокация.',
-    why:'Ежедневная разминка воображения без правил.',
-    tags:['рисование','креативность','привычка'] },
-  { slug:'odin-risunok-v-den', type:'Книги', title:'Один рисунок в день', author:'Николай Воронцов',
-    about:'Задания на каждый день: дорисуй, раскрась, придумай.',
-    why:'Маленький шаг в день — и рука перестаёт бояться.',
-    tags:['рисование','упражнения','привычка'] },
-  { slug:'ostav-poslanie-miru', type:'Книги', title:'Оставь своё послание миру', author:'Keri Smith',
-    about:'Набор для стрит-арта от автора «Уничтожь меня» — для веселья и некоммерческого захвата мира.',
-    why:'Про смелость высказаться в публичном пространстве.',
-    tags:['креативность','стрит-арт','смелость'] },
-];
-
+/* ===== фильтрация поверх статических карточек (единый источник — HTML выше) ===== */
 const TYPES = ['Все','Книги','МАК','Таро','Журналы'];
+const cards = [...document.querySelectorAll('#lgrid .lcard')];
 let state = { type:'Все', tags:[], q:'' };
 
-function allTags(){ const s=new Set(); LIB.forEach(i=>i.tags.forEach(t=>s.add(t))); return [...s].sort((a,b)=>a.localeCompare(b,'ru')); }
+function allTags(){ const s=new Set(); cards.forEach(c=>c.dataset.tags.split('|').forEach(t=>{ if(t) s.add(t); })); return [...s].sort((a,b)=>a.localeCompare(b,'ru')); }
 
 function renderControls(){
   const tw=document.getElementById('ltypes'); tw.innerHTML='';
@@ -408,33 +836,22 @@ function renderControls(){
   allTags().forEach(t=>{ const b=document.createElement('button'); b.className='ltag'+(state.tags.includes(t)?' is-active':''); b.textContent='#'+t; b.onclick=()=>{ state.tags.includes(t)?state.tags=state.tags.filter(x=>x!==t):state.tags.push(t); render(); }; gw.appendChild(b); });
 }
 
-function match(i){
-  if (!(state.type==='Все'||i.type===state.type)) return false;
-  if (!(state.tags.length===0 || i.tags.some(t=>state.tags.includes(t)))) return false;
-  if (state.q){ const hay=(i.title+' '+i.author+' '+i.about+' '+i.why+' '+i.tags.join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
-  return true;
+function apply(){
+  let n=0;
+  cards.forEach(c=>{
+    const type=c.dataset.type, tags=c.dataset.tags.split('|');
+    const ok = (state.type==='Все'||type===state.type)
+      && (state.tags.length===0 || tags.some(t=>state.tags.includes(t)))
+      && (!state.q || c.textContent.toLowerCase().includes(state.q));
+    c.style.display = ok ? '' : 'none';
+    if(ok) n++;
+  });
+  document.getElementById('lcount').textContent = n + ' из ' + cards.length;
 }
 
-function render(){
-  renderControls();
-  const g=document.getElementById('lgrid'); g.innerHTML='';
-  const items=LIB.filter(match);
-  document.getElementById('lcount').textContent = items.length + ' из ' + LIB.length;
-  items.forEach(i=>{
-    const c=document.createElement('article'); c.className='lcard';
-    c.innerHTML =
-      `<div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/library/${i.slug}.jpg" alt="${i.title}"><span class="lcard__type">${i.type}</span></div>`+
-      `<div class="lcard__body">`+
-      `<div class="lcard__title">${i.title}</div>`+
-      `<div class="lcard__author">${i.author}</div>`+
-      `<div class="lcard__about">${i.about}</div>`+
-      `<div class="lcard__why"><b>Зачем нам:</b> ${i.why}</div>`+
-      `<div class="lcard__tags">${i.tags.map(t=>`<span class="lcard__tag" data-tag="${t}">#${t}</span>`).join('')}</div>`+
-      `</div>`;
-    c.querySelectorAll('.lcard__tag').forEach(el=>el.onclick=()=>{ const t=el.dataset.tag; if(!state.tags.includes(t)){state.tags.push(t); render(); window.scrollTo({top:0,behavior:'smooth'});} });
-    g.appendChild(c);
-  });
-}
+function render(){ renderControls(); apply(); }
+
+document.querySelectorAll('#lgrid .lcard__tag').forEach(el=>el.onclick=()=>{ const t=el.dataset.tag; if(!state.tags.includes(t)){ state.tags.push(t); render(); window.scrollTo({top:0,behavior:'smooth'}); } });
 
 /* меню-гамбургер */
 const menu=document.getElementById('menu');
