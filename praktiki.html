@@ -49,9 +49,9 @@
     .lcard__img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
     .lcard__type { position: absolute; top: 12px; left: 12px; background: rgba(23,24,26,.82); color: var(--cream); font-size: 12px; letter-spacing: .04em; padding: 5px 12px; border-radius: 999px; }
     .lcard__body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
-    .lcard__title { font-family: var(--serif); font-size: 21px; line-height: 1.2; }
+    .lcard__title { font-family: var(--serif); font-size: 21px; line-height: 1.2; margin: 0; }
     .lcard__author { font-size: 13px; color: rgba(23,24,26,.55); margin-top: 4px; }
-    .lcard__how { font-size: 14.5px; color: #3a3b3d; margin-top: 12px; line-height: 1.55; flex: 1; }
+    .lcard__how { font-size: 14.5px; color: #3a3b3d; margin: 12px 0 0; line-height: 1.55; flex: 1; }
     .lcard__dev { font-size: 13.5px; color: var(--ink); margin-top: 12px; padding-left: 12px; border-left: 2px solid var(--terra); line-height: 1.5; }
     .lcard__dev b { font-family: var(--sans); font-weight: 600; }
     .lcard__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
@@ -112,7 +112,110 @@
     <div class="lcount" id="lcount"></div>
   </div>
 
-  <div class="lgrid" id="lgrid"></div>
+  <div class="lgrid" id="lgrid">
+  <!--CARDS_START-->
+  <article class="lcard" data-cat="Восприятие" data-tags="восприятие|пространство|внимание|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-01.jpg" alt="Сначала пространство"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Сначала пространство</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Войдите в большое пространство и не ищите предметы. Сначала увидьте только объём, воздух, глубину и свет — и лишь спустя минуту начните различать вещи.</p>
+      <div class="lcard__dev"><b>Развивает:</b> пространственное восприятие · внимание к целому · меньше автоматизма в узнавании</div>
+      <div class="lcard__tags"><span class="lcard__tag">#восприятие</span><span class="lcard__tag">#пространство</span><span class="lcard__tag">#внимание</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="периферическое зрение|внимание|панорама|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-02.jpg" alt="180 градусов"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">180 градусов</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД · главное упражнение</div>
+      <p class="lcard__how">Смотрите прямо перед собой, не переводя взгляд, и одновременно замечайте всё, что попадает в периферическое зрение. Ощущайте всю панораму сразу. Начните с 20–30 секунд.</p>
+      <div class="lcard__dev"><b>Развивает:</b> периферическое зрение · устойчивое внимание · ощущение большого пространства</div>
+      <div class="lcard__tags"><span class="lcard__tag">#периферическое зрение</span><span class="lcard__tag">#внимание</span><span class="lcard__tag">#панорама</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="восприятие|целостность|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-03.jpg" alt="Смотреть из центра"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Смотреть из центра</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Зафиксируйте взгляд на одной точке и не двигайте глазами. Одновременно принимайте всё изображение вокруг, ничего не называя, — позвольте картине войти целиком.</p>
+      <div class="lcard__dev"><b>Развивает:</b> целостное восприятие · удержание сложной сцены</div>
+      <div class="lcard__tags"><span class="lcard__tag">#восприятие</span><span class="lcard__tag">#целостность</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="восприятие|масштаб|пейзаж|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-04.jpg" alt="Большое и малое"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Большое и малое</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">На улице или в природе сначала увидьте весь пейзаж, затем большие массы, затем линии — и лишь потом отдельные предметы. После вернитесь ко всему пространству.</p>
+      <div class="lcard__dev"><b>Развивает:</b> переключение между масштабами восприятия</div>
+      <div class="lcard__tags"><span class="lcard__tag">#восприятие</span><span class="lcard__tag">#масштаб</span><span class="lcard__tag">#пейзаж</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="отражения|пространство|композиция|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-05.jpg" alt="Отражения"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Отражения</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">У воды или большого стекла попробуйте одновременно видеть здания, небо, отражение и пространство между ними — как единую композицию, не переключаясь.</p>
+      <div class="lcard__dev"><b>Развивает:</b> нестандартное восприятие пространства</div>
+      <div class="lcard__tags"><span class="lcard__tag">#отражения</span><span class="lcard__tag">#пространство</span><span class="lcard__tag">#композиция</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="восприятие|пространство|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-06.jpg" alt="Вертикальная комната"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Вертикальная комната</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Лягте на бок и посмотрите на стену. Воспринимайте её не как поверхность, а как пространство. Замечайте момент, когда стена перестаёт быть плоскостью.</p>
+      <div class="lcard__dev"><b>Развивает:</b> разрушение привычной схемы восприятия</div>
+      <div class="lcard__tags"><span class="lcard__tag">#восприятие</span><span class="lcard__tag">#пространство</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="пространство|память|движение|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-07.jpg" alt="Поворот"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Поворот</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Идя по улице, резко обернитесь и на несколько секунд максимально полно воспримите открывшийся вид. Повернитесь вперёд — и сохраните ощущение предыдущего пространства.</p>
+      <div class="lcard__dev"><b>Развивает:</b> объёмная пространственная память</div>
+      <div class="lcard__tags"><span class="lcard__tag">#пространство</span><span class="lcard__tag">#память</span><span class="lcard__tag">#движение</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="пространство|панорама|движение|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-08.jpg" alt="Круговое пространство"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Круговое пространство</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Идите вперёд и одновременно представляйте улицу позади, небо над собой, пространство по бокам и впереди. Появляется ощущение, что вы внутри большого объёма, а не в узком коридоре.</p>
+      <div class="lcard__dev"><b>Развивает:</b> пространственное мышление · панорамное внимание · включённость в среду</div>
+      <div class="lcard__tags"><span class="lcard__tag">#пространство</span><span class="lcard__tag">#панорама</span><span class="lcard__tag">#движение</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="внимание|движение|память|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-09.jpg" alt="Прохожий"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Прохожий</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Заметьте идущего навстречу человека — движение, скорость, направление, ритм. Когда он пройдёт, мысленно удерживайте его траекторию, не оборачиваясь, и одновременно смотрите вперёд.</p>
+      <div class="lcard__dev"><b>Развивает:</b> несколько потоков внимания · пространственная память · непрерывность</div>
+      <div class="lcard__tags"><span class="lcard__tag">#внимание</span><span class="lcard__tag">#движение</span><span class="lcard__tag">#память</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <article class="lcard" data-cat="Восприятие" data-tags="небо|пространство|покой|Матюшин">
+    <div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/mat-10.jpg" alt="Небо"><span class="lcard__type">Восприятие</span></div>
+    <div class="lcard__body">
+      <h3 class="lcard__title">Небо</h3>
+      <div class="lcard__author">Михаил Матюшин · ЗОРВЕД</div>
+      <p class="lcard__how">Лягте под деревьями и долго смотрите только в небо. Позвольте исчезнуть привычным категориям: верх, низ, передний и задний план.</p>
+      <div class="lcard__dev"><b>Развивает:</b> изменённое чувство пространства</div>
+      <div class="lcard__tags"><span class="lcard__tag">#небо</span><span class="lcard__tag">#пространство</span><span class="lcard__tag">#покой</span><span class="lcard__tag">#Матюшин</span></div>
+    </div>
+  </article>
+  <!--CARDS_END-->
+  </div>
 
   <details class="pmethod">
     <summary>Подробнее о методе: расширенное смотрение (ЗОРВЕД)</summary>
@@ -141,54 +244,11 @@
 </footer>
 
 <script>
-/* данные практик (позже — из файла/таблицы) */
-const SRC = 'Михаил Матюшин · ЗОРВЕД';
-const PRAK = [
-  { slug:'mat-01', cat:'Восприятие', title:'Сначала пространство', source:SRC,
-    how:'Войдите в большое пространство и не ищите предметы. Сначала увидьте только объём, воздух, глубину и свет — и лишь спустя минуту начните различать вещи.',
-    develops:['пространственное восприятие','внимание к целому','меньше автоматизма в узнавании'],
-    tags:['восприятие','пространство','внимание','Матюшин'] },
-  { slug:'mat-02', cat:'Восприятие', title:'180 градусов', source:SRC+' · главное упражнение',
-    how:'Смотрите прямо перед собой, не переводя взгляд, и одновременно замечайте всё, что попадает в периферическое зрение. Ощущайте всю панораму сразу. Начните с 20–30 секунд.',
-    develops:['периферическое зрение','устойчивое внимание','ощущение большого пространства'],
-    tags:['периферическое зрение','внимание','панорама','Матюшин'] },
-  { slug:'mat-03', cat:'Восприятие', title:'Смотреть из центра', source:SRC,
-    how:'Зафиксируйте взгляд на одной точке и не двигайте глазами. Одновременно принимайте всё изображение вокруг, ничего не называя, — позвольте картине войти целиком.',
-    develops:['целостное восприятие','удержание сложной сцены'],
-    tags:['восприятие','целостность','Матюшин'] },
-  { slug:'mat-04', cat:'Восприятие', title:'Большое и малое', source:SRC,
-    how:'На улице или в природе сначала увидьте весь пейзаж, затем большие массы, затем линии — и лишь потом отдельные предметы. После вернитесь ко всему пространству.',
-    develops:['переключение между масштабами восприятия'],
-    tags:['восприятие','масштаб','пейзаж','Матюшин'] },
-  { slug:'mat-05', cat:'Восприятие', title:'Отражения', source:SRC,
-    how:'У воды или большого стекла попробуйте одновременно видеть здания, небо, отражение и пространство между ними — как единую композицию, не переключаясь.',
-    develops:['нестандартное восприятие пространства'],
-    tags:['отражения','пространство','композиция','Матюшин'] },
-  { slug:'mat-06', cat:'Восприятие', title:'Вертикальная комната', source:SRC,
-    how:'Лягте на бок и посмотрите на стену. Воспринимайте её не как поверхность, а как пространство. Замечайте момент, когда стена перестаёт быть плоскостью.',
-    develops:['разрушение привычной схемы восприятия'],
-    tags:['восприятие','пространство','Матюшин'] },
-  { slug:'mat-07', cat:'Восприятие', title:'Поворот', source:SRC,
-    how:'Идя по улице, резко обернитесь и на несколько секунд максимально полно воспримите открывшийся вид. Повернитесь вперёд — и сохраните ощущение предыдущего пространства.',
-    develops:['объёмная пространственная память'],
-    tags:['пространство','память','движение','Матюшин'] },
-  { slug:'mat-08', cat:'Восприятие', title:'Круговое пространство', source:SRC,
-    how:'Идите вперёд и одновременно представляйте улицу позади, небо над собой, пространство по бокам и впереди. Появляется ощущение, что вы внутри большого объёма, а не в узком коридоре.',
-    develops:['пространственное мышление','панорамное внимание','включённость в среду'],
-    tags:['пространство','панорама','движение','Матюшин'] },
-  { slug:'mat-09', cat:'Восприятие', title:'Прохожий', source:SRC,
-    how:'Заметьте идущего навстречу человека — движение, скорость, направление, ритм. Когда он пройдёт, мысленно удерживайте его траекторию, не оборачиваясь, и одновременно смотрите вперёд.',
-    develops:['несколько потоков внимания','пространственная память','непрерывность'],
-    tags:['внимание','движение','память','Матюшин'] },
-  { slug:'mat-10', cat:'Восприятие', title:'Небо', source:SRC,
-    how:'Лягте под деревьями и долго смотрите только в небо. Позвольте исчезнуть привычным категориям: верх, низ, передний и задний план.',
-    develops:['изменённое чувство пространства'],
-    tags:['небо','пространство','покой','Матюшин'] },
-];
-
+/* ===== фильтрация поверх статических карточек (единый источник — HTML выше) ===== */
+const cards = [...document.querySelectorAll('#lgrid .lcard')];
 let state = { cat:'Все', tags:[], q:'' };
-function cats(){ return ['Все', ...new Set(PRAK.map(p=>p.cat))]; }
-function allTags(){ const s=new Set(); PRAK.forEach(p=>p.tags.forEach(t=>s.add(t))); return [...s].sort((a,b)=>a.localeCompare(b,'ru')); }
+function cats(){ return ['Все', ...new Set(cards.map(c=>c.dataset.cat))]; }
+function allTags(){ const s=new Set(); cards.forEach(c=>c.dataset.tags.split('|').forEach(t=>{ if(t) s.add(t); })); return [...s].sort((a,b)=>a.localeCompare(b,'ru')); }
 
 function renderControls(){
   const tw=document.getElementById('ltypes'); tw.innerHTML='';
@@ -196,31 +256,19 @@ function renderControls(){
   const gw=document.getElementById('ltags'); gw.innerHTML='';
   allTags().forEach(t=>{ const b=document.createElement('button'); b.className='ltag'+(state.tags.includes(t)?' is-active':''); b.textContent='#'+t; b.onclick=()=>{ state.tags.includes(t)?state.tags=state.tags.filter(x=>x!==t):state.tags.push(t); render(); }; gw.appendChild(b); });
 }
-function match(p){
-  if(!(state.cat==='Все'||p.cat===state.cat)) return false;
-  if(!(state.tags.length===0 || p.tags.some(t=>state.tags.includes(t)))) return false;
-  if(state.q){ const hay=(p.title+' '+p.source+' '+p.how+' '+p.develops.join(' ')+' '+p.tags.join(' ')).toLowerCase(); if(!hay.includes(state.q)) return false; }
-  return true;
-}
-function render(){
-  renderControls();
-  const g=document.getElementById('lgrid'); g.innerHTML='';
-  const items=PRAK.filter(match);
-  document.getElementById('lcount').textContent = items.length+' из '+PRAK.length;
-  items.forEach(p=>{
-    const c=document.createElement('article'); c.className='lcard';
-    c.innerHTML =
-      `<div class="lcard__imgwrap"><img class="lcard__img" loading="lazy" src="assets/practices/${p.slug}.jpg" alt="${p.title}"><span class="lcard__type">${p.cat}</span></div>`+
-      `<div class="lcard__body">`+
-      `<div class="lcard__title">${p.title}</div>`+
-      `<div class="lcard__author">${p.source}</div>`+
-      `<div class="lcard__how">${p.how}</div>`+
-      `<div class="lcard__dev"><b>Развивает:</b> ${p.develops.join(' · ')}</div>`+
-      `<div class="lcard__tags">${p.tags.map(t=>`<span class="lcard__tag">#${t}</span>`).join('')}</div>`+
-      `</div>`;
-    g.appendChild(c);
+function apply(){
+  let n=0;
+  cards.forEach(c=>{
+    const tags=c.dataset.tags.split('|');
+    const ok = (state.cat==='Все'||c.dataset.cat===state.cat)
+      && (state.tags.length===0 || tags.some(t=>state.tags.includes(t)))
+      && (!state.q || c.textContent.toLowerCase().includes(state.q));
+    c.style.display = ok ? '' : 'none';
+    if(ok) n++;
   });
+  document.getElementById('lcount').textContent = n+' из '+cards.length;
 }
+function render(){ renderControls(); apply(); }
 document.getElementById('lsearch').addEventListener('input', e=>{ state.q=e.target.value.trim().toLowerCase(); render(); });
 
 const menu=document.getElementById('menu');
