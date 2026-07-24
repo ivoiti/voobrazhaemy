@@ -112,12 +112,13 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 
 /* ============ ВЕДУЩИЕ ============ */
 .authors { padding: 120px 0; background: var(--cream); }
-.authors__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+.authors__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 44px; max-width: 800px; margin: 0 auto; align-items: start; }
 .author { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 2px 18px rgba(23,24,26,.07); }
-.author img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-.author h3 { font-family: var(--serif); font-size: 26px; padding: 24px 28px 4px; }
-.author__role { padding: 0 28px; color: var(--terra); font-style: italic; }
-.author p:last-child { padding: 14px 28px 30px; font-size: 15px; color: rgba(23,24,26,.82); }
+.author img { width: 100%; height: auto; aspect-ratio: 1/1; object-fit: cover; display: block; }
+.author h3 { font-family: var(--serif); font-size: 23px; padding: 22px 26px 4px; }
+.author__role { padding: 0 26px; color: var(--terra); font-style: italic; }
+.author p { margin: 0; padding: 12px 26px 0; font-size: 14.5px; line-height: 1.55; color: rgba(23,24,26,.82); }
+.author p:last-child { padding-bottom: 28px; }
 
 /* ============ ФОРМАТЫ ============ */
 .formats { padding: 110px 0; background: var(--mustard); color: var(--ink); }
