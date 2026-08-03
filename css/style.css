@@ -201,7 +201,7 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 
 /* ОТЗЫВЫ */
 .reviews { padding: 110px 0; background: var(--cream-2); }
-.reviews__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+.reviews__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; align-items: start; }
 .review { background: #fff; border-radius: 18px; padding: 42px 34px 30px; box-shadow: 0 2px 18px rgba(23,24,26,.07); position: relative; margin: 0; }
 .review::before { content: '\201C'; position: absolute; top: 8px; left: 22px; font-family: var(--serif); font-size: 92px; line-height: 1; color: var(--terra); opacity: .16; }
 .review blockquote { font-family: var(--serif); font-size: 20px; line-height: 1.5; color: var(--ink); margin: 0 0 22px; position: relative; }
