@@ -13,6 +13,7 @@
     --line:#ECE5D8;
     --teal:#2A9D8F; --terra:#C0563A; --gold:#C0912F;
     --neutral-bar:#D8D1C3;
+    --good:#1E8A3C; --bad:#C0392B;
     --ring:rgba(34,31,26,.09);
     --shadow:0 1px 2px rgba(60,48,30,.04), 0 10px 26px -16px rgba(60,48,30,.24);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -20,90 +21,55 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--page);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1180px;margin:0 auto;padding:26px 22px 46px}
-
-  .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+  .top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:8px}
   .brand{display:flex;align-items:center;gap:13px}
   .mark{font-weight:700;font-size:15px;color:var(--teal);white-space:nowrap}
   .brand h1{font-size:20px;margin:0;font-weight:700;letter-spacing:-.01em}
   .brand .sub{font-size:12.5px;color:var(--ink-2);margin-top:1px}
-  .period{font-size:12.5px;color:var(--muted)}
-
+  .period{font-size:12.5px;color:var(--muted);text-align:right}
+  .srcnote{font-size:11.5px;color:var(--muted);margin:0 0 18px}
   .grid{display:grid;gap:14px}
-  .cols-3{grid-template-columns:repeat(3,1fr)}
   .cols-2{grid-template-columns:repeat(2,1fr)}
   .span-2{grid-column:span 2}
-  @media(max-width:860px){.cols-3,.cols-2{grid-template-columns:1fr}.span-2{grid-column:auto}}
-
+  @media(max-width:860px){.cols-2{grid-template-columns:1fr}.span-2{grid-column:auto}}
   .card{background:var(--surface);border:1px solid var(--ring);border-radius:16px;padding:18px 18px 16px;box-shadow:var(--shadow)}
-  .card h3{margin:0 0 12px;font-size:13.5px;font-weight:700}
-
-  .hero{display:grid;grid-template-columns:1fr 1.2fr;gap:26px;align-items:center;
-    background:linear-gradient(135deg,#fff,var(--surface-2));border:1px solid var(--ring);border-radius:20px;padding:22px 24px;box-shadow:var(--shadow);margin-bottom:14px}
-  @media(max-width:720px){.hero{grid-template-columns:1fr;gap:14px}}
-  .hero .label{font-size:13px;color:var(--ink-2);font-weight:600}
-  .hero .big{font-size:clamp(46px,8vw,66px);font-weight:800;line-height:1;letter-spacing:-.02em;margin:4px 0}
-
+  .card h3{margin:0 0 4px;font-size:13.5px;font-weight:700}
+  .card .cap{font-size:11.5px;color:var(--muted);margin:0 0 12px}
   .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
   @media(max-width:860px){.kpi{grid-template-columns:repeat(2,1fr)}}
   .tile{background:var(--surface);border:1px solid var(--ring);border-radius:14px;padding:14px 15px 12px;box-shadow:var(--shadow)}
   .tile .t-label{font-size:12px;color:var(--ink-2);font-weight:600}
-  .tile .t-val{font-size:25px;font-weight:800;letter-spacing:-.02em;margin:5px 0 3px}
+  .tile .t-val{font-size:27px;font-weight:800;letter-spacing:-.02em;margin:5px 0 3px}
+  .tile .t-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
   .tile .t-sub{font-size:11px;color:var(--muted)}
-
-  svg{display:block;width:100%;overflow:visible}
-  .axlab{font-size:11px;fill:var(--muted)}
-  .vlab{font-size:11px;fill:var(--ink-2);font-weight:700}
-  .mklab{font-size:10px;fill:var(--terra);font-weight:700}
-  .grid-l{stroke:var(--line);stroke-width:1}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-2);margin-top:4px}
-  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-
-  .funnel{display:flex;flex-direction:column;gap:9px}
-  .fn-row{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:12px}
-  .fn-name{font-size:12.5px;color:var(--ink-2);font-weight:600}
-  .fn-bar-wrap{position:relative;background:var(--surface-2);border-radius:8px;height:34px;overflow:hidden}
-  .fn-bar{height:100%;background:linear-gradient(90deg,var(--teal),#3bb3a3);border-radius:8px;display:flex;align-items:center;padding:0 12px;color:#fff;font-weight:700;font-size:13.5px;min-width:48px;transition:width .8s cubic-bezier(.3,.1,.2,1)}
-  .fn-pct{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--muted);font-weight:600}
-
+  .delta{display:inline-flex;align-items:center;gap:4px;font-weight:700;font-size:12.5px}
+  .delta.up{color:var(--good)} .delta.down{color:var(--bad)} .delta.flat{color:var(--muted)}
+  .delta svg{width:12px;height:12px}
   .rows{display:flex;flex-direction:column;gap:2px}
-  .row{display:grid;grid-template-columns:150px 1fr 64px;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:190px 1fr 72px;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}
   .row:last-child{border-bottom:0}
   .row .rn{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+  .row .rn small{display:block;font-weight:500;color:var(--muted);font-size:10.5px}
   .row .rbar{position:relative;height:20px;background:var(--surface-2);border-radius:6px;overflow:hidden}
   .row .rbar > span{position:absolute;left:0;top:0;height:100%;border-radius:6px;transition:width .8s cubic-bezier(.3,.1,.2,1)}
   .row .rval{font-size:12.5px;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
   .row .rval .rmeta{font-size:10.5px;color:var(--muted);font-weight:500}
-  .content-row{grid-template-columns:1fr 92px 84px}
-
-  .seg-h{font-size:14px;font-weight:700;margin-bottom:10px}
-  .step{display:grid;grid-template-columns:112px 1fr 72px;align-items:center;gap:10px;margin:7px 0}
-  .step .s-n{font-size:12px;color:var(--ink-2);font-weight:600}
-  .step .s-bar{height:22px;background:var(--surface-2);border-radius:6px;overflow:hidden;position:relative}
-  .step .s-bar>span{position:absolute;inset:0 auto 0 0;border-radius:6px;transition:width .8s cubic-bezier(.3,.1,.2,1)}
-  .step .s-v{font-size:12.5px;font-weight:700;text-align:right}
-  .step .s-v small{display:block;font-size:10px;color:var(--muted);font-weight:500}
-  .seg-out{margin-top:8px;font-size:12.5px;font-weight:700}
-
-  .scale{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  @media(max-width:860px){.scale{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.scale{grid-template-columns:1fr}}
-  .sc{background:var(--surface);border:1px solid var(--ring);border-left:3px solid var(--teal);border-radius:12px;padding:11px 13px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:5px}
-  .sc .g-tag{font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
-  .sc b{font-size:13px;font-weight:700}
-
-  .mini{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .mini{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   @media(max-width:860px){.mini{grid-template-columns:repeat(2,1fr)}}
   .mini .m{background:var(--surface-2);border-radius:12px;padding:12px 13px}
   .mini .m b{font-size:22px;font-weight:800;display:block;letter-spacing:-.01em}
   .mini .m span{font-size:11.5px;color:var(--ink-2)}
-  .mini.accent .m{background:color-mix(in srgb,var(--teal) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--teal) 22%,transparent)}
-  .mini.accent .m b{color:var(--teal)}
-
   .sect-h{font-size:12.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:24px 2px 12px}
-
+  table.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.tbl th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;padding:6px 8px;border-bottom:1px solid var(--line);text-transform:uppercase;letter-spacing:.04em}
+  table.tbl td{padding:8px;border-bottom:1px solid var(--line);color:var(--ink-2)}
+  table.tbl tr:last-child td{border-bottom:0}
+  table.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+  .note{background:color-mix(in srgb,var(--terra) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--terra) 22%,transparent);border-left:3px solid var(--terra);border-radius:12px;padding:13px 15px;font-size:12.5px;color:var(--ink-2);line-height:1.55}
+  .note b{color:var(--ink)}
   #tip{position:fixed;pointer-events:none;z-index:50;background:var(--ink);color:#fff;font-size:12px;padding:7px 10px;border-radius:8px;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);opacity:0;transition:opacity .12s;white-space:nowrap;font-weight:500}
-  #tip b{font-weight:700}
   .hoverable:hover{filter:brightness(.95)}
+  footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
   #gate{position:fixed;inset:0;z-index:1000;background:linear-gradient(135deg,#FBF9F5,#F0EADC);display:flex;align-items:center;justify-content:center;padding:20px}
   .gate-box{background:#fff;border:1px solid var(--ring);border-radius:18px;box-shadow:var(--shadow);padding:30px 26px;width:min(340px,92vw);text-align:center}
   .gate-mark{font-weight:700;font-size:15px;color:var(--teal)}
@@ -114,8 +80,7 @@
   .gate-box button{margin-top:12px;width:100%;padding:12px;border:none;border-radius:10px;background:var(--teal);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
   .gate-box button:hover{background:#248578}
   .gate-err{min-height:16px;font-size:12px;color:var(--terra);margin-top:9px;font-weight:600}
-  footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
-  @media print{body{background:#fff}.card,.tile,.hero,.sc{box-shadow:none;border-color:#ccc}#tip{display:none}}
+  @media print{body{background:#fff}.card,.tile{box-shadow:none;border-color:#ccc}#tip,#gate{display:none}}
 </style>
 </head>
 <body>
@@ -124,278 +89,180 @@
     <div class="gate-mark">[Es]&amp;[Vi]</div>
     <div class="gate-title">Аналитика продукта</div>
     <div class="gate-sub">Введите пароль для доступа</div>
-    <input id="gatePwd" type="password" inputmode="numeric" autocomplete="off" placeholder="••••">
+    <input id="gatePwd" type="password" autocomplete="off" placeholder="•••••">
     <button type="submit">Открыть</button>
     <div class="gate-err" id="gateErr"></div>
   </form>
 </div>
 <script>
 (function(){
-  var KEY='2411', gate=document.getElementById('gate');
+  var KEY='06.11', gate=document.getElementById('gate');
   function unlock(){gate.style.display='none';document.body.style.overflow='';}
-  if(sessionStorage.getItem('va_ok')==='1'){unlock();} else {document.body.style.overflow='hidden';}
+  if(sessionStorage.getItem('va_ok2')==='1'){unlock();} else {document.body.style.overflow='hidden';}
   document.getElementById('gateForm').addEventListener('submit',function(e){
     e.preventDefault();
-    if(document.getElementById('gatePwd').value.trim()===KEY){sessionStorage.setItem('va_ok','1');unlock();}
+    if(document.getElementById('gatePwd').value.trim()===KEY){sessionStorage.setItem('va_ok2','1');unlock();}
     else{document.getElementById('gateErr').textContent='Неверный пароль';document.getElementById('gatePwd').select();}
   });
   document.getElementById('gatePwd').focus();
 })();
 </script>
-<div class="wrap">
 
+<div class="wrap">
   <div class="top">
     <div class="brand">
       <span class="mark">[Es]&amp;[Vi]</span>
       <div>
         <h1>Аналитика продукта</h1>
-        <div class="sub">Онлайн-программа арт-коучинга «Мы должны быть воображаемы»</div>
+        <div class="sub">voobrazhaemy.ru · реальные данные</div>
       </div>
     </div>
-    <div class="period">февраль — июль 2026 · voobrazhaemy.ru</div>
+    <div class="period">4 июля — 3 августа 2026<br>обновлено 03.08.2026</div>
   </div>
-
-  <div class="hero">
-    <div>
-      <div class="label">Записей на сессии за 6 месяцев</div>
-      <div class="big">47</div>
-    </div>
-    <div>
-      <svg id="heroSpark" viewBox="0 0 420 130" preserveAspectRatio="none"></svg>
-      <div class="legend"><span><i style="background:var(--teal)"></i>Записи по месяцам</span></div>
-    </div>
-  </div>
+  <p class="srcnote">Источники: Яндекс.Метрика (счётчик 110592816) · Яндекс.Вебмастер · Google Search Console. Данные выгружены в таблицы и собраны в дашборд автоматически.</p>
 
   <div class="kpi" id="kpi"></div>
 
-  <div class="sect-h">Динамика</div>
-  <div class="grid cols-3">
-    <div class="card"><h3>Визиты сайта</h3><svg id="cVisits" viewBox="0 0 360 190"></svg></div>
-    <div class="card"><h3>Записи на сессии</h3><svg id="cRegs" viewBox="0 0 360 190"></svg></div>
-    <div class="card"><h3>Конверсия визит → запись, %</h3><svg id="cConv" viewBox="0 0 360 190"></svg></div>
-  </div>
-
-  <div class="sect-h">Тёплые лиды vs входящий трафик</div>
-  <div class="grid cols-2" id="segments"></div>
-
-  <div class="sect-h">Воронка и источники</div>
+  <div class="sect-h">Откуда приходят</div>
   <div class="grid cols-2">
-    <div class="card"><h3>Воронка продукта</h3><div class="funnel" id="funnel"></div></div>
-    <div class="card"><h3>Источники трафика</h3><div class="rows" id="sources"></div></div>
+    <div class="card">
+      <h3>Источники трафика</h3>
+      <p class="cap">визиты · доля · качество визита</p>
+      <div class="rows" id="sources"></div>
+    </div>
+    <div class="card">
+      <h3>Поисковые системы</h3>
+      <p class="cap">8 визитов из поиска · качество разное</p>
+      <div class="rows" id="engines"></div>
+    </div>
   </div>
 
-  <div class="sect-h">Точки входа и продажи программы</div>
+  <div class="sect-h">Видимость в поиске</div>
   <div class="grid cols-2">
-    <div class="card"><h3>Точки входа — типы сессий</h3><div class="rows" id="sessions"></div></div>
-    <div class="card"><h3>Продажи программы — как купили</h3><div class="rows" id="paths"></div></div>
+    <div class="card">
+      <h3>Индексация и показы</h3>
+      <p class="cap">сколько страниц в индексе и что они дают</p>
+      <table class="tbl" id="indexation"></table>
+    </div>
+    <div class="card">
+      <h3>Позиции показов — Яндекс</h3>
+      <p class="cap">на каких местах нас видят (34 показа)</p>
+      <div class="rows" id="positions"></div>
+    </div>
   </div>
 
-  <div class="sect-h">Что читают</div>
+  <div class="sect-h">Что в индексе Яндекса</div>
   <div class="grid cols-2">
-    <div class="card span-2"><h3>Топ материалов</h3><div class="rows" id="content"></div></div>
+    <div class="card span-2">
+      <h3>Страницы в поиске</h3>
+      <p class="cap">6 страниц со статусом «Каноническая»</p>
+      <table class="tbl" id="pages"></table>
+    </div>
   </div>
 
-  <div class="sect-h">Удовлетворённость и удержание программы</div>
-  <div class="mini accent" id="satis"></div>
-
-  <div class="sect-h">Вовлечённость и аудитория</div>
+  <div class="sect-h">Вовлечённость и конверсия</div>
   <div class="mini" id="mini"></div>
+  <div style="margin-top:14px" class="note" id="convnote"></div>
 
-  <footer>voobrazhaemy.ru · Яндекс.Метрика 110592816</footer>
+  <footer>voobrazhaemy.ru · Яндекс.Метрика 110592816 · данные на 03.08.2026</footer>
 </div>
 <div id="tip"></div>
 
 <script>
-/* ================= ДАННЫЕ ================= */
-const MONTHS=['Фев','Мар','Апр','Май','Июн','Июл'];
-const GS=3;
-const VISITS =[50,55,100,140,180,210];    // рост с апреля (735)
-const REGS   =[6,6,8,8,9,10];             // 47
-const CONV   =VISITS.map((v,i)=>+(REGS[i]/v*100).toFixed(1));
-const REVENUE=[0,0,50000,45000,50000,90000]; // 235 000
-const CONVUP =[16,18,22,25,28,31];
-
-const FUNNEL=[
-  {name:'Визиты',            v:735},
-  {name:'Вовлечённые',       v:250},
-  {name:'Записи на сессии',  v:47},
-  {name:'Пробные сессии',    v:16},
-  {name:'Продажи программы', v:5},
-];
-
-const SEGMENTS=[
-  {title:'Тёплые · прямое приглашение', steps:[['Контакты',15],['Пробная сессия',10],['Полная программа',4]], color:'var(--teal)'},
-  {title:'Входящие · сайт и каналы',    steps:[['Записи на сессии',32],['Пробная сессия',6],['Полная программа',1]], color:'var(--gold)'},
-];
-
-const SOURCES=[
-  {name:'Прямые / по ссылке', share:48, conv:6.5},
-  {name:'Дзен',               share:22, conv:1.8},
-  {name:'Реферальные',        share:14, conv:7.5},
-  {name:'ВКонтакте',          share:8,  conv:3.5},
-  {name:'Поиск',              share:4,  conv:3.0},
-  {name:'Прочее',             share:4,  conv:3.0},
-  {name:'MAX',                share:0,  conv:0},
-];
-
-const SESSIONS=[
-  {name:'Открытая сессия', n:34},
-  {name:'Химическая (знакомство)', n:13},
-];
-
-const PATHS=[
-  {name:'Реферальная скидка', n:3, rub:135000},
-  {name:'После фоллоу-ап', n:1, rub:50000},
-  {name:'Доплата после пробной', n:1, rub:50000},
-];
-
-const CONTENT=[
-  {name:'«Дверь как метафора»', views:240, sec:220, read:62},
-  {name:'История Вайолет — флипбук', views:200, sec:250, read:71},
-  {name:'Практика ЗОРВЕД Матюшина', views:130, sec:140, read:54},
-  {name:'Библиотека (каталог)', views:110, sec:110, read:48},
-  {name:'«Четыре музея — подвиг»', views:85, sec:185, read:59},
-  {name:'«Цвет — язык души»', views:65, sec:155, read:51},
-];
-
-const SATIS=[
-  {b:'4,9', s:'Оценка из 5'},
-  {b:'+80', s:'NPS программы'},
-  {b:'80%', s:'Дошли до конца'},
-  {b:'31%', s:'Пробная → программа'},
-  {b:'35%', s:'Пришли по рекомендации'},
-];
-
-const KPI=[
-  {label:'Визиты за период', val:'735', sub:'уник. ~600', spark:VISITS},
-  {label:'Записи на сессии', val:'47', sub:'', spark:REGS},
-  {label:'Продажи программы', val:'5', sub:'~235 000 ₽', spark:REVENUE},
-  {label:'Пробная → программа', val:'31%', sub:'', spark:CONVUP},
-];
-
-const MINI=[
-  {b:'2:40', s:'Ср. время на странице'},
-  {b:'68%',  s:'Мобильный трафик'},
-  {b:'1,8',  s:'Глубина визита, стр.'},
-  {b:'55%',  s:'Средние дочитывания'},
-  {b:'22%',  s:'Возвраты на сайт'},
-];
-
-/* ================= УТИЛИТЫ ================= */
+const D = {"period": "4 июля — 3 августа 2026", "updated": "03.08.2026", "traffic": [{"period": "Предыдущий", "date_from": "2026-06-27", "date_to": "2026-07-26", "visits": "128", "visitors": "97", "pageviews": "", "bounce_rate": "61.7", "depth": "1.42", "avg_time_sec": "100"}, {"period": "Текущий", "date_from": "2026-07-04", "date_to": "2026-08-03", "visits": "177", "visitors": "139", "pageviews": "245", "bounce_rate": "58.76", "depth": "1.38", "avg_time_sec": "91"}], "sources": [{"source": "Прямые заходы", "visits": "120", "share_pct": "67.80", "visitors": "102", "bounce_rate": "57.50", "depth": "1.36", "avg_time_sec": "93"}, {"source": "Переходы из рекомендательных систем (Дзен)", "visits": "28", "share_pct": "15.82", "visitors": "28", "bounce_rate": "100.00", "depth": "1.00", "avg_time_sec": "0"}, {"source": "Переходы по ссылкам на сайтах", "visits": "11", "share_pct": "6.21", "visitors": "4", "bounce_rate": "27.27", "depth": "2.36", "avg_time_sec": "359"}, {"source": "Внутренние переходы", "visits": "10", "share_pct": "5.65", "visitors": "7", "bounce_rate": "20.00", "depth": "1.90", "avg_time_sec": "62"}, {"source": "Переходы из поисковых систем", "visits": "8", "share_pct": "4.52", "visitors": "7", "bounce_rate": "25.00", "depth": "1.13", "avg_time_sec": "59"}], "engines": [{"engine": "Bing", "visits": "4", "share_pct": "50.00", "visitors": "4", "bounce_rate": "50.00", "depth": "1.00", "avg_time_sec": "8"}, {"engine": "Яндекс", "visits": "3", "share_pct": "37.50", "visitors": "2", "bounce_rate": "0.00", "depth": "1.33", "avg_time_sec": "141"}, {"engine": "Google", "visits": "1", "share_pct": "12.50", "visitors": "1", "bounce_rate": "0.00", "depth": "1.00", "avg_time_sec": "15"}], "indexation": [{"engine": "Яндекс", "indexed": "6", "not_indexed": "", "excluded": "1", "impressions": "34", "clicks": "4", "ctr_pct": "11.76", "avg_position": "8.97"}, {"engine": "Google", "indexed": "3", "not_indexed": "6", "excluded": "", "impressions": "10", "clicks": "0", "ctr_pct": "0.00", "avg_position": "4.70"}], "positions": [{"position_bucket": "1 позиция", "impressions": "1", "clicks": "0"}, {"position_bucket": "2-3 позиции", "impressions": "4", "clicks": "1"}, {"position_bucket": "4-10 позиции", "impressions": "23", "clicks": "3"}, {"position_bucket": "11-50 позиции", "impressions": "6", "clicks": "0"}], "goals": [{"goal": "Запись (клик Записаться)", "goal_id": "589155790", "conversions": "0", "conversion_rate": "0"}, {"goal": "Скачивание файла (автоцель)", "goal_id": "582145450", "conversions": "0", "conversion_rate": "0"}, {"goal": "Переход в мессенджер (автоцель)", "goal_id": "585885190", "conversions": "0", "conversion_rate": "0"}], "pages": [{"url": "/", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-28"}, {"url": "/praktiki.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/praktika-matyushin.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/biblioteka.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/journal/dver-kak-metafora.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-15"}, {"url": "/journal/chetyre-muzeya-podvig.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-15"}]};
+const KPI = [{"label": "Визиты", "val": "177", "sub": "было 128", "delta": "+38%", "dir": "up"}, {"label": "Посетители", "val": "139", "sub": "было 97", "delta": "+43%", "dir": "up"}, {"label": "Визиты из поиска", "val": "8", "sub": "было 3", "delta": "+167%", "dir": "up"}, {"label": "Отказы", "val": "58,8%", "sub": "было 61,7%", "delta": "−2,9 п.п.", "dir": "up"}];
 const $=s=>document.querySelector(s);
-const NS='http://www.w3.org/2000/svg';
-const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
-const fmt=n=>n.toLocaleString('ru-RU');
+const fmt=n=>Number(n).toLocaleString('ru-RU');
 const comma=v=>String(v).replace('.',',');
 const tip=$('#tip');
 const showTip=(h,e)=>{tip.innerHTML=h;tip.style.opacity=1;moveTip(e);};
 function moveTip(e){let x=e.clientX+14,y=e.clientY-10;if(x+tip.offsetWidth>innerWidth-8)x=e.clientX-tip.offsetWidth-14;if(y<8)y=8;tip.style.left=x+'px';tip.style.top=y+'px';}
 const hideTip=()=>tip.style.opacity=0;
-
-/* HERO */
-(function(){
-  const W=420,H=130,pad=10,base=H-14,top=14,svg=$('#heroSpark'),max=Math.max(...REGS);
-  const X=i=>pad+i*(W-2*pad)/(REGS.length-1),Y=v=>base-(v/max)*(base-top);
-  let d='';REGS.forEach((v,i)=>d+=(i?'L':'M')+X(i)+' '+Y(v)+' ');
-  svg.appendChild(el('path',{d:d+`L${X(REGS.length-1)} ${base} L${X(0)} ${base} Z`,fill:'var(--teal)','fill-opacity':.12}));
-  svg.appendChild(el('path',{d,fill:'none',stroke:'var(--teal)','stroke-width':2.6,'stroke-linejoin':'round','stroke-linecap':'round'}));
-  REGS.forEach((v,i)=>{const c=el('circle',{cx:X(i),cy:Y(v),r:i===REGS.length-1?5:3.4,fill:'var(--teal)',stroke:'#fff','stroke-width':2,class:'hoverable'});
-    c.addEventListener('mousemove',e=>showTip(`${MONTHS[i]} · <b>${v}</b>`,e));c.addEventListener('mouseleave',hideTip);svg.appendChild(c);});
-  const t=el('text',{x:X(REGS.length-1),y:Y(REGS.at(-1))-10,'text-anchor':'end',class:'vlab'});t.textContent=REGS.at(-1);svg.appendChild(t);
-})();
+function deltaEl(text,dir){const s=document.createElement('span');s.className='delta '+dir;
+  const a=dir==='up'?'<path d="M6 15l6-6 6 6"/>':dir==='down'?'<path d="M6 9l6 6 6-6"/>':'<path d="M5 12h14"/>';
+  s.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'+a+'</svg>'+text;return s;}
 
 /* KPI */
 (function(){const box=$('#kpi');KPI.forEach(k=>{const t=document.createElement('div');t.className='tile';
-  t.innerHTML=`<div class="t-label">${k.label}</div><div class="t-val">${k.val}</div>${k.sub?`<div class="t-sub">${k.sub}</div>`:''}`;
-  const sv=el('svg',{viewBox:'0 0 120 30',style:'width:100%;height:26px;margin-top:8px'});
-  const mn=Math.min(...k.spark),mx=Math.max(...k.spark),X=i=>4+i*112/(k.spark.length-1),Y=v=>26-((v-mn)/((mx-mn)||1))*22;
-  let d='';k.spark.forEach((v,i)=>d+=(i?'L':'M')+X(i)+' '+Y(v)+' ');
-  sv.appendChild(el('path',{d:d+`L${X(k.spark.length-1)} 30 L${X(0)} 30 Z`,fill:'var(--teal)','fill-opacity':.10}));
-  sv.appendChild(el('path',{d,fill:'none',stroke:'var(--teal)','stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'}));
-  sv.appendChild(el('circle',{cx:X(k.spark.length-1),cy:Y(k.spark.at(-1)),r:3,fill:'var(--teal)'}));
-  t.appendChild(sv);box.appendChild(t);});})();
+  t.innerHTML='<div class="t-label">'+k.label+'</div><div class="t-val">'+k.val+'</div><div class="t-foot"><span class="t-sub">'+k.sub+'</span></div>';
+  t.querySelector('.t-foot').prepend(deltaEl(k.delta,k.dir));box.appendChild(t);});})();
 
-/* CHART */
-function niceCeil(v){const p=Math.pow(10,Math.floor(Math.log10(v)));for(const m of [1,2,2.5,3,4,5,6,8,10])if(v<=m*p+1e-9)return m*p;return 10*p;}
-function isNice(s){const n=s/Math.pow(10,Math.floor(Math.log10(s)));return [1,2,2.5,5,10].some(x=>Math.abs(n-x)<.02);}
-function chart(sel,data,labels,{unit='',fmtV=fmt,area=false,accentFrom=null,mark=null}={}){
-  const svg=$(sel),W=360,H=190,L=32,R=8,T=14,B=26,iw=W-L-R,ih=H-T-B;
-  const max=niceCeil(Math.max(...data)*1.05)||1;
-  let tc=5;for(const c of [5,4,3,6]){if(isNice(max/c)){tc=c;break;}}
-  const X=i=>L+(i+.5)*iw/data.length,Y=v=>T+ih-(v/max)*ih;
-  for(let g=0;g<=tc;g++){const val=max*g/tc,y=Y(val);
-    svg.appendChild(el('line',{x1:L,y1:y,x2:W-R,y2:y,class:'grid-l'}));
-    const tx=el('text',{x:L-6,y:y+3,'text-anchor':'end',class:'axlab'});tx.textContent=val>=1000?fmt(val):(Math.round(val*10)/10);svg.appendChild(tx);}
-  if(mark!=null){const mx=L+mark*iw/data.length;
-    svg.appendChild(el('line',{x1:mx,y1:T,x2:mx,y2:T+ih,stroke:'var(--terra)','stroke-width':1.3,'stroke-opacity':.65}));
-    const ml=el('text',{x:mx+3,y:T+9,class:'mklab'});ml.textContent='сайт';svg.appendChild(ml);}
-  if(area){let d='';data.forEach((v,i)=>d+=(i?'L':'M')+X(i)+' '+Y(v)+' ');
-    svg.appendChild(el('path',{d:d+`L${X(data.length-1)} ${T+ih} L${X(0)} ${T+ih} Z`,fill:'var(--teal)','fill-opacity':.12}));
-    svg.appendChild(el('path',{d,fill:'none',stroke:'var(--teal)','stroke-width':2.4,'stroke-linejoin':'round','stroke-linecap':'round'}));
-    data.forEach((v,i)=>{const c=el('circle',{cx:X(i),cy:Y(v),r:3.4,fill:'var(--teal)',stroke:'#fff','stroke-width':2,class:'hoverable'});
-      c.addEventListener('mousemove',e=>showTip(`${labels[i]} · <b>${fmtV(v)}${unit}</b>`,e));c.addEventListener('mouseleave',hideTip);svg.appendChild(c);});
-  }else{const bw=Math.min(24,iw/data.length*.52);
-    data.forEach((v,i)=>{const h=(v/max)*ih,x=X(i)-bw/2,y=Y(v),col=(accentFrom!=null&&i<accentFrom)?'var(--neutral-bar)':'var(--teal)';
-      const r=el('rect',{x,y,width:bw,height:Math.max(h,1),rx:4,fill:col,class:'hoverable'});
-      r.addEventListener('mousemove',e=>showTip(`${labels[i]} · <b>${fmtV(v)}${unit}</b>`,e));r.addEventListener('mouseleave',hideTip);svg.appendChild(r);
-      if(h>4)svg.appendChild(el('rect',{x,y:y+4,width:bw,height:h-4,fill:col}));});}
-  labels.forEach((lb,i)=>{const tx=el('text',{x:X(i),y:H-8,'text-anchor':'middle',class:'axlab'});tx.textContent=lb;svg.appendChild(tx);});
-}
-chart('#cVisits',VISITS,MONTHS,{area:true});
-chart('#cRegs',REGS,MONTHS,{});
-chart('#cConv',CONV,MONTHS,{unit:'%',area:true,fmtV:comma});
-
-/* SEGMENTS */
-(function(){const box=$('#segments');
-  SEGMENTS.forEach(s=>{const base=s.steps[0][1],prog=s.steps.at(-1)[1];
-    const card=document.createElement('div');card.className='card';
-    let html=`<div class="seg-h">${s.title}</div>`;
-    s.steps.forEach(([nm,v],i)=>{const pct=Math.round(v/base*100);
-      html+=`<div class="step"><div class="s-n">${nm}</div><div class="s-bar"><span style="width:0;background:${s.color}"></span></div>
-        <div class="s-v">${v}<small>${i?pct+'%':'100%'}</small></div></div>`;});
-    html+=`<div class="seg-out" style="color:${s.color}">Контакт → программа: ${Math.round(prog/base*100)}%</div>`;
-    card.innerHTML=html;box.appendChild(card);
-    [...card.querySelectorAll('.step')].forEach((st,i)=>{const v=s.steps[i][1];requestAnimationFrame(()=>st.querySelector('.s-bar>span').style.width=(v/base*100)+'%');});});
-})();
-
-/* FUNNEL */
-(function(){const box=$('#funnel'),top=FUNNEL[0].v;
-  FUNNEL.forEach((f,i)=>{const w=Math.max(f.v/top*100,4),prev=i?Math.round(f.v/FUNNEL[i-1].v*100):100;
-    const row=document.createElement('div');row.className='fn-row';
-    row.innerHTML=`<div class="fn-name">${f.name}</div><div class="fn-bar-wrap"><div class="fn-bar" style="width:0">${fmt(f.v)}</div>
-      <span class="fn-pct">${i?prev+'% · ':''}${Math.round(f.v/top*100)}%</span></div>`;box.appendChild(row);
-    requestAnimationFrame(()=>row.querySelector('.fn-bar').style.width=w+'%');
-    const bar=row.querySelector('.fn-bar');bar.classList.add('hoverable');
-    bar.addEventListener('mousemove',e=>showTip(`<b>${f.name}</b> · ${fmt(f.v)}${i?' · '+prev+'% от «'+FUNNEL[i-1].name+'»':''}`,e));bar.addEventListener('mouseleave',hideTip);});})();
-
-/* rows */
-function renderRows(sel,items,{max,valFn,metaFn,colorFn}){
+/* rows renderer */
+function rows(sel,items,{max,name,hint,val,meta,color}){
   const box=$(sel);
   items.forEach(it=>{const row=document.createElement('div');row.className='row hoverable';
-    row.innerHTML=`<div class="rn">${it.name}</div><div class="rbar"><span style="width:0;background:${colorFn(it)}"></span></div>
-      <div class="rval">${valFn(it)}<div class="rmeta">${metaFn(it)}</div></div>`;box.appendChild(row);
-    requestAnimationFrame(()=>row.querySelector('.rbar>span').style.width=(it._w/max*100)+'%');
-    row.addEventListener('mousemove',e=>showTip(`<b>${it.name}</b> · ${valFn(it)} ${metaFn(it)}`,e));row.addEventListener('mouseleave',hideTip);});}
+    row.innerHTML='<div class="rn">'+name(it)+(hint&&hint(it)?'<small>'+hint(it)+'</small>':'')+'</div>'+
+      '<div class="rbar"><span style="width:0;background:'+color(it)+'"></span></div>'+
+      '<div class="rval">'+val(it)+'<div class="rmeta">'+meta(it)+'</div></div>';
+    box.appendChild(row);
+    const w=(Number(it._w)/max*100);
+    requestAnimationFrame(()=>row.querySelector('.rbar>span').style.width=w+'%');
+    row.addEventListener('mousemove',e=>showTip('<b>'+name(it)+'</b> · '+val(it)+' · '+meta(it),e));
+    row.addEventListener('mouseleave',hideTip);});
+}
 
-SOURCES.forEach(s=>s._w=s.share);
-renderRows('#sources',SOURCES,{max:Math.max(...SOURCES.map(s=>s.share)),valFn:s=>s.share+'%',metaFn:s=>'conv '+comma(s.conv)+'%',colorFn:s=>s.conv<3?'var(--terra)':'var(--teal)'});
-SESSIONS.forEach(s=>s._w=s.n);
-renderRows('#sessions',SESSIONS,{max:Math.max(...SESSIONS.map(s=>s.n)),valFn:s=>s.n,metaFn:()=>'записей',colorFn:()=>'var(--teal)'});
-PATHS.forEach(s=>s._w=s.rub);
-renderRows('#paths',PATHS,{max:Math.max(...PATHS.map(s=>s.rub)),valFn:s=>Math.round(s.rub/1000)+'к ₽',metaFn:s=>s.n===1?'1 оплата':s.n+' оплаты',colorFn:()=>'var(--gold)'});
+/* Sources */
+D.sources.forEach(s=>s._w=+s.visits);
+rows('#sources',D.sources,{max:Math.max(...D.sources.map(s=>+s.visits)),
+  name:s=>s.source.replace(' (Дзен)',''),
+  hint:s=>s.source.includes('Дзен')?'Дзен · 100% отказов, 0 сек':(s.source.includes('Прямые')?'Telegram + ручной заход':''),
+  val:s=>fmt(s.visits), meta:s=>s.share_pct.replace('.',',')+'%',
+  color:s=>(+s.bounce_rate>=80?'var(--terra)':'var(--teal)')});
 
-/* CONTENT */
-(function(){const box=$('#content'),max=Math.max(...CONTENT.map(c=>c.views));
-  CONTENT.forEach(c=>{const mm=Math.floor(c.sec/60),ss=String(c.sec%60).padStart(2,'0');
-    const row=document.createElement('div');row.className='row content-row hoverable';
-    row.innerHTML=`<div><div class="rn">${c.name}</div><div class="rbar" style="margin-top:6px"><span style="width:0;background:var(--teal)"></span></div></div>
-      <div class="rval">${fmt(c.views)}<div class="rmeta">просмотров</div></div><div class="rval">${mm}:${ss}<div class="rmeta">дочит. ${c.read}%</div></div>`;box.appendChild(row);
-    requestAnimationFrame(()=>row.querySelector('.rbar>span').style.width=(c.views/max*100)+'%');
-    row.addEventListener('mousemove',e=>showTip(`<b>${c.name}</b> · ${fmt(c.views)} просмотров · ${mm}:${ss} · дочит. ${c.read}%`,e));row.addEventListener('mouseleave',hideTip);});})();
+/* Engines */
+D.engines.forEach(s=>s._w=+s.visits);
+rows('#engines',D.engines,{max:Math.max(...D.engines.map(s=>+s.visits)),
+  name:s=>s.engine,
+  hint:s=>'отказы '+comma(s.bounce_rate)+'% · '+Math.round(s.avg_time_sec)+' сек',
+  val:s=>fmt(s.visits), meta:s=>'визита',
+  color:s=>(+s.bounce_rate>=50?'var(--terra)':'var(--teal)')});
 
-/* MINI */
-function renderMini(sel,arr){const box=$(sel);arr.forEach(m=>{const d=document.createElement('div');d.className='m';d.innerHTML=`<b>${m.b}</b><span>${m.s}</span>`;box.appendChild(d);});}
-renderMini('#satis',SATIS);renderMini('#mini',MINI);
+/* Positions */
+D.positions.forEach(p=>p._w=+p.impressions);
+rows('#positions',D.positions,{max:Math.max(...D.positions.map(p=>+p.impressions)),
+  name:p=>p.position_bucket, hint:p=>(+p.clicks? p.clicks+' клик(а)':''),
+  val:p=>fmt(p.impressions), meta:p=>'показов',
+  color:p=>(p.position_bucket.startsWith('11')?'var(--neutral-bar)':'var(--teal)')});
+
+/* Indexation table */
+(function(){
+  const t=$('#indexation');
+  t.innerHTML='<tr><th>Поисковик</th><th>В индексе</th><th>Не в индексе</th><th>Показы</th><th>Клики</th><th>CTR</th><th>Ср. поз.</th></tr>'+
+    D.indexation.map(r=>'<tr><td>'+r.engine+'</td>'+
+      '<td class="num">'+(r.indexed||'—')+'</td>'+
+      '<td class="num">'+(r.not_indexed||'—')+'</td>'+
+      '<td class="num">'+(r.impressions||'—')+'</td>'+
+      '<td class="num">'+(r.clicks||'0')+'</td>'+
+      '<td class="num">'+(r.ctr_pct?comma(r.ctr_pct)+'%':'—')+'</td>'+
+      '<td class="num">'+(r.avg_position?comma(r.avg_position):'—')+'</td></tr>').join('');
+})();
+
+/* Pages table */
+(function(){
+  const t=$('#pages');
+  t.innerHTML='<tr><th>Страница</th><th>Статус</th><th>Последний обход</th></tr>'+
+    D.pages.map(r=>'<tr><td>'+r.url+'</td><td>'+r.status+'</td><td>'+r.last_visit.split('-').reverse().join('.')+'</td></tr>').join('');
+})();
+
+/* Mini */
+(function(){
+  const cur=D.traffic.find(t=>t.period==='Текущий');
+  const m=[
+    {b:fmt(cur.pageviews), s:'Просмотров страниц'},
+    {b:comma(cur.depth), s:'Глубина визита, стр.'},
+    {b:Math.floor(cur.avg_time_sec/60)+':'+String(cur.avg_time_sec%60).padStart(2,'0'), s:'Среднее время на сайте'},
+    {b:comma(cur.bounce_rate)+'%', s:'Отказы'}
+  ];
+  const box=$('#mini');m.forEach(x=>{const d=document.createElement('div');d.className='m';d.innerHTML='<b>'+x.b+'</b><span>'+x.s+'</span>';box.appendChild(d);});
+})();
+
+/* Conversion note */
+(function(){
+  const zero=D.goals.every(g=>+g.conversions===0);
+  $('#convnote').innerHTML= zero
+    ? '<b>Конверсий пока нет.</b> Цели в Метрике заведены (запись, скачивание файла, переход в мессенджер), но за период ни одного достижения. Люди на сайт заходят — до действия не доходят. Это и есть главная точка роста: посадочная страница программы + понятный следующий шаг.'
+    : 'Конверсии есть — см. таблицу целей.';
+})();
 
 document.addEventListener('mousemove',e=>{if(tip.style.opacity==1)moveTip(e);});
 </script>
