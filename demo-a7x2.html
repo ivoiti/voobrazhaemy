@@ -142,7 +142,7 @@
     <div class="card">
       <h3>Индексация и показы</h3>
       <p class="cap">сколько страниц в индексе и что они дают</p>
-      <table class="tbl" id="indexation"></table>
+      <div style="overflow-x:auto"><table class="tbl" id="indexation"></table></div>
     </div>
     <div class="card">
       <h3>Позиции показов — Яндекс</h3>
@@ -156,7 +156,7 @@
     <div class="card span-2">
       <h3>Страницы в поиске</h3>
       <p class="cap">6 страниц со статусом «Каноническая»</p>
-      <table class="tbl" id="pages"></table>
+      <div style="overflow-x:auto"><table class="tbl" id="pages"></table></div>
     </div>
   </div>
 
@@ -164,12 +164,35 @@
   <div class="mini" id="mini"></div>
   <div style="margin-top:14px" class="note" id="convnote"></div>
 
+  <div class="sect-h">Спрос: что люди ищут и что у нас под это есть</div>
+  <div class="grid cols-2">
+    <div class="card span-2">
+      <h3>Семантика — приоритетные запросы</h3>
+      <p class="cap">спрос по России за месяц (Яндекс.Wordstat) · чем мы можем ответить</p>
+      <div style="overflow-x:auto"><table class="tbl" id="semantics"></table></div>
+    </div>
+  </div>
+
+  <div class="sect-h">Цели — с чем сверяемся</div>
+  <div class="grid cols-2">
+    <div class="card">
+      <h3>SEO-цели</h3>
+      <p class="cap">неделя · месяц · квартал</p>
+      <div id="goalsSeo"></div>
+    </div>
+    <div class="card">
+      <h3>Цели по конверсии</h3>
+      <p class="cap">неделя · месяц · квартал</p>
+      <div id="goalsConv"></div>
+    </div>
+  </div>
+
   <footer>voobrazhaemy.ru · Яндекс.Метрика 110592816 · данные на 03.08.2026</footer>
 </div>
 <div id="tip"></div>
 
 <script>
-const D = {"period": "4 июля — 3 августа 2026", "updated": "03.08.2026", "traffic": [{"period": "Предыдущий", "date_from": "2026-06-27", "date_to": "2026-07-26", "visits": "128", "visitors": "97", "pageviews": "", "bounce_rate": "61.7", "depth": "1.42", "avg_time_sec": "100"}, {"period": "Текущий", "date_from": "2026-07-04", "date_to": "2026-08-03", "visits": "177", "visitors": "139", "pageviews": "245", "bounce_rate": "58.76", "depth": "1.38", "avg_time_sec": "91"}], "sources": [{"source": "Прямые заходы", "visits": "120", "share_pct": "67.80", "visitors": "102", "bounce_rate": "57.50", "depth": "1.36", "avg_time_sec": "93"}, {"source": "Переходы из рекомендательных систем (Дзен)", "visits": "28", "share_pct": "15.82", "visitors": "28", "bounce_rate": "100.00", "depth": "1.00", "avg_time_sec": "0"}, {"source": "Переходы по ссылкам на сайтах", "visits": "11", "share_pct": "6.21", "visitors": "4", "bounce_rate": "27.27", "depth": "2.36", "avg_time_sec": "359"}, {"source": "Внутренние переходы", "visits": "10", "share_pct": "5.65", "visitors": "7", "bounce_rate": "20.00", "depth": "1.90", "avg_time_sec": "62"}, {"source": "Переходы из поисковых систем", "visits": "8", "share_pct": "4.52", "visitors": "7", "bounce_rate": "25.00", "depth": "1.13", "avg_time_sec": "59"}], "engines": [{"engine": "Bing", "visits": "4", "share_pct": "50.00", "visitors": "4", "bounce_rate": "50.00", "depth": "1.00", "avg_time_sec": "8"}, {"engine": "Яндекс", "visits": "3", "share_pct": "37.50", "visitors": "2", "bounce_rate": "0.00", "depth": "1.33", "avg_time_sec": "141"}, {"engine": "Google", "visits": "1", "share_pct": "12.50", "visitors": "1", "bounce_rate": "0.00", "depth": "1.00", "avg_time_sec": "15"}], "indexation": [{"engine": "Яндекс", "indexed": "6", "not_indexed": "", "excluded": "1", "impressions": "34", "clicks": "4", "ctr_pct": "11.76", "avg_position": "8.97"}, {"engine": "Google", "indexed": "3", "not_indexed": "6", "excluded": "", "impressions": "10", "clicks": "0", "ctr_pct": "0.00", "avg_position": "4.70"}], "positions": [{"position_bucket": "1 позиция", "impressions": "1", "clicks": "0"}, {"position_bucket": "2-3 позиции", "impressions": "4", "clicks": "1"}, {"position_bucket": "4-10 позиции", "impressions": "23", "clicks": "3"}, {"position_bucket": "11-50 позиции", "impressions": "6", "clicks": "0"}], "goals": [{"goal": "Запись (клик Записаться)", "goal_id": "589155790", "conversions": "0", "conversion_rate": "0"}, {"goal": "Скачивание файла (автоцель)", "goal_id": "582145450", "conversions": "0", "conversion_rate": "0"}, {"goal": "Переход в мессенджер (автоцель)", "goal_id": "585885190", "conversions": "0", "conversion_rate": "0"}], "pages": [{"url": "/", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-28"}, {"url": "/praktiki.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/praktika-matyushin.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/biblioteka.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/journal/dver-kak-metafora.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-15"}, {"url": "/journal/chetyre-muzeya-podvig.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-15"}]};
+const D = {"period": "4 июля — 3 августа 2026", "updated": "03.08.2026", "traffic": [{"period": "Предыдущий", "date_from": "2026-06-27", "date_to": "2026-07-26", "visits": "128", "visitors": "97", "pageviews": "", "bounce_rate": "61.7", "depth": "1.42", "avg_time_sec": "100"}, {"period": "Текущий", "date_from": "2026-07-04", "date_to": "2026-08-03", "visits": "177", "visitors": "139", "pageviews": "245", "bounce_rate": "58.76", "depth": "1.38", "avg_time_sec": "91"}], "sources": [{"source": "Прямые заходы", "visits": "120", "share_pct": "67.80", "visitors": "102", "bounce_rate": "57.50", "depth": "1.36", "avg_time_sec": "93"}, {"source": "Переходы из рекомендательных систем (Дзен)", "visits": "28", "share_pct": "15.82", "visitors": "28", "bounce_rate": "100.00", "depth": "1.00", "avg_time_sec": "0"}, {"source": "Переходы по ссылкам на сайтах", "visits": "11", "share_pct": "6.21", "visitors": "4", "bounce_rate": "27.27", "depth": "2.36", "avg_time_sec": "359"}, {"source": "Внутренние переходы", "visits": "10", "share_pct": "5.65", "visitors": "7", "bounce_rate": "20.00", "depth": "1.90", "avg_time_sec": "62"}, {"source": "Переходы из поисковых систем", "visits": "8", "share_pct": "4.52", "visitors": "7", "bounce_rate": "25.00", "depth": "1.13", "avg_time_sec": "59"}], "engines": [{"engine": "Bing", "visits": "4", "share_pct": "50.00", "visitors": "4", "bounce_rate": "50.00", "depth": "1.00", "avg_time_sec": "8"}, {"engine": "Яндекс", "visits": "3", "share_pct": "37.50", "visitors": "2", "bounce_rate": "0.00", "depth": "1.33", "avg_time_sec": "141"}, {"engine": "Google", "visits": "1", "share_pct": "12.50", "visitors": "1", "bounce_rate": "0.00", "depth": "1.00", "avg_time_sec": "15"}], "indexation": [{"engine": "Яндекс", "indexed": "6", "not_indexed": "", "excluded": "1", "impressions": "34", "clicks": "4", "ctr_pct": "11.76", "avg_position": "8.97"}, {"engine": "Google", "indexed": "3", "not_indexed": "6", "excluded": "", "impressions": "10", "clicks": "0", "ctr_pct": "0.00", "avg_position": "4.70"}], "positions": [{"position_bucket": "1 позиция", "impressions": "1", "clicks": "0"}, {"position_bucket": "2-3 позиции", "impressions": "4", "clicks": "1"}, {"position_bucket": "4-10 позиции", "impressions": "23", "clicks": "3"}, {"position_bucket": "11-50 позиции", "impressions": "6", "clicks": "0"}], "goals": [{"goal": "Запись (клик Записаться)", "goal_id": "589155790", "conversions": "0", "conversion_rate": "0"}, {"goal": "Скачивание файла (автоцель)", "goal_id": "582145450", "conversions": "0", "conversion_rate": "0"}, {"goal": "Переход в мессенджер (автоцель)", "goal_id": "585885190", "conversions": "0", "conversion_rate": "0"}], "pages": [{"url": "/", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-28"}, {"url": "/praktiki.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/praktika-matyushin.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/biblioteka.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-23"}, {"url": "/journal/dver-kak-metafora.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-15"}, {"url": "/journal/chetyre-muzeya-podvig.html", "engine": "Яндекс", "status": "Каноническая", "last_visit": "2026-07-15"}], "semantics": [{"query": "метафорические карты", "demand_month": "46090", "cluster": "МАК", "our_asset": "Библиотека (74 карточки) + статья про МАК", "asset_status": "статья НЕ опубликована", "priority": "1"}, {"query": "метафорические карты онлайн", "demand_month": "11090", "cluster": "МАК", "our_asset": "—", "asset_status": "нет", "priority": "3"}, {"query": "метафорические ассоциативные карты", "demand_month": "3420", "cluster": "МАК", "our_asset": "статья про МАК", "asset_status": "не опубликована", "priority": "1"}, {"query": "эмоциональное выгорание", "demand_month": "26503", "cluster": "Выгорание", "our_asset": "—", "asset_status": "нет", "priority": "2"}, {"query": "тест на эмоциональное выгорание", "demand_month": "1534", "cluster": "Выгорание", "our_asset": "лид-магнит (план)", "asset_status": "не сделан", "priority": "1"}, {"query": "как справиться с эмоциональным выгоранием", "demand_month": "500", "cluster": "Выгорание", "our_asset": "—", "asset_status": "нет", "priority": "2"}, {"query": "как выйти из эмоционального выгорания", "demand_month": "177", "cluster": "Выгорание", "our_asset": "—", "asset_status": "нет", "priority": "2"}, {"query": "как смотреть картины", "demand_month": "1704", "cluster": "Смотрение", "our_asset": "«Мы разучились смотреть» + практика", "asset_status": "опубликована", "priority": "1"}, {"query": "колода метафорических карт", "demand_month": "1096", "cluster": "МАК", "our_asset": "Библиотека", "asset_status": "опубликована", "priority": "1"}, {"query": "работа с метафорическими картами", "demand_month": "886", "cluster": "МАК", "our_asset": "статья про МАК", "asset_status": "не опубликована", "priority": "1"}, {"query": "метафорические карты какие", "demand_month": "629", "cluster": "МАК", "our_asset": "Библиотека", "asset_status": "опубликована", "priority": "2"}, {"query": "метафорические карты значение", "demand_month": "583", "cluster": "МАК", "our_asset": "статья про МАК", "asset_status": "не опубликована", "priority": "2"}, {"query": "как работать с метафорическими картами", "demand_month": "408", "cluster": "МАК", "our_asset": "статья про МАК", "asset_status": "не опубликована", "priority": "1"}, {"query": "метафорические карты для психолога", "demand_month": "254", "cluster": "МАК", "our_asset": "Библиотека", "asset_status": "опубликована", "priority": "2"}, {"query": "метафорические карты обучение", "demand_month": "246", "cluster": "МАК", "our_asset": "—", "asset_status": "нет", "priority": "3"}, {"query": "лучшие метафорические карты", "demand_month": "223", "cluster": "МАК", "our_asset": "Библиотека", "asset_status": "опубликована", "priority": "2"}, {"query": "арт-коучинг", "demand_month": "208", "cluster": "Бренд", "our_asset": "весь сайт", "asset_status": "опубликован", "priority": "2"}, {"query": "как правильно смотреть картину", "demand_month": "52", "cluster": "Смотрение", "our_asset": "«Мы разучились смотреть»", "asset_status": "опубликована", "priority": "1"}, {"query": "как смотреть и понимать картины", "demand_month": "26", "cluster": "Смотрение", "our_asset": "«Мы разучились смотреть»", "asset_status": "опубликована", "priority": "2"}, {"query": "как смотреть картины в музее", "demand_month": "16", "cluster": "Смотрение", "our_asset": "«Мы разучились смотреть»", "asset_status": "опубликована", "priority": "2"}], "goals_seo": [{"horizon": "Неделя", "deadline": "2026-08-10", "metric": "Страниц в индексе Яндекса", "current": "6", "target": "9", "status": "в работе"}, {"horizon": "Неделя", "deadline": "2026-08-10", "metric": "Опубликована статья про МАК", "current": "0", "target": "1", "status": "не начато"}, {"horizon": "Неделя", "deadline": "2026-08-10", "metric": "Title/description под «как смотреть картины»", "current": "0", "target": "1", "status": "не начато"}, {"horizon": "Неделя", "deadline": "2026-08-10", "metric": "Внутренних ссылок на каждую статью (мин.)", "current": "1", "target": "2", "status": "сделано"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Страниц в индексе Яндекса", "current": "6", "target": "14", "status": "в работе"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Страниц в индексе Google", "current": "3", "target": "10", "status": "в работе"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Показы в Яндексе", "current": "34", "target": "150", "status": "в работе"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Клики из Яндекса", "current": "4", "target": "15", "status": "в работе"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Визиты из поиска", "current": "8", "target": "25", "status": "в работе"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Средняя позиция в Яндексе", "current": "8.97", "target": "7.0", "status": "в работе"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Показы в Яндексе", "current": "34", "target": "500", "status": "не начато"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Клики из Яндекса", "current": "4", "target": "50", "status": "не начато"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Визиты из поиска в месяц", "current": "8", "target": "60", "status": "не начато"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Топ-10 по «метафорические карты»", "current": "нет", "target": "да", "status": "не начато"}], "goals_conv": [{"horizon": "Неделя", "deadline": "2026-08-10", "metric": "Следующий шаг в конце каждой статьи", "current": "частично", "target": "все статьи", "status": "в работе"}, {"horizon": "Неделя", "deadline": "2026-08-10", "metric": "UTM-метки в Telegram", "current": "0", "target": "1", "status": "не начато"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Посадочная страница программы", "current": "0", "target": "1", "status": "не начато"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Лид-магнит (тест на выгорание)", "current": "0", "target": "1", "status": "не начато"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Достижения цели «Запись»", "current": "0", "target": "3", "status": "не начато"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Отказы", "current": "58.76", "target": "50.0", "status": "в работе"}, {"horizon": "Месяц", "deadline": "2026-09-03", "metric": "Глубина визита", "current": "1.38", "target": "1.8", "status": "в работе"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Достижения цели «Запись» в месяц", "current": "0", "target": "10", "status": "не начато"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Контактов через лид-магнит", "current": "0", "target": "30", "status": "не начато"}, {"horizon": "Квартал", "deadline": "2026-11-03", "metric": "Конверсия визит→запись", "current": "0", "target": "2.0", "status": "не начато"}]};
 const KPI = [{"label": "Визиты", "val": "177", "sub": "было 128", "delta": "+38%", "dir": "up"}, {"label": "Посетители", "val": "139", "sub": "было 97", "delta": "+43%", "dir": "up"}, {"label": "Визиты из поиска", "val": "8", "sub": "было 3", "delta": "+167%", "dir": "up"}, {"label": "Отказы", "val": "58,8%", "sub": "было 61,7%", "delta": "−2,9 п.п.", "dir": "up"}];
 const $=s=>document.querySelector(s);
 const fmt=n=>Number(n).toLocaleString('ru-RU');
@@ -263,6 +286,61 @@ rows('#positions',D.positions,{max:Math.max(...D.positions.map(p=>+p.impressions
     ? '<b>Конверсий пока нет.</b> Цели в Метрике заведены (запись, скачивание файла, переход в мессенджер), но за период ни одного достижения. Люди на сайт заходят — до действия не доходят. Это и есть главная точка роста: посадочная страница программы + понятный следующий шаг.'
     : 'Конверсии есть — см. таблицу целей.';
 })();
+
+/* Semantics table */
+(function(){
+  const t=$('#semantics');
+  const rowsHtml=D.semantics.filter(s=>+s.priority<=2).map(s=>{
+    const st=(s.asset_status||'').toLowerCase();
+    const badge= st.indexOf('не опубликован')>=0 || st.indexOf('не сделан')>=0
+        ? '<span style="color:var(--gold);font-weight:700">готово, не опубликовано</span>'
+      : st.indexOf('опубликован')>=0
+        ? '<span style="color:var(--good);font-weight:700">есть</span>'
+        : '<span style="color:var(--terra);font-weight:700">нет</span>';
+    return '<tr><td><b>'+s.query+'</b></td><td class="num">'+fmt(s.demand_month)+'</td><td>'+s.cluster+'</td><td>'+(s.our_asset==='—'?'—':s.our_asset)+'</td><td>'+badge+'</td></tr>';
+  }).join('');
+  t.innerHTML='<tr><th>Запрос</th><th>Спрос/мес</th><th>Кластер</th><th>Наш ответ</th><th>Статус</th></tr>'+rowsHtml;
+})();
+
+/* Goals renderer with progress */
+function renderGoals(sel, list){
+  const box=$(sel);
+  const order=['Неделя','Месяц','Квартал'];
+  order.forEach(h=>{
+    const items=list.filter(g=>g.horizon===h);
+    if(!items.length) return;
+    const head=document.createElement('div');
+    head.style.cssText='font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px';
+    const dl=items[0].deadline.split('-').reverse().join('.');
+    head.textContent=h+' · до '+dl;
+    box.appendChild(head);
+    items.forEach(g=>{
+      const cur=parseFloat(String(g.current).replace(',','.'));
+      const tgt=parseFloat(String(g.target).replace(',','.'));
+      let pct=null;
+      if(!isNaN(cur)&&!isNaN(tgt)&&tgt!==0){
+        pct = (g.metric.indexOf('Отказы')>=0 || g.metric.indexOf('позиция')>=0)
+          ? Math.max(0,Math.min(100, Math.round((cur-tgt)>=0 ? (100 - (cur-tgt)/cur*100) : 100)))
+          : Math.max(0,Math.min(100, Math.round(cur/tgt*100)));
+      }
+      const row=document.createElement('div');
+      row.style.cssText='display:grid;grid-template-columns:1fr 108px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)';
+      const done=g.status==='сделано';
+      row.innerHTML=
+        '<div style="font-size:12.5px;color:var(--ink-2)">'+g.metric+
+          '<div style="height:5px;background:var(--surface-2);border-radius:99px;margin-top:5px;overflow:hidden">'+
+          '<span style="display:block;height:100%;width:'+(pct===null?(done?100:0):pct)+'%;background:'+(done?'var(--good)':(pct!==null&&pct>=100?'var(--good)':'var(--teal)'))+';border-radius:99px"></span></div>'+
+        '</div>'+
+        '<div style="text-align:right;font-size:12px;font-variant-numeric:tabular-nums">'+
+          '<b>'+g.current+'</b> <span style="color:var(--muted)">→ '+g.target+'</span>'+
+          '<div style="font-size:10px;color:'+(done?'var(--good)':'var(--muted)')+'">'+g.status+'</div>'+
+        '</div>';
+      box.appendChild(row);
+    });
+  });
+}
+renderGoals('#goalsSeo', D.goals_seo);
+renderGoals('#goalsConv', D.goals_conv);
 
 document.addEventListener('mousemove',e=>{if(tip.style.opacity==1)moveTip(e);});
 </script>
