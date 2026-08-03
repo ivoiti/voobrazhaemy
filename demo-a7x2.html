@@ -65,6 +65,9 @@
   table.tbl td{padding:8px;border-bottom:1px solid var(--line);color:var(--ink-2)}
   table.tbl tr:last-child td{border-bottom:0}
   table.tbl td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+  .expl{font-size:11.5px;color:var(--ink-2);line-height:1.5;background:var(--surface-2);border-radius:9px;padding:9px 11px;margin:0 0 12px}
+  .expl b{color:var(--ink)}
+  .expl--out{margin:12px 0 0;background:color-mix(in srgb,var(--teal) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--teal) 20%,transparent)}
   .note{background:color-mix(in srgb,var(--terra) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--terra) 22%,transparent);border-left:3px solid var(--terra);border-radius:12px;padding:13px 15px;font-size:12.5px;color:var(--ink-2);line-height:1.55}
   .note b{color:var(--ink)}
   #tip{position:fixed;pointer-events:none;z-index:50;background:var(--ink);color:#fff;font-size:12px;padding:7px 10px;border-radius:8px;box-shadow:0 6px 20px -6px rgba(0,0,0,.5);opacity:0;transition:opacity .12s;white-space:nowrap;font-weight:500}
@@ -128,11 +131,13 @@
     <div class="card">
       <h3>Источники трафика</h3>
       <p class="cap">визиты · доля · качество визита</p>
+      <div class="expl"><b>Визит</b> — один заход на сайт (один человек может зайти несколько раз). <b>Отказы</b> — доля тех, кто ушёл почти сразу: чем меньше, тем лучше.</div>
       <div class="rows" id="sources"></div>
     </div>
     <div class="card">
       <h3>Поисковые системы</h3>
       <p class="cap">8 визитов из поиска · качество разное</p>
+      <div class="expl">Кто из поисковиков привёл людей и насколько живых: смотрим не на число, а на отказы и время.</div>
       <div class="rows" id="engines"></div>
     </div>
   </div>
@@ -141,13 +146,22 @@
   <div class="grid cols-2">
     <div class="card">
       <h3>Индексация и показы</h3>
-      <p class="cap">сколько страниц в индексе и что они дают</p>
+      <p class="cap">сколько страниц поисковик взял к себе и что они дают</p>
+      <div class="expl">
+        <b>В индексе</b> — страницы, которые поисковик нашёл и готов показывать. Чего нет в индексе — не покажут никогда.
+        <b>CTR</b> — доля тех, кто нажал, из тех, кто увидел. <b>Ср. позиция</b> — на какой строчке в среднем показывались.
+      </div>
       <div style="overflow-x:auto"><table class="tbl" id="indexation"></table></div>
     </div>
     <div class="card">
       <h3>Позиции показов — Яндекс</h3>
-      <p class="cap">на каких местах нас видят (34 показа)</p>
+      <p class="cap">на каких строчках выдачи нас видели за месяц</p>
+      <div class="expl">
+        <b>Показ</b> — сайт появился в результатах поиска, человек увидел ссылку.
+        <b>Позиция</b> — какая это была строчка. <b>Клик</b> — перешёл к нам.
+      </div>
       <div class="rows" id="positions"></div>
+      <div class="expl expl--out" id="posnote"></div>
     </div>
   </div>
 
@@ -242,10 +256,31 @@ rows('#engines',D.engines,{max:Math.max(...D.engines.map(s=>+s.visits)),
 
 /* Positions */
 D.positions.forEach(p=>p._w=+p.impressions);
+function posCtr(p){const i=+p.impressions,c=+p.clicks; return i? Math.round(c/i*100):0;}
 rows('#positions',D.positions,{max:Math.max(...D.positions.map(p=>+p.impressions)),
-  name:p=>p.position_bucket, hint:p=>(+p.clicks? p.clicks+' клик(а)':''),
+  name:p=>p.position_bucket,
+  hint:p=>(+p.clicks? p.clicks+' клик'+(+p.clicks>1?'а':'')+' · кликают '+posCtr(p)+'% тех, кто увидел'
+                     : 'ни одного клика'),
   val:p=>fmt(p.impressions), meta:p=>'показов',
   color:p=>(p.position_bucket.startsWith('11')?'var(--neutral-bar)':'var(--teal)')});
+
+/* Вывод под блоком позиций */
+(function(){
+  const el=$('#posnote'); if(!el) return;
+  const P=D.positions;
+  const top23=P.find(p=>p.position_bucket.startsWith('2-3'));
+  const mid=P.find(p=>p.position_bucket.startsWith('4-10'));
+  const low=P.find(p=>p.position_bucket.startsWith('11'));
+  const totalImp=P.reduce((s,p)=>s+(+p.impressions),0);
+  const midShare=Math.round(+mid.impressions/totalImp*100);
+  el.innerHTML=
+    '<b>Что с этим делать.</b> Чем выше строчка — тем чаще нажимают: с <b>2–3 позиции кликают '+posCtr(top23)+
+    '%</b> тех, кто увидел, а с 4–10 — только '+posCtr(mid)+'%. С 11-й и ниже не кликают вовсе: туда не долистывают.<br>'+
+    'Сейчас <b>'+midShare+'% наших показов сидят на 4–10 месте</b> ('+mid.impressions+' из '+totalImp+
+    '). Это и есть резерв: поднять их на две-три строчки — и кликов станет вдвое-втрое больше <i>без</i> роста числа показов. '+
+    'Поднимают две вещи: заголовок с описанием (влияют на кликабельность) и полнота текста под запрос (влияет на позицию).<br>'+
+    '<span style="color:var(--muted)">Оговорка: всего '+totalImp+' показов за месяц — числа маленькие, один клик заметно двигает проценты. Смотреть как на тенденцию, сверяться в следующий замер.</span>';
+})();
 
 /* Indexation table */
 (function(){
