@@ -205,6 +205,10 @@ mark { background: none; color: var(--terra); font-weight: 600; }
 .review { background: #fff; border-radius: 18px; padding: 42px 34px 30px; box-shadow: 0 2px 18px rgba(23,24,26,.07); position: relative; margin: 0; }
 .review::before { content: '\201C'; position: absolute; top: 8px; left: 22px; font-family: var(--serif); font-size: 92px; line-height: 1; color: var(--terra); opacity: .16; }
 .review blockquote { font-family: var(--serif); font-size: 20px; line-height: 1.5; color: var(--ink); margin: 0 0 22px; position: relative; }
+.review__text { display: -webkit-box; -webkit-line-clamp: 9; -webkit-box-orient: vertical; overflow: hidden; }
+.review.is-open .review__text { -webkit-line-clamp: unset; display: block; }
+.review__more { align-self: flex-start; margin: -12px 0 16px; padding: 0; border: 0; background: none; font: inherit; font-family: var(--sans, inherit); font-size: 15px; color: var(--terra); cursor: pointer; border-bottom: 1px dotted currentColor; transition: opacity .2s; }
+.review__more:hover { opacity: .7; }
 .review figcaption { display: flex; flex-direction: column; gap: 3px; }
 .review__name { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--terra); }
 .review__role { font-size: 14px; color: rgba(23,24,26,.6); }

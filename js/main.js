@@ -91,3 +91,26 @@ document.addEventListener('click', (ev) => {
   if(c) c.addEventListener('click', closeM);
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
 })();
+
+/* Отзывы: сворачивание длинных текстов с кнопкой «Читать полностью» */
+(function(){
+  var reviews = document.querySelectorAll('.review');
+  if (!reviews.length) return;
+  reviews.forEach(function(card){
+    var text = card.querySelector('.review__text');
+    if (!text) return;
+    // кнопка нужна только если текст реально не помещается
+    if (text.scrollHeight <= text.clientHeight + 2) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'review__more';
+    btn.textContent = 'Читать полностью';
+    btn.setAttribute('aria-expanded', 'false');
+    text.insertAdjacentElement('afterend', btn);
+    btn.addEventListener('click', function(){
+      var open = card.classList.toggle('is-open');
+      btn.textContent = open ? 'Свернуть' : 'Читать полностью';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+})();
