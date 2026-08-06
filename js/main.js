@@ -92,25 +92,93 @@ document.addEventListener('click', (ev) => {
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
 })();
 
-/* Отзывы: сворачивание длинных текстов с кнопкой «Читать полностью» */
+/* Карусель отзывов: листание стрелками/точками/свайпом + «Читать полностью» */
 (function(){
-  var reviews = document.querySelectorAll('.review');
-  if (!reviews.length) return;
-  reviews.forEach(function(card){
-    var text = card.querySelector('.review__text');
-    if (!text) return;
-    // кнопка нужна только если текст реально не помещается
-    if (text.scrollHeight <= text.clientHeight + 2) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'review__more';
-    btn.textContent = 'Читать полностью';
-    btn.setAttribute('aria-expanded', 'false');
-    text.insertAdjacentElement('afterend', btn);
-    btn.addEventListener('click', function(){
-      var open = card.classList.toggle('is-open');
-      btn.textContent = open ? 'Свернуть' : 'Читать полностью';
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  var root = document.getElementById('revCarousel');
+  if (!root) return;
+  var track = root.querySelector('.rev-track');
+  var slides = [].slice.call(root.querySelectorAll('.rev-slide'));
+  var dotsWrap = document.getElementById('revDots');
+  var prev = root.querySelector('.rev-prev');
+  var next = root.querySelector('.rev-next');
+  if (!track || !slides.length) return;
+  var idx = 0;
+
+  // длинные отзывы сворачиваем и добавляем кнопку.
+  // Замер делаем после загрузки шрифтов — иначе высота считается по системному шрифту и врёт.
+  function setupClamp(){
+    var LIMIT = 232;   // должно совпадать с max-height у .rev-text.is-clamped
+    slides.forEach(function(slide){
+      var text = slide.querySelector('.rev-text');
+      if (!text || text.dataset.clampReady) return;
+      text.dataset.clampReady = '1';
+      var full = text.scrollHeight;                  // высота без ограничения
+      if (full <= LIMIT + 8) return;                 // помещается целиком — ничего не делаем
+      text.classList.add('is-clamped');
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'rev-more';
+      btn.textContent = 'Читать полностью';
+      btn.setAttribute('aria-expanded', 'false');
+      text.insertAdjacentElement('afterend', btn);
+      btn.addEventListener('click', function(){
+        var collapsed = text.classList.toggle('is-clamped');
+        btn.textContent = collapsed ? 'Читать полностью' : 'Свернуть';
+        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      });
     });
+  }
+  function resetClamp(){
+    slides.forEach(function(slide){
+      var text = slide.querySelector('.rev-text');
+      if (!text) return;
+      delete text.dataset.clampReady;
+      text.classList.remove('is-clamped');
+      var old = slide.querySelector('.rev-more');
+      if (old) old.remove();
+    });
+    setupClamp();
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(setupClamp);
+  } else {
+    window.addEventListener('load', setupClamp);
+  }
+  // при смене ширины (поворот телефона) число строк меняется — пересчитываем
+  var rt;
+  window.addEventListener('resize', function(){
+    clearTimeout(rt);
+    rt = setTimeout(resetClamp, 250);
   });
+
+  // точки
+  slides.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Отзыв ' + (i + 1));
+    d.addEventListener('click', function(){ go(i); });
+    dotsWrap.appendChild(d);
+  });
+
+  function go(i){
+    idx = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    [].slice.call(dotsWrap.children).forEach(function(d, n){
+      d.classList.toggle('active', n === idx);
+    });
+  }
+  if (prev) prev.addEventListener('click', function(){ go(idx - 1); });
+  if (next) next.addEventListener('click', function(){ go(idx + 1); });
+
+  // свайп на телефоне
+  var x0 = null;
+  root.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive: true});
+  root.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, {passive: true});
+
+  go(0);
 })();

@@ -75,7 +75,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=11">
+  <link rel="stylesheet" href="css/style.css?v=12">
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
@@ -288,23 +288,65 @@
 <section class="reviews">
   <div class="container">
     <h2 class="section-title reveal">Что говорят участники</h2>
-    <div class="reviews__grid">
-      <figure class="review reveal">
-        <blockquote class="review__text">Мне понравилось, что всё началось с погружения в мир искусства через теорию, а затем плавно перешло в практику. Особенно хочу отметить чуткое сопровождение и поддержку на протяжении всего процесса — для меня это было действительно важно, потому что рисовать я совсем не умею. Но в какой-то момент я настолько погрузилась в творческий процесс, что полностью отключилась от всех мыслей. Коучинговый разбор работы был очень глубоким. Он помог увидеть то, что уже было во мне, но до конца я не осознавала, как будто посмотреть на себя со стороны. После этого появилось гораздо больше ясности в том, в каком направлении мне действительно важно двигаться.</blockquote>
-        <figcaption><span class="review__name">Василиса Пиндич</span><span class="review__role">участница сессии</span></figcaption>
-      </figure>
-      <figure class="review reveal">
-        <blockquote class="review__text">На прошлых выходных ходила на сессию по автопортрету. Несколько лет назад я уже была на таком мероприятии, и мне было очень интересно попробовать ещё раз: посмотреть разницу, что изменилось… Автопортрет получился совсем другим. Такая взрослая девушка с выразительными голубыми глазами и… немного грустная. После рисунка была сессия. Теперь реализовывать всё, что отрефлексировала.</blockquote>
-        <figcaption><span class="review__name">Ксения Тугеева</span><span class="review__role">сессия «Автопортрет», вернулась через три года</span></figcaption>
-      </figure>
-      <figure class="review reveal">
-        <blockquote class="review__text">Я пришла с ощущением, что застряла и не понимаю, чего хочу дальше. За одну сессию на листе вдруг стало видно то, что я месяцами не могла сформулировать словами. Ушла не с чужим советом, а с собственным решением — и оно до сих пор работает.</blockquote>
-        <figcaption><span class="review__name">Ксюша</span><span class="review__role">участница открытых сессий, первый приход</span></figcaption>
-      </figure>
-      <figure class="review reveal">
-        <blockquote class="review__text">Шёл скептически: рисование не моё, и слово «арт» звучало несерьёзно. Оказалось, дело вообще не в рисунке. За полтора часа я увидел свою рабочую ситуацию под углом, до которого сам бы не дошёл. Честно и по делу, без эзотерики.</blockquote>
-        <figcaption><span class="review__name">Анатолий С.</span><span class="review__role">руководитель, демо-сессия</span></figcaption>
-      </figure>
+    <div class="rev-carousel reveal" id="revCarousel">
+      <button class="rev-nav rev-prev" type="button" aria-label="Предыдущий отзыв">‹</button>
+      <div class="rev-viewport">
+        <div class="rev-track">
+
+          <article class="rev-slide">
+            <figure class="review">
+              <div class="rev-text">
+                <p>Мне понравилось, что всё началось с погружения в мир искусства через теорию, а затем плавно перешло в практику. Особенно хочу отметить чуткое сопровождение и поддержку на протяжении всего процесса — для меня это было действительно важно, потому что рисовать я совсем не умею. Но в какой-то момент я настолько погрузилась в творческий процесс, что полностью отключилась от всех мыслей.</p>
+                <p>Коучинговый разбор работы был очень глубоким. Он помог увидеть то, что уже было во мне, но до конца я не осознавала, как будто посмотреть на себя со стороны. После этого появилось гораздо больше ясности в том, в каком направлении мне действительно важно двигаться.</p>
+              </div>
+              <figcaption class="rev-who">
+                <span class="rev-av">В</span>
+                <span><span class="review__name">Василиса Пиндич</span><span class="review__role">участница сессии</span></span>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="rev-slide">
+            <figure class="review">
+              <div class="rev-text">
+                <p>На прошлых выходных ходила на сессию по автопортрету. Несколько лет назад я уже была на таком мероприятии, и мне было очень интересно попробовать ещё раз: посмотреть разницу, что изменилось…</p>
+                <p>Автопортрет получился совсем другим. Такая взрослая девушка с выразительными голубыми глазами и… немного грустная. После рисунка была сессия. Теперь реализовывать всё, что отрефлексировала.</p>
+              </div>
+              <figcaption class="rev-who">
+                <span class="rev-av">К</span>
+                <span><span class="review__name">Ксения Тугеева</span><span class="review__role">сессия «Автопортрет», вернулась через три года</span></span>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="rev-slide">
+            <figure class="review">
+              <div class="rev-text">
+                <p>Я пришла с ощущением, что застряла и не понимаю, чего хочу дальше. За одну сессию на листе вдруг стало видно то, что я месяцами не могла сформулировать словами. Ушла не с чужим советом, а с собственным решением — и оно до сих пор работает.</p>
+              </div>
+              <figcaption class="rev-who">
+                <span class="rev-av">К</span>
+                <span><span class="review__name">Ксюша</span><span class="review__role">участница открытых сессий, первый приход</span></span>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="rev-slide">
+            <figure class="review">
+              <div class="rev-text">
+                <p>Шёл скептически: рисование не моё, и слово «арт» звучало несерьёзно. Оказалось, дело вообще не в рисунке. За полтора часа я увидел свою рабочую ситуацию под углом, до которого сам бы не дошёл. Честно и по делу, без эзотерики.</p>
+              </div>
+              <figcaption class="rev-who">
+                <span class="rev-av">А</span>
+                <span><span class="review__name">Анатолий С.</span><span class="review__role">руководитель, демо-сессия</span></span>
+              </figcaption>
+            </figure>
+          </article>
+
+        </div>
+      </div>
+      <button class="rev-nav rev-next" type="button" aria-label="Следующий отзыв">›</button>
+      <div class="rev-dots" id="revDots"></div>
     </div>
   </div>
 </section>
@@ -348,6 +390,6 @@
   </div>
 </aside>
 
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>
