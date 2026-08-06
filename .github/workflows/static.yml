@@ -41,10 +41,12 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
-        with:
-          # По умолчанию шаг ждёт очередь Pages только 10 минут и падает
-          # с «Timeout reached, aborting!», хотя деплой в порядке — просто стоит
-          # в очереди. Это регулярно ломало выкладку (06.08.2026), особенно когда
-          # рядом пушит рутина аналитики и оба деплоя делят concurrency-группу.
-          # Даём 30 минут: ждать дольше дешевле, чем перевыкладывать пустым коммитом.
-          timeout: 1800000
+        # ⚠️ НЕ ПЫТАТЬСЯ поднять здесь `timeout` — проверено 06.08.2026.
+        # Шаг ждёт публикацию Pages максимум 10 минут и падает с
+        # «Timeout reached, aborting!», отменяя при этом исправный деплой.
+        # Любое значение больше 600000 GitHub молча срезает обратно:
+        # «Warning: timeout value is greater than the allowed maximum».
+        # Лечение — не здесь: либо `python tools/deploy.py` (сам перевыкладывает
+        # пустым коммитом), либо перевод Pages на прямой деплой из ветки
+        # (`gh api -X PUT repos/ivoiti/voobrazhaemy/pages -f build_type=legacy`),
+        # тогда Actions из цепочки уходит совсем. Подробности — «_Журнал ветки САЙТ.md».
