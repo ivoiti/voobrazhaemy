@@ -72,6 +72,14 @@
     .nekker-fig { margin: 30px auto; text-align: center; }
     .nekker-fig svg { width: 240px; height: auto; max-width: 62%; }
     .nekker-fig figcaption { margin-top: 12px; font-size: 14px; color: rgba(23,24,26,.55); }
+    .mp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; margin: 28px 0 10px; }
+    .mp-grid figure { margin: 0; }
+    .mp-grid img { width: 100%; height: auto; border-radius: 12px; display: block; }
+    .mp-grid figcaption { margin-top: 8px; font-size: 13.5px; line-height: 1.5; color: rgba(23,24,26,.55); }
+    .mp-single { margin: 28px 0 10px; }
+    .mp-single img { width: 100%; max-width: 420px; height: auto; border-radius: 12px; display: block; margin: 0 auto; }
+    .mp-single figcaption { margin-top: 8px; font-size: 13.5px; line-height: 1.5; color: rgba(23,24,26,.55); text-align: center; }
+    @media (max-width: 560px) { .mp-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body class="page--interior">
@@ -168,7 +176,25 @@
 
       <p>В этом смысле показательны карикатурные портреты каталонской художницы Марии Пикассо Пикер, например Квентина Тарантино и Умы Турман: художник может преувеличить характерную форму головы или отдельную особенность настолько, что узнавание становится практически мгновенным.</p>
 
-      <p class="article__softcta">Её работы мы не воспроизводим — художница живёт и работает сегодня, права на её иллюстрации принадлежат ей. Посмотреть можно у неё же. <a href="https://www.mariapicasso.com/portfolio/category/caricatures/" target="_blank" rel="noopener" style="display:inline-block;background:var(--terra);color:#fff;padding:3px 15px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap">Открыть портфолио →</a></p>
+      <div class="mp-grid">
+        <figure>
+          <img src="../assets/img/journal/nekker/tarantino.webp" width="650" height="650" loading="lazy" alt="Карикатурный портрет Квентина Тарантино: лицо сведено к нескольким плоским геометрическим формам, подбородок и нос сильно вытянуты">
+          <figcaption>Квентин Тарантино. Иллюстрация Марии Пикассо Пикер. Узнавание держится на двух вытянутых формах — подбородке и носе.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/img/journal/nekker/uma.webp" width="500" height="708" loading="lazy" alt="Карикатурный портрет Умы Турман в роли Мии из «Криминального чтива»: симметричное лицо из геометрических плоскостей, каре, сигарета">
+          <figcaption>Ума Турман в роли Мии из «Криминального чтива». Мария Пикассо Пикер, 2011 (подпись автора — в самом изображении).</figcaption>
+        </figure>
+      </div>
+
+      <p>Обратите внимание, что происходит при этом с деталями. Их почти нет: лицо собрано из нескольких плоскостей, черты сведены к геометрии. Но узнавание срабатывает мгновенно — потому что художник сохранил не детали, а то, что нарушает усреднённую схему.</p>
+
+      <figure class="mp-single">
+        <img src="../assets/img/journal/nekker/profil.webp" width="650" height="650" loading="lazy" alt="Женский профиль в геометрической манере: чёрное каре сплошным пятном, лицо из белых плоскостей, глаз и губы — жёлтые круги">
+        <figcaption>Здесь от лица остались силуэт каре, линия скулы и два жёлтых круга. Достаточно, чтобы это читалось как лицо. Иллюстрация Марии Пикассо Пикер.</figcaption>
+      </figure>
+
+      <p class="article__softcta">Мария Пикассо Пикер работает сегодня, права на иллюстрации принадлежат ей — мы приводим их как примеры к разбору, со ссылкой на автора. Остальные работы — у неё. <a href="https://www.mariapicasso.com/" target="_blank" rel="noopener" style="display:inline-block;background:var(--terra);color:#fff;padding:3px 15px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap">Открыть портфолио →</a></p>
 
       <h2>А если сделать лицо недостаточно определённым</h2>
 
