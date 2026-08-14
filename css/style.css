@@ -359,3 +359,26 @@ body.page--interior { padding-top: 74px; }
 .menu__close:hover { opacity: 1; }
 body.menu-open { overflow: hidden; }
 .nav.is-scrolled .burger span { background: var(--ink); }
+
+/* ============ Мандала: следующий шаг после диагноза ============
+   Блок живёт внутри бирюзовой карточки результата (.mand__res на praktika-mandala.html),
+   поэтому текст кремовый. До этого места доходят самые вовлечённые — раньше они
+   получали диагноз и уходили в никуда. */
+.mlead { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(243,236,223,.28); }
+.mlead__title { font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.2; margin: 0; }
+.mlead__text { margin-top: 8px; font-size: 15px; line-height: 1.55; opacity: .92; max-width: 46ch; }
+.mlead__form { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+.mlead__input {
+  flex: 1 1 220px; min-width: 0; font: inherit; font-size: 15.5px;
+  padding: 13px 18px; border-radius: 999px; color: var(--ink);
+  background: var(--cream); border: 1px solid transparent;
+}
+.mlead__input::placeholder { color: rgba(23,24,26,.45); }
+.mlead__input:focus { outline: 2px solid var(--terra); outline-offset: 1px; }
+.mlead__input.is-bad { border-color: var(--terra); }
+.mlead__note { margin-top: 10px; font-size: 14px; line-height: 1.5; min-height: 20px; opacity: .95; }
+.mlead__note.is-ok { font-weight: 600; }
+@media (max-width: 720px) {
+  .mlead__form { flex-direction: column; }
+  .mlead__form .mand__btn { width: 100%; }
+}

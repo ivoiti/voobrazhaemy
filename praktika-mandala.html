@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=14">
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -167,6 +167,20 @@
           <button class="mand__btn" id="saveBtn">Сохранить картинку</button>
           <button class="mand__btn mand__btn--ghost" id="againBtn">Раскрасить заново</button>
         </div>
+
+        <!-- следующий шаг: до этого места доходят самые вовлечённые, и раньше они уходили в никуда -->
+        <div class="mlead" id="mlead">
+          <h3 class="mlead__title">Показать вашу мандалу нам?</h3>
+          <p class="mlead__text">Пришлите ник — посмотрим, что у вас вышло, и напишем, что видим.
+             Это взгляд художника и коуча, а не диагноз. Бесплатно, ответим за пару дней.</p>
+          <form class="mlead__form" id="mleadForm" novalidate>
+            <input class="mlead__input" id="mleadContact" type="text"
+                   placeholder="@ваш ник в телеграме" autocomplete="off"
+                   aria-label="Ваш ник в телеграме">
+            <button class="mand__btn" type="submit" id="mleadSend">Отправить</button>
+          </form>
+          <div class="mlead__note" id="mleadNote" role="status" aria-live="polite"></div>
+        </div>
       </div>
     </div>
 
@@ -308,6 +322,11 @@ document.getElementById('againBtn').onclick=()=>{
   document.getElementById('mandResult').hidden=true;
   document.getElementById('mandStudio').hidden=false;
   resetState();
+  /* вернуть форму: человек раскрашивает заново — возможно, пришлёт уже новую мандалу */
+  const f=document.getElementById('mleadForm'), n=document.getElementById('mleadNote');
+  if(f){ f.style.display=''; }
+  if(n){ n.textContent=''; n.classList.remove('is-ok'); }
+  const b=document.getElementById('mleadSend'); if(b) b.disabled=false;
   document.getElementById('mandStudio').scrollIntoView({behavior:'smooth',block:'center'});
 };
 
@@ -394,6 +413,66 @@ document.getElementById('doneBtn').onclick=()=>{
   document.getElementById('mandResult').scrollIntoView({behavior:'smooth',block:'center'});
   if(window.ym) ym(110592816,'reachGoal','mandala_done');
 };
+
+/* ===== следующий шаг: показать мандалу нам =====
+   Тот же приёмник, что у форм записи (Google Apps Script). В zapis.html отправка идёт
+   с mode:'no-cors' и потому ВСЕГДА рапортует успех, даже если скрипт умер. Здесь так
+   нельзя: человек ждёт ответа. Скрипт отдаёт Access-Control-Allow-Origin: *, обычный
+   mode:'cors' проверен и работает (200, {"ok":true}), поэтому «спасибо» показываем
+   только по реальному ответу. Content-Type: text/plain — чтобы не потребовался preflight. */
+const MLEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyeGNxQUFTBYNjt99ttlthK8rJKU8TBOXLARPi5QDHP7_NoJurgFymu06KO0fs2w45aDQ/exec';
+
+const mleadForm = document.getElementById('mleadForm');
+const mleadInput = document.getElementById('mleadContact');
+const mleadNote = document.getElementById('mleadNote');
+const mleadSend = document.getElementById('mleadSend');
+
+function mleadSay(text, ok){
+  mleadNote.textContent = text;
+  mleadNote.classList.toggle('is-ok', !!ok);
+}
+
+mleadForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  let contact = mleadInput.value.trim();
+
+  if (!contact){                       // мягко: подсказываем, а не ругаемся
+    mleadInput.classList.add('is-bad');
+    mleadInput.focus();
+    mleadSay('Впишите ник, начиная с @');
+    return;
+  }
+  if (contact[0] !== '@') contact = '@' + contact;   // забыли собаку — дописываем сами
+  mleadInput.classList.remove('is-bad');
+  mleadInput.value = contact;
+
+  const diagnosis = (document.getElementById('resDiag').textContent || '').trim();
+  mleadSend.disabled = true;
+  mleadSay('Отправляю…');
+
+  try {
+    const r = await fetch(MLEAD_ENDPOINT, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ type: 'mandala_lead', contact: contact, diagnosis: diagnosis })
+    });
+    let ok = false;
+    try { ok = (await r.json()).ok === true; } catch (_) { ok = false; }
+
+    if (ok){
+      mleadForm.style.display = 'none';
+      mleadSay('Спасибо, поймали. Посмотрим вашу мандалу и напишем в телеграм за пару дней.', true);
+      if (window.ym) ym(110592816, 'reachGoal', 'mandala_lead');
+    } else {
+      mleadSend.disabled = false;
+      mleadSay('Кажется, не дошло. Попробуйте ещё раз или напишите нам в телеграм: @ianitavoit');
+    }
+  } catch (err) {
+    mleadSend.disabled = false;
+    mleadSay('Кажется, не дошло. Попробуйте ещё раз или напишите нам в телеграм: @ianitavoit');
+  }
+});
 
 document.getElementById('saveBtn').onclick=()=>{
   const clone=svg.cloneNode(true);
