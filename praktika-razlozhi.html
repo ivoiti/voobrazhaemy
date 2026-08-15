@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Практика: разложи формы — арт-практика онлайн</title>
+  <meta name="description" content="Арт-практика онлайн: разложите абстрактные формы, пока не станет «вот так». Упражнение для расслабления на две минуты, без регистрации — рука делает раньше, чем голова объясняет. Композицию можно сохранить картинкой.">
+  <meta name="keywords" content="арт-практика онлайн, упражнение для расслабления, композиция онлайн, абстрактные формы, практика на две минуты, расслабиться за компьютером">
+  <link rel="canonical" href="https://voobrazhaemy.ru/praktika-razlozhi.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://voobrazhaemy.ru/praktika-razlozhi.html">
+  <meta property="og:title" content="Разложите формы — арт-практика онлайн">
+  <meta property="og:description" content="Двигайте формы, пока не почувствуете, что встало на место. Правильного ответа нет. Две минуты, без регистрации.">
+  <meta property="og:image" content="https://voobrazhaemy.ru/assets/practices/razlozhi-og.jpg">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://voobrazhaemy.ru/"},{"@type":"ListItem","position":2,"name":"Практики","item":"https://voobrazhaemy.ru/praktiki.html"},{"@type":"ListItem","position":3,"name":"Разложите формы","item":"https://voobrazhaemy.ru/praktika-razlozhi.html"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"Разложите формы — арт-практика онлайн","description":"Композиционная практика в браузере: раскладывать абстрактные формы на поле, пока не появится ощущение, что встало на место.","image":"https://voobrazhaemy.ru/assets/practices/razlozhi.jpg","totalTime":"PT3M","supply":[{"@type":"HowToSupply","name":"браузер"}],"step":[{"@type":"HowToStep","name":"Возьмите форму","text":"Нажмите на форму в палитре — она появится на поле."},{"@type":"HowToStep","name":"Двигайте","text":"Перетаскивайте формы, меняйте размер за угол, поворачивайте и перекрашивайте."},{"@type":"HowToStep","name":"Остановитесь","text":"Двигайте до тех пор, пока не появится ощущение, что встало на место. Правильного ответа нет."},{"@type":"HowToStep","name":"Сохраните","text":"Нажмите «Готово», сохраните композицию картинкой и прочитайте наблюдение о том, как вы её собирали."}]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+  <style>
+    .pback { display:inline-block; margin-bottom:6px; font-size:14px; color:var(--teal); text-decoration:none }
+    .pback:hover { color:var(--terra) }
+    .pwrap { max-width:1080px; margin:0 auto; padding:0 24px 90px }
+    .pset { margin-top:24px; background:#fff; border:1px solid rgba(23,24,26,.1); border-radius:20px; padding:34px 32px }
+    .pset__tag { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--terra) }
+    .pset__title { font-family:var(--serif); font-size:clamp(26px,4vw,38px); line-height:1.1; margin:8px 0 4px; font-weight:400 }
+    .pset__intro { font-size:17px; color:#33342f; line-height:1.6; margin-top:16px; max-width:56ch }
+    .pset__intro em { font-style:normal; color:var(--terra) }
+
+    .rbtn { display:inline-block; border:0; cursor:pointer; font-family:var(--sans); font-size:15.5px; font-weight:600;
+            background:var(--terra); color:#fff; padding:14px 30px; border-radius:999px; text-decoration:none;
+            text-align:center; transition:background .2s, transform .15s }
+    .rbtn:hover { background:var(--terra-dark,#B23315); transform:translateY(-1px) }
+    .rbtn--ghost { background:transparent; color:var(--ink); border:1px solid rgba(23,24,26,.25); font-weight:500 }
+    .rbtn--ghost:hover { background:rgba(23,24,26,.06); transform:none }
+    .rbtn--sm { padding:10px 20px; font-size:14.5px }
+
+    /* ===== рабочий экран ===== */
+    .stage { margin-top:22px; display:grid; grid-template-columns:1fr 210px; gap:20px; align-items:start }
+    .board { position:relative; background:#fff; border:1px solid rgba(23,24,26,.12); border-radius:16px; padding:10px }
+    #field { width:100%; height:auto; display:block; border-radius:8px; touch-action:none; user-select:none; cursor:crosshair }
+    .board__hint { margin-top:9px; font-size:12.5px; color:rgba(23,24,26,.5); text-align:center; min-height:16px }
+
+    .tools { display:flex; flex-direction:column; gap:14px }
+    .tool { background:var(--cream-2,#f7f3ea); border:1px solid rgba(23,24,26,.1); border-radius:14px; padding:13px }
+    .tool h2 { font-family:var(--sans); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase;
+               color:rgba(23,24,26,.5); font-weight:600; margin-bottom:9px }
+    .shapes { display:grid; grid-template-columns:repeat(4,1fr); gap:7px }
+    .shape { aspect-ratio:1; background:#fff; border:1px solid rgba(23,24,26,.12); border-radius:9px; cursor:grab;
+             padding:5px; transition:border-color .15s, transform .12s }
+    .shape:hover { border-color:var(--terra); transform:translateY(-1px) }
+    .shape svg { width:100%; height:100%; display:block; pointer-events:none }
+    .swatches { display:grid; grid-template-columns:repeat(5,1fr); gap:7px }
+    .sw { aspect-ratio:1; border-radius:50%; border:2px solid transparent; cursor:pointer; padding:0;
+          box-shadow:inset 0 0 0 1px rgba(23,24,26,.14); transition:transform .12s, border-color .12s }
+    .sw:hover { transform:scale(1.1) }
+    .sw.is-on { border-color:var(--ink); transform:scale(1.1) }
+    .bgs { display:grid; grid-template-columns:repeat(5,1fr); gap:7px }
+    .bg { aspect-ratio:1; border-radius:7px; border:2px solid transparent; cursor:pointer; padding:0;
+          box-shadow:inset 0 0 0 1px rgba(23,24,26,.14); transition:transform .12s, border-color .12s }
+    .bg:hover { transform:scale(1.06) }
+    .bg.is-on { border-color:var(--ink) }
+    .acts { display:grid; gap:8px }
+    .acts .rbtn { width:100% }
+
+    /* ===== результат ===== */
+    .res { margin-top:26px }
+    .res__pic { background:var(--cream-2,#f7f3ea); border-radius:20px; padding:18px; display:flex; justify-content:center }
+    .res__pic svg { width:100%; max-width:720px; height:auto; display:block; border-radius:10px;
+                    box-shadow:0 14px 40px rgba(23,24,26,.16) }
+    .res__acts { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
+    .obs { margin-top:28px; background:var(--teal); color:var(--cream); border-radius:20px; padding:30px 30px }
+    .obs__kicker { font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.75; font-weight:600 }
+    .obs__text { margin-top:12px; font-size:17px; line-height:1.62; max-width:62ch }
+    .obs__text p + p { margin-top:11px }
+    .bridge { margin-top:22px; font-size:16.5px; line-height:1.6; color:#33342f; max-width:60ch }
+    .bridge b { font-weight:600 }
+
+    .lead { margin-top:24px; background:#fff; border:1px solid rgba(23,24,26,.14); border-radius:18px; padding:24px 26px }
+    .lead h3 { font-family:var(--serif); font-size:21px; font-weight:400 }
+    .lead p { font-size:15px; color:#3a3b3d; margin-top:8px; max-width:52ch }
+    .lead__row { display:flex; gap:10px; margin-top:15px; flex-wrap:wrap }
+    .lead__row input { flex:1 1 200px; min-width:0; font:inherit; font-size:15.5px; padding:13px 17px;
+                       border:1px solid rgba(23,24,26,.2); border-radius:999px; background:var(--cream); color:var(--ink) }
+    .lead__row input:focus { outline:2px solid var(--terra); outline-offset:1px }
+    .lead__row input.is-bad { border-color:var(--terra) }
+    .lead__note { margin-top:11px; font-size:13.5px; color:rgba(23,24,26,.58); min-height:18px }
+    .lead__note.is-ok { color:var(--teal); font-weight:600 }
+    .lead__fine { margin-top:10px; font-size:12.5px; color:rgba(23,24,26,.45) }
+
+    .ends { margin-top:26px; padding-top:20px; border-top:1px solid rgba(23,24,26,.12);
+            display:flex; gap:16px; flex-wrap:wrap; align-items:center; font-size:15px }
+    .ends a { color:var(--teal); font-weight:600; text-decoration:none }
+    .ends a:hover { color:var(--terra) }
+
+    @media (max-width:860px){
+      .stage { grid-template-columns:1fr }
+      .tools { flex-direction:column }
+      .shapes { grid-template-columns:repeat(7,1fr) }
+      .swatches { grid-template-columns:repeat(10,1fr) }
+      .bgs { grid-template-columns:repeat(5,1fr); max-width:260px }
+      .pset { padding:24px 18px }
+      .pwrap { padding:0 14px 70px }
+      .obs { padding:24px 20px }
+    }
+    @media (max-width:480px){ .shapes { grid-template-columns:repeat(5,1fr) } }
+    [hidden] { display:none !important }
+  </style>
+</head>
+<body class="page--interior">
+
+<header class="nav nav--solid" id="top">
+  <a href="index.html" class="nav__logo" style="text-decoration:none">
+    <span class="nav__mark">[Es]<span class="nav__amp">&amp;</span>[Vi]</span>
+    <span class="nav__name">мы должны быть<br>воображаемы</span>
+  </a>
+  <div class="nav__right">
+    <a href="zapis.html" class="nav__cta">Записаться</a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <button class="menu__close" id="menuClose" aria-label="Закрыть">×</button>
+  <a href="index.html">Главная</a>
+  <a href="journal.html">Журнал</a>
+  <a href="praktiki.html">Практики</a>
+  <a href="biblioteka.html">Библиотека</a>
+  <a class="soon" href="#" aria-disabled="true">Манифест</a>
+  <a href="index.html#facets">5 граней</a>
+  <a href="index.html#formats">Форматы</a>
+</nav>
+
+<div class="pwrap" style="padding-top:114px">
+  <a class="pback" href="praktiki.html">← Все практики</a>
+
+  <article class="pset">
+
+    <!-- ЭКРАН 1 -->
+    <section id="scr-intro">
+      <div class="pset__tag">Композиция · практика · играется прямо здесь</div>
+      <h1 class="pset__title">Разложите формы</h1>
+      <p class="pset__intro">Разложите формы так, чтобы стало <em>«вот так»</em>. Правильного ответа нет.
+         Двигайте, пока не почувствуете, что встало на место.</p>
+      <p style="margin-top:22px"><button class="rbtn" id="startBtn">Начать</button></p>
+    </section>
+
+    <!-- ЭКРАН 2 -->
+    <section id="scr-play" hidden>
+      <div class="stage">
+        <div class="board">
+          <svg id="field" xmlns="http://www.w3.org/2000/svg" role="application"
+               aria-label="Поле для композиции"></svg>
+          <div class="board__hint" id="hint">Нажмите форму в палитре — она появится на поле</div>
+        </div>
+        <aside class="tools">
+          <div class="tool">
+            <h2>Формы</h2>
+            <div class="shapes" id="shapes"></div>
+          </div>
+          <div class="tool">
+            <h2>Цвет</h2>
+            <div class="swatches" id="swatches"></div>
+          </div>
+          <div class="tool">
+            <h2>Фон</h2>
+            <div class="bgs" id="bgs"></div>
+          </div>
+          <div class="acts">
+            <button class="rbtn" id="doneBtn">Готово</button>
+            <button class="rbtn rbtn--ghost" id="resetBtn">Начать заново</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ЭКРАН 3 -->
+    <section id="scr-res" hidden>
+      <div class="res">
+        <div class="res__pic" id="resPic"></div>
+        <div class="res__acts">
+          <button class="rbtn" id="saveBtn">Сохранить картинку</button>
+          <button class="rbtn rbtn--ghost" id="shareBtn">Поделиться</button>
+        </div>
+
+        <div class="obs">
+          <div class="obs__kicker">Что происходило, пока вы раскладывали</div>
+          <div class="obs__text" id="obsText"></div>
+        </div>
+
+        <p class="bridge">Примерно это и происходит на наших встречах — только руками,
+           с красками и холстом. И то, что складывается, потом разбирается вместе.</p>
+
+        <div class="lead" id="lead">
+          <h3>Прислать ещё одну практику?</h3>
+          <p>И заодно расскажем про ближайшую встречу. Как вас звать — решайте сами:
+             псевдоним подойдёт, художники так и делают.</p>
+          <form class="lead__row" id="leadForm" novalidate>
+            <input id="leadName" type="text" placeholder="Псевдоним" autocomplete="off" aria-label="Псевдоним">
+            <input id="leadWay" type="text" placeholder="Куда написать: @ник или почта" autocomplete="off" aria-label="Куда написать">
+            <button class="rbtn" type="submit" id="leadSend">Отправить</button>
+          </form>
+          <div class="lead__note" id="leadNote" role="status" aria-live="polite"></div>
+          <div class="lead__fine">Пишем только по делу: практика и приглашение на встречу.
+             Чтобы перестали — одно слово в ответ.</div>
+        </div>
+
+        <div class="ends">
+          <a href="https://t.me/ESVIum" target="_blank" rel="noopener">Канал проекта</a>
+          <a href="zapis.html">Ближайшие встречи</a>
+          <a href="praktiki.html">Другие практики</a>
+          <button class="rbtn rbtn--ghost rbtn--sm" id="againBtn">Пройти заново</button>
+        </div>
+      </div>
+    </section>
+
+  </article>
+</div>
+
+<footer class="footer">
+  <div>[Es] &amp; [Vi] · Мы должны быть воображаемы · арт-коучинг Елены Семеновой и Яниты Войт · <a href="https://t.me/ESVIum">телеграм-канал</a></div>
+  <div class="footer__genre">форсайт-лаборатория идентичности</div>
+</footer>
+
+<script>
+/* ============ меню ============ */
+const menu=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>{ menu.classList.add('is-open'); document.body.classList.add('menu-open'); };
+document.getElementById('menuClose').onclick=()=>{ menu.classList.remove('is-open'); document.body.classList.remove('menu-open'); };
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ menu.classList.remove('is-open'); document.body.classList.remove('menu-open'); } });
+
+/* ============ палитры ============
+   Цвета — по кругу Иттена, приглушённые: дополнительные пары (красный/зелёный,
+   синий/оранжевый, жёлтый/фиолетовый) плюс фирменные и светлый, которым можно
+   «убрать» элемент с цветного фона. */
+const COLORS = ['#C1352B','#3E7C5A','#2F5D8C','#D97A29','#E3B23C',
+                '#6B4E71','#D2401E','#2A555A','#17181A','#F3ECDF'];
+const BGS = ['#F6F1E7','#EFE5D2','#C1352B','#2F5D8C','#17181A'];
+
+const SVGNS = 'http://www.w3.org/2000/svg';
+const el = (n, a) => { const e=document.createElementNS(SVGNS,n); for(const k in (a||{})) e.setAttribute(k,a[k]); return e; };
+
+/* формы рисуются в локальных координатах: центр 0,0, габарит примерно 100x100 */
+const SHAPES = {
+  circle:   () => el('circle',{cx:0,cy:0,r:50}),
+  circleS:  () => el('circle',{cx:0,cy:0,r:26}),
+  ring:     () => el('path',{d:'M0,-50A50,50 0 1,0 0,50A50,50 0 1,0 0,-50ZM0,-28A28,28 0 1,1 0,28A28,28 0 1,1 0,-28Z','fill-rule':'evenodd'}),
+  oval:     () => el('ellipse',{cx:0,cy:0,rx:56,ry:30}),
+  square:   () => el('rect',{x:-45,y:-45,width:90,height:90}),
+  bar:      () => el('rect',{x:-22,y:-52,width:44,height:104}),
+  tri:      () => el('path',{d:'M0,-52 L52,44 L-52,44 Z'}),
+  triObl:   () => el('path',{d:'M-52,44 L14,-50 L52,30 Z'}),
+  arc:      () => el('path',{d:'M-50,20 A50,50 0 0,1 50,20 L26,20 A26,26 0 0,0 -26,20 Z'}),
+  quarter:  () => el('path',{d:'M-46,46 A92,92 0 0,1 46,-46 L46,46 Z'}),
+  lineThin: () => el('rect',{x:-56,y:-4,width:112,height:8,rx:4}),
+  lineFat:  () => el('rect',{x:-56,y:-13,width:112,height:26,rx:6}),
+  blobA:    () => el('path',{d:'M-30,-40 C10,-58 52,-30 46,4 C40,40 4,54 -22,44 C-52,32 -58,-22 -30,-40 Z'}),
+  blobB:    () => el('path',{d:'M-44,-14 C-34,-46 16,-52 38,-28 C58,-6 46,34 16,44 C-16,54 -54,20 -44,-14 Z'}),
+};
+const SHAPE_KEYS = Object.keys(SHAPES);
+
+/* ============ состояние ============ */
+const field = document.getElementById('field');
+let W = 800, H = 600;                    // логический размер поля (viewBox)
+let items = [];                          // {id,type,x,y,s,rot,color,node}
+let seq = 0, picked = COLORS[0], bg = BGS[0], sel = null;
+
+const M = {                              /* незаметные наблюдения о процессе */
+  startedAt: 0, firstTouchAt: 0, lastActionAt: 0,
+  added: 0, moves: 0, firstXY: null
+};
+
+function setViewport(){
+  const mobile = window.matchMedia('(max-width:860px)').matches;
+  W = mobile ? 600 : 800;
+  H = mobile ? 800 : 600;                /* на мобильном поле вертикальное */
+  field.setAttribute('viewBox', '0 0 '+W+' '+H);
+  field.style.aspectRatio = W+' / '+H;
+}
+
+function bgRect(){
+  let r = field.querySelector('#bgrect');
+  if(!r){ r = el('rect',{id:'bgrect',x:0,y:0,width:W,height:H}); field.appendChild(r); }
+  r.setAttribute('width',W); r.setAttribute('height',H); r.setAttribute('fill',bg);
+  return r;
+}
+
+function render(){
+  field.innerHTML=''; bgRect();
+  items.forEach(it=>{
+    const g = el('g',{ transform:'translate('+it.x+','+it.y+') rotate('+it.rot+') scale('+it.s+')',
+                       'data-id':it.id, style:'cursor:grab' });
+    const sh = SHAPES[it.type](); sh.setAttribute('fill', it.color);
+    g.appendChild(sh); field.appendChild(g); it.node = g;
+  });
+  if(sel){
+    const it = items.find(i=>i.id===sel);
+    if(it) drawSelection(it);
+  }
+}
+
+function drawSelection(it){
+  const R = 56*it.s;
+  const box = el('g',{id:'selbox', style:'pointer-events:none'});
+  box.appendChild(el('circle',{cx:it.x,cy:it.y,r:R+10,fill:'none',stroke:'#17181A','stroke-width':1.5,
+                              'stroke-dasharray':'5 4',opacity:.75}));
+  field.appendChild(box);
+  /* маркеры кликабельны отдельно */
+  const mk = (x,y,label,cls) => {
+    const g = el('g',{class:cls, style:'cursor:pointer'});
+    g.appendChild(el('circle',{cx:x,cy:y,r:13,fill:'#17181A'}));
+    const t = el('text',{x:x,y:y+4,'text-anchor':'middle','font-size':13,fill:'#F3ECDF',
+                         'font-family':'Inter, sans-serif', style:'pointer-events:none'});
+    t.textContent = label; g.appendChild(t);
+    field.appendChild(g); return g;
+  };
+  const d = R + 10;
+  mk(it.x + d, it.y + d, '⤢', 'h-size').addEventListener('pointerdown', e=>startResize(e,it));
+  mk(it.x + d, it.y - d, '⟳', 'h-rot').addEventListener('pointerdown', e=>startRotate(e,it));
+  mk(it.x - d, it.y - d, '×', 'h-del').addEventListener('pointerdown', e=>{ e.stopPropagation(); removeItem(it); });
+}
+
+function pt(e){
+  const r = field.getBoundingClientRect();
+  return { x:(e.clientX-r.left)/r.width*W, y:(e.clientY-r.top)/r.height*H };
+}
+function mark(){ M.lastActionAt = Date.now(); }
+
+function addItem(type, x, y){
+  if(!M.firstTouchAt){ M.firstTouchAt = Date.now(); M.firstXY = {x,y}; }
+  const it = { id:++seq, type, x, y, s:1, rot:0, color:picked };
+  items.push(it); M.added++; sel = it.id; mark(); render();
+  document.getElementById('hint').textContent = 'Тяните, чтобы двигать · за угол — размер · ⟳ — поворот · × — убрать';
+  return it;
+}
+function removeItem(it){
+  items = items.filter(i=>i.id!==it.id);
+  if(sel===it.id) sel=null;
+  mark(); render();
+}
+
+/* ---- перетаскивание, размер, поворот ---- */
+let drag = null;
+field.addEventListener('pointerdown', e=>{
+  const g = e.target.closest('g[data-id]');
+  if(!g){ sel = null; render(); return; }
+  const it = items.find(i=>i.id===+g.dataset.id);
+  if(!it) return;
+  sel = it.id; render();
+  const p = pt(e);
+  drag = { it, dx:p.x-it.x, dy:p.y-it.y, moved:false };
+  field.setPointerCapture(e.pointerId);
+});
+field.addEventListener('pointermove', e=>{
+  if(!drag) return;
+  const p = pt(e);
+  drag.it.x = p.x - drag.dx; drag.it.y = p.y - drag.dy;
+  drag.moved = true; render();
+});
+field.addEventListener('pointerup', e=>{
+  if(!drag) return;
+  const it = drag.it;
+  /* вынесли за пределы поля — убираем */
+  if(it.x < -40 || it.x > W+40 || it.y < -40 || it.y > H+40) removeItem(it);
+  else if(drag.moved){ M.moves++; mark(); }
+  drag = null; render();
+});
+
+function startResize(e, it){
+  e.stopPropagation();
+  const start = pt(e), s0 = it.s;
+  const d0 = Math.hypot(start.x-it.x, start.y-it.y) || 1;
+  const move = ev => {
+    const p = pt(ev);
+    const d = Math.hypot(p.x-it.x, p.y-it.y);
+    it.s = Math.max(.25, Math.min(3.2, s0 * d/d0)); render();
+  };
+  const up = () => { window.removeEventListener('pointermove',move); window.removeEventListener('pointerup',up); mark(); render(); };
+  window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+}
+function startRotate(e, it){
+  e.stopPropagation();
+  const ang = p => Math.atan2(p.y-it.y, p.x-it.x)*180/Math.PI;
+  const a0 = ang(pt(e)), r0 = it.rot;
+  const move = ev => { it.rot = r0 + (ang(pt(ev)) - a0); render(); };
+  const up = () => { window.removeEventListener('pointermove',move); window.removeEventListener('pointerup',up); mark(); render(); };
+  window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+}
+
+/* ---- палитры в DOM ---- */
+const shapesBox = document.getElementById('shapes');
+SHAPE_KEYS.forEach(type=>{
+  const b = document.createElement('button');
+  b.className='shape'; b.type='button'; b.setAttribute('aria-label','Форма');
+  const s = el('svg',{viewBox:'-60 -60 120 120'});
+  const sh = SHAPES[type](); sh.setAttribute('fill','#17181A'); s.appendChild(sh);
+  b.appendChild(s);
+  b.addEventListener('click', ()=> addItem(type, W/2 + (Math.random()*80-40), H/2 + (Math.random()*80-40)));
+  shapesBox.appendChild(b);
+});
+const swBox = document.getElementById('swatches');
+COLORS.forEach((c,i)=>{
+  const b=document.createElement('button'); b.type='button';
+  b.className='sw'+(i===0?' is-on':''); b.style.background=c; b.setAttribute('aria-label','Цвет');
+  b.onclick=()=>{
+    picked=c; [...swBox.children].forEach(x=>x.classList.remove('is-on')); b.classList.add('is-on');
+    const it = items.find(i=>i.id===sel);
+    if(it){ it.color=c; mark(); render(); }      /* выбран элемент — перекрашиваем его */
+  };
+  swBox.appendChild(b);
+});
+const bgBox = document.getElementById('bgs');
+BGS.forEach((c,i)=>{
+  const b=document.createElement('button'); b.type='button';
+  b.className='bg'+(i===0?' is-on':''); b.style.background=c; b.setAttribute('aria-label','Фон');
+  b.onclick=()=>{ bg=c; [...bgBox.children].forEach(x=>x.classList.remove('is-on')); b.classList.add('is-on'); mark(); render(); };
+  bgBox.appendChild(b);
+});
+
+/* ============ экраны ============ */
+const scr = { intro:document.getElementById('scr-intro'), play:document.getElementById('scr-play'), res:document.getElementById('scr-res') };
+function show(name){ for(const k in scr) scr[k].hidden = (k!==name); }
+
+document.getElementById('startBtn').onclick = ()=>{
+  setViewport(); render(); show('play');
+  M.startedAt = Date.now(); M.firstTouchAt = 0; M.lastActionAt = 0;
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+document.getElementById('resetBtn').onclick = ()=>{
+  items=[]; seq=0; sel=null; bg=BGS[0];
+  [...bgBox.children].forEach((x,i)=>x.classList.toggle('is-on', i===0));
+  M.added=0; M.moves=0; M.firstTouchAt=0; M.firstXY=null; M.startedAt=Date.now(); M.lastActionAt=0;
+  document.getElementById('hint').textContent='Нажмите форму в палитре — она появится на поле';
+  render();
+};
+document.getElementById('againBtn').onclick = ()=>{
+  document.getElementById('resetBtn').click();
+  show('play'); window.scrollTo({top:0,behavior:'smooth'});
+};
+
+/* ============ измерения и наблюдение ============ */
+function measure(){
+  const now = Date.now();
+  const total = Math.round((now - M.startedAt)/1000);
+  const ttf = M.firstTouchAt ? Math.round((M.firstTouchAt - M.startedAt)/1000) : total;
+  const last = M.lastActionAt ? Math.round((now - M.lastActionAt)/1000) : total;
+  const colors = new Set(items.map(i=>i.color)).size;
+
+  /* грубая доля заполнения: сумма площадей кругов-габаритов, с потолком */
+  let area = 0;
+  items.forEach(i=>{ const r = 52*i.s; area += Math.PI*r*r*0.62; });
+  const coverage = Math.min(100, Math.round(area/(W*H)*100));
+
+  /* симметрия: сравниваем «массу» слева и справа от вертикальной оси */
+  let left=0, right=0;
+  items.forEach(i=>{ const m=i.s*i.s; if(i.x < W/2) left+=m; else right+=m; });
+  const sum = left+right;
+  const symmetry = sum ? Math.round(100 - Math.abs(left-right)/sum*100) : 100;
+
+  /* откуда начали: центр или край */
+  let startZone = 'центр';
+  if(M.firstXY){
+    const dx = Math.abs(M.firstXY.x - W/2)/(W/2), dy = Math.abs(M.firstXY.y - H/2)/(H/2);
+    startZone = Math.max(dx,dy) > .55 ? 'край' : 'центр';
+  }
+  return { timeToFirstTouch:ttf, totalTime:total, elementsUsed:items.length, elementsAdded:M.added,
+           moves:M.moves, colorsUsed:colors, startZone, coverage, symmetry, lastActionTime:last };
+}
+
+/* Наблюдение: только про то, как человек действовал здесь и сейчас.
+   Никаких выводов о характере, детстве и «расшифровки цветов» — от этого проект отстраивается. */
+function observe(d){
+  const parts = [];
+
+  if(d.elementsUsed === 0){
+    return ['Вы дошли до конца, не поставив ни одной формы. Пустое поле — тоже композиция, ' +
+            'и решение остановиться раньше начала принимают редко.'];
+  }
+
+  // 1. старт и правки
+  const started = d.timeToFirstTouch <= 1 ? 'почти сразу' : 'через ' + num(d.timeToFirstTouch, SEC);
+  if(d.timeToFirstTouch <= 5 && d.moves <= d.elementsUsed){
+    parts.push('Первую форму вы поставили ' + started + ' и почти не переставляли. ' +
+               'Так делают те, кто доверяет первому импульсу. ' +
+               'Обычно выходит живо — и обычно раздражает перфекционистов рядом.');
+  } else if(d.timeToFirstTouch >= 20 && d.moves >= 10){
+    parts.push('Вы думали ' + num(d.timeToFirstTouch, SEC) +
+               ', прежде чем прикоснуться, а потом переставили всё ' +
+               num(d.moves,['раз','раза','раз']) + '. Знакомо, наверное, не только по этому экрану.');
+  } else if(d.moves >= 14){
+    parts.push('Формы вы двигали ' + num(d.moves,['раз','раза','раз']) +
+               ' — искали не «где поместится», а «где встанет».');
+  } else if(d.moves <= 6){
+    parts.push('Первое движение — ' + started + ', дальше без метаний: ' +
+               num(d.moves,['перестановка','перестановки','перестановок']) + '.');
+  } else {
+    parts.push('Первое движение — ' + started + ', потом ещё ' +
+               num(d.moves,['перестановка','перестановки','перестановок']) +
+               ': вы не спорили с собой, но и не хватали первое попавшееся.');
+  }
+
+  // 2. плотность
+  if(d.elementsUsed <= 6 && d.coverage < 30){
+    parts.push((d.elementsUsed === 1 ? 'Одна форма' : 'Всего ' + num(d.elementsUsed,['форма','формы','форм'])) +
+               ' и много пустоты. Вы из тех, кто знает, когда остановиться, — редкий навык.');
+  } else if(d.coverage >= 55){
+    parts.push('Вы заполнили почти всё поле. Похоже, вам спокойнее, когда пусто не остаётся.');
+  } else if(d.elementsAdded > d.elementsUsed){
+    parts.push('Из ' + num(d.elementsAdded,['формы','форм','форм']) + ' до финала дошли ' +
+               d.elementsUsed + '. Убирать лишнее сложнее, чем добавлять, — вы убрали.');
+  } else {
+    parts.push('В финале ' + num(d.elementsUsed,['форма','формы','форм']) + ' и ' +
+               num(d.colorsUsed,['цвет','цвета','цветов']) +
+               ' — воздуха ровно столько, сколько вы посчитали нужным.');
+  }
+
+  // 3. откуда начали + симметрия
+  let third = d.startZone === 'край'
+    ? 'Начали от края и двигались внутрь.'
+    : 'Поставили первое в самый центр и строили вокруг.';
+  if(d.symmetry >= 85) third += ' Слева и справа получилось почти поровну — рука сама выровняла.';
+  else if(d.symmetry <= 55) third += ' Равновесие вышло смещённым, и вас это не смутило.';
+  parts.push(third);
+
+  // 4. как остановились + перенос
+  if(d.lastActionTime <= 3){
+    parts.push('И остановились мгновенно — просто поняли, что всё. ' +
+               'Это тот самый момент, ради которого практика и делается: решение приходит раньше объяснения.');
+  } else if(d.lastActionTime >= 25){
+    parts.push('Последние ' + num(d.lastActionTime, SEC) +
+               ' вы что-то доправляли. Отпускать готовое трудно — и на холсте, и не только.');
+  } else {
+    parts.push('Между последним движением и «Готово» прошло ' + num(d.lastActionTime, SEC) +
+               ' — вы дали себе посмотреть на сделанное, прежде чем закончить.');
+  }
+  return parts;
+}
+
+/* word — только слово в нужной форме, num — число со словом.
+   Раньше это была одна функция «поумнее», и она выдавала «2 Всего 2 формы». */
+function word(n, f){
+  const a=Math.abs(n)%100, b=a%10;
+  return (a>10&&a<20) ? f[2] : (b>1&&b<5) ? f[1] : b===1 ? f[0] : f[2];
+}
+function num(n, f){ return n + ' ' + word(n, f); }
+const SEC = ['секунду','секунды','секунд'];
+
+/* ============ готово ============ */
+let lastObs = '';
+document.getElementById('doneBtn').onclick = ()=>{
+  const d = measure();
+  lastObs = observe(d).join(' ');
+  document.getElementById('obsText').innerHTML = observe(d).map(p=>'<p>'+p+'</p>').join('');
+
+  sel = null; render();
+  const clone = field.cloneNode(true);
+  clone.removeAttribute('id'); clone.style.width='100%'; clone.style.height='auto';
+  const pic = document.getElementById('resPic'); pic.innerHTML=''; pic.appendChild(clone);
+
+  show('res'); window.scrollTo({top:0,behavior:'smooth'});
+  if(window.ym) ym(110592816,'reachGoal','razlozhi_done');
+};
+
+/* ============ картинка ============ */
+function toPNG(cb){
+  sel=null; render();
+  const clone = field.cloneNode(true);
+  clone.setAttribute('xmlns', SVGNS);
+  /* без явных width/height браузер растрирует SVG как 150x150 и картинка выходит мыльной */
+  clone.setAttribute('width', W*2); clone.setAttribute('height', H*2);
+  const data = new XMLSerializer().serializeToString(clone);
+  const img = new Image();
+  img.onload = ()=>{
+    const cv=document.createElement('canvas'); cv.width=W*2; cv.height=H*2;
+    cv.getContext('2d').drawImage(img,0,0,W*2,H*2);
+    cv.toBlob(b=>cb(b), 'image/png');
+  };
+  img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+}
+document.getElementById('saveBtn').onclick = ()=>{
+  toPNG(blob=>{
+    const a=document.createElement('a');
+    a.download='moya-kompoziciya.png'; a.href=URL.createObjectURL(blob); a.click();
+    if(window.ym) ym(110592816,'reachGoal','razlozhi_save');
+  });
+};
+document.getElementById('shareBtn').onclick = ()=>{
+  const url = 'https://voobrazhaemy.ru/praktika-razlozhi.html';
+  toPNG(async blob=>{
+    const file = new File([blob],'moya-kompoziciya.png',{type:'image/png'});
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      try { await navigator.share({files:[file], title:'Разложите формы', text:'Собрал композицию — попробуйте и вы'}); return; }
+      catch(_){ /* закрыли шторку — молча выходим */ return; }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      const b=document.getElementById('shareBtn'); const t=b.textContent;
+      b.textContent='Ссылка скопирована'; setTimeout(()=>b.textContent=t, 1900);
+    } catch(_){ window.prompt('Скопируйте ссылку:', url); }
+  });
+};
+
+/* ============ контакт ============
+   Тот же приёмник, что у остальных форм. Показываем успех ТОЛЬКО по реальному ответу:
+   скрипт отдаёт Access-Control-Allow-Origin: *, поэтому обычный mode:'cors' работает,
+   а text/plain избавляет от preflight. */
+const EP = 'https://script.google.com/macros/s/AKfycbyeGNxQUFTBYNjt99ttlthK8rJKU8TBOXLARPi5QDHP7_NoJurgFymu06KO0fs2w45aDQ/exec';
+const leadForm=document.getElementById('leadForm'), leadName=document.getElementById('leadName'),
+      leadWay=document.getElementById('leadWay'), leadNote=document.getElementById('leadNote'),
+      leadSend=document.getElementById('leadSend');
+
+leadForm.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const way = leadWay.value.trim();
+  if(!way){
+    leadWay.classList.add('is-bad'); leadWay.focus();
+    leadNote.classList.remove('is-ok');
+    leadNote.textContent='Впишите, куда написать: @ник в телеграме или почту';
+    return;
+  }
+  leadWay.classList.remove('is-bad');
+  leadSend.disabled = true;
+  leadNote.classList.remove('is-ok'); leadNote.textContent='Отправляю…';
+  try{
+    const r = await fetch(EP, { method:'POST', mode:'cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ type:'razlozhi_lead', name:(leadName.value.trim()||'без имени'),
+                             contact:way, observation:lastObs }) });
+    let ok=false; try{ ok = (await r.json()).ok === true; } catch(_){ ok=false; }
+    if(ok){
+      leadForm.style.display='none';
+      leadNote.classList.add('is-ok');
+      leadNote.textContent='Поймали. Пришлём практику и напишем про ближайшую встречу.';
+      if(window.ym) ym(110592816,'reachGoal','razlozhi_lead');
+    } else {
+      leadSend.disabled=false;
+      leadNote.textContent='Кажется, не дошло. Попробуйте ещё раз или напишите нам: @ianitavoit';
+    }
+  } catch(_){
+    leadSend.disabled=false;
+    leadNote.textContent='Кажется, не дошло. Попробуйте ещё раз или напишите нам: @ianitavoit';
+  }
+});
+
+window.addEventListener('resize', ()=>{ if(!scr.play.hidden){ setViewport(); render(); } });
+setViewport();
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+   ym(110592816, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/110592816" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
