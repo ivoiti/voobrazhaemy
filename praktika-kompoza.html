@@ -112,14 +112,22 @@
     .ends a:hover { color:var(--terra) }
 
     @media (max-width:860px){
-      .stage { grid-template-columns:1fr }
+      .stage { grid-template-columns:1fr; gap:12px }
       .tools { flex-direction:column }
       .shapes { grid-template-columns:repeat(7,1fr) }
       .swatches { grid-template-columns:repeat(10,1fr) }
       .bgs { grid-template-columns:repeat(5,1fr); max-width:260px }
-      .pset { padding:24px 18px }
-      .pwrap { padding:0 14px 70px }
+      /* поля даём максимум ширины: на телефоне каждый пиксель на счету */
+      .pset { padding:18px 8px }
+      .pwrap { padding:0 6px 70px }
       .obs { padding:24px 20px }
+      .board { padding:6px; border-radius:12px }
+      /* поле липнет к верху: палитра снизу, и без этого добавленная форма
+         оказывалась выше экрана — казалось, что тап не сработал */
+      .board { position:sticky; top:6px; z-index:5; box-shadow:0 6px 18px rgba(23,24,26,.08) }
+      .board__hint { font-size:12px }
+      .tool { padding:10px }
+      .tool h2 { margin-bottom:7px }
     }
     @media (max-width:480px){ .shapes { grid-template-columns:repeat(5,1fr) } }
     [hidden] { display:none !important }
@@ -339,23 +347,33 @@ function drawSelection(it){
                               'stroke-dasharray':'5 4',opacity:.75}));
   field.appendChild(box);
   /* маркеры кликабельны отдельно */
+  /* на телефоне поле мельче, поэтому маркеры делаем крупнее — иначе в них не попасть */
+  const touchy = window.matchMedia('(max-width:860px)').matches;
+  const RR = touchy ? 22 : 13, FS = touchy ? 20 : 13;
   const mk = (x,y,label,cls) => {
     const g = el('g',{class:cls, style:'cursor:pointer'});
-    g.appendChild(el('circle',{cx:x,cy:y,r:13,fill:'#17181A'}));
-    const t = el('text',{x:x,y:y+4,'text-anchor':'middle','font-size':13,fill:'#F3ECDF',
+    g.appendChild(el('circle',{cx:x,cy:y,r:RR,fill:'#17181A'}));
+    const t = el('text',{x:x,y:y+FS*0.34,'text-anchor':'middle','font-size':FS,fill:'#F3ECDF',
                          'font-family':'Inter, sans-serif', style:'pointer-events:none'});
     t.textContent = label; g.appendChild(t);
     field.appendChild(g); return g;
   };
   const d = R + 10;
-  mk(it.x + d, it.y + d, '⤢', 'h-size').addEventListener('pointerdown', e=>startResize(e,it));
-  mk(it.x + d, it.y - d, '⟳', 'h-rot').addEventListener('pointerdown', e=>startRotate(e,it));
-  mk(it.x - d, it.y - d, '×', 'h-del').addEventListener('pointerdown', e=>{ e.stopPropagation(); removeItem(it); });
+  const on = (node, fn) => {                 /* и мышь, и палец */
+    node.addEventListener('pointerdown', fn);
+    node.addEventListener('touchstart', fn, {passive:false});
+  };
+  on(mk(it.x + d, it.y + d, '⤢', 'h-size'), e=>startResize(e,it));
+  on(mk(it.x + d, it.y - d, '⟳', 'h-rot'), e=>startRotate(e,it));
+  on(mk(it.x - d, it.y - d, '×', 'h-del'), e=>{ e.stopPropagation(); if(e.cancelable) e.preventDefault(); removeItem(it); });
 }
 
+/* Координаты берём и из pointer-, и из touch-события: на части мобильных браузеров
+   Pointer Events либо отсутствуют, либо ведут себя иначе, и без этого игра «не работала». */
 function pt(e){
   const r = field.getBoundingClientRect();
-  return { x:(e.clientX-r.left)/r.width*W, y:(e.clientY-r.top)/r.height*H };
+  const src = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]) || e;
+  return { x:(src.clientX-r.left)/r.width*W, y:(src.clientY-r.top)/r.height*H };
 }
 function mark(){ M.lastActionAt = Date.now(); }
 
@@ -363,7 +381,13 @@ function addItem(type, x, y){
   if(!M.firstTouchAt){ M.firstTouchAt = Date.now(); M.firstXY = {x,y}; }
   const it = { id:++seq, type, x, y, s:1, rot:0, color:picked };
   items.push(it); M.added++; sel = it.id; mark(); render();
-  document.getElementById('hint').textContent = 'Тяните, чтобы двигать · за угол — размер · ⟳ — поворот · × — убрать';
+  document.getElementById('hint').textContent = 'Тяните, чтобы двигать · ⤢ размер · ⟳ поворот · × убрать';
+  /* на телефоне палитра под полем: если поле уехало за экран, показываем его —
+     иначе кажется, что тап по форме не сработал */
+  const b = field.getBoundingClientRect();
+  if(b.bottom < 80 || b.top > window.innerHeight - 80){
+    field.scrollIntoView({behavior:'smooth', block:'center'});
+  }
   return it;
 }
 function removeItem(it){
@@ -374,50 +398,79 @@ function removeItem(it){
 
 /* ---- перетаскивание, размер, поворот ---- */
 let drag = null;
-field.addEventListener('pointerdown', e=>{
-  const g = e.target.closest('g[data-id]');
+
+function onDown(e){
+  const g = e.target.closest && e.target.closest('g[data-id]');
   if(!g){ sel = null; render(); return; }
   const it = items.find(i=>i.id===+g.dataset.id);
   if(!it) return;
+  if(e.cancelable) e.preventDefault();     /* иначе страница уезжает вместе с пальцем */
   sel = it.id; render();
   const p = pt(e);
   drag = { it, dx:p.x-it.x, dy:p.y-it.y, moved:false };
-  field.setPointerCapture(e.pointerId);
-});
-field.addEventListener('pointermove', e=>{
+  /* захват указателя на SVG умеет падать в части браузеров — без него просто живём */
+  try { if(e.pointerId != null && field.setPointerCapture) field.setPointerCapture(e.pointerId); }
+  catch(_){}
+}
+function onMove(e){
   if(!drag) return;
+  if(e.cancelable) e.preventDefault();
   const p = pt(e);
   drag.it.x = p.x - drag.dx; drag.it.y = p.y - drag.dy;
   drag.moved = true; render();
-});
-field.addEventListener('pointerup', e=>{
+}
+function onUp(){
   if(!drag) return;
   const it = drag.it;
   /* вынесли за пределы поля — убираем */
   if(it.x < -40 || it.x > W+40 || it.y < -40 || it.y > H+40) removeItem(it);
   else if(drag.moved){ M.moves++; mark(); }
   drag = null; render();
-});
+}
 
+if(window.PointerEvent){
+  field.addEventListener('pointerdown', onDown);
+  field.addEventListener('pointermove', onMove);
+  field.addEventListener('pointerup', onUp);
+  field.addEventListener('pointercancel', onUp);
+} else {                                   /* старые мобильные браузеры */
+  field.addEventListener('mousedown', onDown);
+  field.addEventListener('mousemove', onMove);
+  field.addEventListener('mouseup', onUp);
+}
+/* touch вешаем всегда: где-то pointer есть, но ведёт себя неполно */
+field.addEventListener('touchstart', onDown, {passive:false});
+field.addEventListener('touchmove', onMove, {passive:false});
+field.addEventListener('touchend', onUp);
+field.addEventListener('touchcancel', onUp);
+
+/* тянем маркер: слушаем и указатель, и палец, снимаем всё разом */
+function grab(move){
+  const up = () => {
+    ['pointermove','mousemove','touchmove'].forEach(t=>window.removeEventListener(t, move));
+    ['pointerup','mouseup','touchend','touchcancel'].forEach(t=>window.removeEventListener(t, up));
+    mark(); render();
+  };
+  ['pointermove','mousemove'].forEach(t=>window.addEventListener(t, move));
+  window.addEventListener('touchmove', move, {passive:false});
+  ['pointerup','mouseup','touchend','touchcancel'].forEach(t=>window.addEventListener(t, up));
+}
 function startResize(e, it){
-  e.stopPropagation();
+  e.stopPropagation(); if(e.cancelable) e.preventDefault();
   const start = pt(e), s0 = it.s;
   const d0 = Math.hypot(start.x-it.x, start.y-it.y) || 1;
-  const move = ev => {
+  grab(ev => {
+    if(ev.cancelable) ev.preventDefault();
     const p = pt(ev);
     const d = Math.hypot(p.x-it.x, p.y-it.y);
     it.s = Math.max(.25, Math.min(3.2, s0 * d/d0)); render();
-  };
-  const up = () => { window.removeEventListener('pointermove',move); window.removeEventListener('pointerup',up); mark(); render(); };
-  window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+  });
 }
 function startRotate(e, it){
-  e.stopPropagation();
+  e.stopPropagation(); if(e.cancelable) e.preventDefault();
   const ang = p => Math.atan2(p.y-it.y, p.x-it.x)*180/Math.PI;
   const a0 = ang(pt(e)), r0 = it.rot;
-  const move = ev => { it.rot = r0 + (ang(pt(ev)) - a0); render(); };
-  const up = () => { window.removeEventListener('pointermove',move); window.removeEventListener('pointerup',up); mark(); render(); };
-  window.addEventListener('pointermove',move); window.addEventListener('pointerup',up);
+  grab(ev => { if(ev.cancelable) ev.preventDefault(); it.rot = r0 + (ang(pt(ev)) - a0); render(); });
 }
 
 /* ---- палитры в DOM ---- */
