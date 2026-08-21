@@ -286,7 +286,9 @@ document.getElementById('zsend').addEventListener('click', async () => {
   if (res.ok) {
     msg.style.color = 'var(--teal)';
     msg.textContent = 'Спасибо! Мы получили заявку и скоро свяжемся, чтобы подтвердить место.';
-    if (window.ym) ym(110592816, 'reachGoal', 'zapis');
+    /* отдельная цель: 'zapis' в js/main.js — это КЛИК по ссылке «Записаться»,
+       а здесь заявка реально дошла до приёмника. Смешивать нельзя. */
+    if (window.ym) ym(110592816, 'reachGoal', 'zapis_send');
   } else {
     btn.disabled = false;
     msg.style.color = 'var(--terra)';
