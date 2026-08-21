@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Записаться на сессию — Мы должны быть воображаемы</title>
-  <meta name="description" content="Запись на открытые арт-коуч сессии проекта «Мы должны быть воображаемы». Выберите дату в календаре и оставьте заявку.">
+  <meta name="description" content="Запись на открытые арт-коуч-сессии проекта «Мы должны быть воображаемы» в Москве. Выберите дату в календаре и оставьте заявку — подтвердим место.">
   <!-- ТЕСТОВАЯ СТРАНИЦА: заявки собираются на фронте, бэкенд (CRM + Telegram) в работе. Не индексируем. -->
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://voobrazhaemy.ru/zapis.html">
@@ -140,28 +140,34 @@
 
 <script>
 /* =========================================================================
-   СЛОЙ «БЭКЕНД». Сейчас на заглушках. Когда будет CRM + Telegram —
-   меняем ТОЛЬКО тело двух функций отправки, разметку/логику не трогаем.
+   СЛОЙ «БЭКЕНД». Заявки уходят в общий Apps Script: он пишет строку
+   в таблицу-CRM и шлёт уведомление в Телеграм. Тот же приёмник у практик.
    ========================================================================= */
-// Адрес Google-скрипта (Web app /exec). Пока пусто → тестовый режим (заявка в консоль).
-// Когда вставим URL — заявки летят в Google-таблицу (CRM) и в Telegram.
+// Адрес Google-скрипта (Web app /exec).
 const ENDPOINT = 'https://script.google.com/macros/s/AKfycbyeGNxQUFTBYNjt99ttlthK8rJKU8TBOXLARPi5QDHP7_NoJurgFymu06KO0fs2w45aDQ/exec';
 const API = {
   async _post(payload) {
     if (!ENDPOINT) { console.log('[test]', payload); return { ok: false, test: true }; }
+    /* mode:'cors', а не 'no-cors': приёмник отдаёт Access-Control-Allow-Origin: *,
+       поэтому ответ можно прочитать и сказать правду. С 'no-cors' ответ был непрозрачным
+       и «Спасибо, заявка получена» показывалось даже когда скрипт лежал.
+       text/plain — чтобы запрос остался простым и не потребовал preflight. */
     try {
-      await fetch(ENDPOINT, {
+      const r = await fetch(ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
-      return { ok: true };            // no-cors: ответ непрозрачный, считаем отправку успешной
+      let ok = false;
+      try { ok = (await r.json()).ok === true; } catch (_) { ok = false; }
+      return { ok: ok };
     } catch (e) { console.error(e); return { ok: false, error: String(e) }; }
   },
   async sendBooking(booking) { return this._post(booking); },
   async sendLead(lead) { return this._post(lead); }
 };
+const FAIL_MSG = 'Кажется, заявка не дошла. Попробуйте ещё раз или напишите нам в телеграм: @ianitavoit';
 
 /* ---- параметры расписания ---- */
 const SEASON_START = '2026-07-25';       // первая сессия нового цикла
@@ -272,11 +278,20 @@ document.getElementById('zsend').addEventListener('click', async () => {
   if (!state.chosenISO) { msg.textContent = 'Сначала выберите дату в календаре.'; return; }
   if (!name || !phone) { msg.textContent = 'Заполните имя и телефон.'; return; }
   const booking = { type: 'session', dateISO: state.chosenISO, time: TIME, name, phone };
+  const btn = document.getElementById('zsend'), was = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Отправляю…';
+  msg.style.color = 'rgba(23,24,26,.6)'; msg.textContent = 'Отправляю…';
   const res = await API.sendBooking(booking);
-  msg.style.color = res.test ? '#6b5a12' : 'var(--terra)';
-  msg.textContent = res.test
-    ? '⚙️ Тестовый режим: заявка собрана (см. консоль). Позже она уйдёт в CRM и Telegram.'
-    : 'Спасибо! Мы получили заявку и скоро свяжемся, чтобы подтвердить место.';
+  btn.textContent = was;
+  if (res.ok) {
+    msg.style.color = 'var(--teal)';
+    msg.textContent = 'Спасибо! Мы получили заявку и скоро свяжемся, чтобы подтвердить место.';
+    if (window.ym) ym(110592816, 'reachGoal', 'zapis');
+  } else {
+    btn.disabled = false;
+    msg.style.color = 'var(--terra)';
+    msg.textContent = FAIL_MSG;
+  }
 });
 
 document.getElementById('bsend').addEventListener('click', async () => {
@@ -285,11 +300,19 @@ document.getElementById('bsend').addEventListener('click', async () => {
   const task = document.getElementById('btask').value.trim();
   const msg = document.getElementById('bmsg');
   if (!name || !contact) { msg.style.color = '#FBE3D0'; msg.textContent = 'Оставьте имя и контакт — телефон или почту.'; return; }
+  const btn = document.getElementById('bsend'), was = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Отправляю…';
+  msg.style.color = '#FBE3D0'; msg.textContent = 'Отправляю…';
   const res = await API.sendLead({ type: 'b2b', name, contact, task });
+  btn.textContent = was;
   msg.style.color = '#FBE3D0';
-  msg.textContent = res.test
-    ? '⚙️ Тестовый режим: заявка собрана (см. консоль). Позже она уйдёт в CRM и Telegram.'
-    : 'Спасибо! Мы свяжемся с вами.';
+  if (res.ok) {
+    msg.textContent = 'Спасибо! Мы свяжемся с вами.';
+    if (window.ym) ym(110592816, 'reachGoal', 'b2b_lead');
+  } else {
+    btn.disabled = false;
+    msg.textContent = FAIL_MSG;
+  }
 });
 
 renderCalendar();
@@ -305,5 +328,17 @@ renderCalendar();
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeM(); });
 })();
 </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(110592816, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/110592816" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 </html>

@@ -121,6 +121,40 @@
     .lead__note.is-ok { color:var(--teal); font-weight:600 }
     .lead__fine { margin-top:10px; font-size:12.5px; color:rgba(23,24,26,.45) }
 
+    /* ===== галерея «что получилось у других» ===== */
+    .gal-pub { margin-top:18px; text-align:center }
+    .gal-pub__label { font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+                      color:rgba(23,24,26,.45); font-weight:600 }
+    .gal-pub__row { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center }
+    .gal-pub__row input { font:inherit; font-size:14.5px; padding:9px 17px; width:min(280px,72vw);
+                          border:1px solid rgba(23,24,26,.2); border-radius:999px; background:#fff; color:var(--ink) }
+    .gal-pub__row input:focus { outline:2px solid var(--terra); outline-offset:1px }
+    .gal-pub__note { margin-top:9px; font-size:13.5px; color:rgba(23,24,26,.58); min-height:18px }
+    .gal-pub__note.is-ok { color:var(--teal); font-weight:600 }
+
+    .gal { margin-top:44px }
+    .gal__title { font-family:var(--serif); font-size:clamp(22px,3.4vw,30px); font-weight:400 }
+    .gal__sub { margin-top:7px; font-size:15px; color:rgba(23,24,26,.55); max-width:62ch }
+    .gal__wrap { position:relative; margin-top:18px }
+    .gal__strip { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x proximity; scroll-behavior:smooth;
+                  padding:4px 2px 14px; -webkit-overflow-scrolling:touch; scrollbar-width:thin }
+    /* высота карточек одна, ширину каждой ставим по пропорции работы: композы бывают
+       и горизонтальные, и вертикальные (на телефоне поле поворачивается).
+       Ширина задаётся в JS — иначе до загрузки картинки лента схлопывается и прыгает. */
+    .gal__it { flex:0 0 auto; box-sizing:border-box; scroll-snap-align:start;
+               background:var(--cream-2,#f7f3ea); border-radius:14px; padding:10px }
+    .gal__ph { box-sizing:border-box; height:250px; background:#fff; border-radius:9px; padding:6px }
+    .gal__ph img { width:100%; height:100%; object-fit:contain; display:block; border-radius:6px }
+    .gal__cap { margin-top:9px; font-size:13px; color:rgba(23,24,26,.5); display:flex;
+                justify-content:space-between; gap:10px; align-items:baseline }
+    .gal__cap b { font-weight:600; color:var(--ink) }
+    .gal__nav { position:absolute; top:135px; transform:translateY(-50%); z-index:3; width:38px; height:38px;
+                border-radius:50%; border:1px solid rgba(23,24,26,.16); background:#fff; color:var(--ink);
+                font-size:22px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(23,24,26,.12) }
+    .gal__nav:hover { border-color:var(--teal); color:var(--teal) }
+    .gal__nav--prev { left:-8px } .gal__nav--next { right:-8px }
+    @media (max-width:860px){ .gal__nav { display:none } }
+
     .ends { margin-top:26px; padding-top:20px; border-top:1px solid rgba(23,24,26,.12);
             display:flex; gap:16px; flex-wrap:wrap; align-items:center; font-size:15px }
     .ends a { color:var(--teal); font-weight:600; text-decoration:none }
@@ -238,6 +272,18 @@
           </div>
         </div>
 
+        <!-- галерея: без отбора. Работа появляется сразу, Яните падает уведомление
+             со ссылкой «убрать», если что-то не то. -->
+        <div class="gal-pub" id="galPub" hidden>
+          <span class="gal-pub__label">Показать свою композу другим</span>
+          <div class="gal-pub__row">
+            <input id="galNick" type="text" maxlength="24" autocomplete="off"
+                   placeholder="Как подписать — можно пропустить" aria-label="Подпись к работе">
+            <button class="rbtn rbtn--sm" id="galSend">В галерею</button>
+          </div>
+          <div class="gal-pub__note" id="galNote" role="status" aria-live="polite"></div>
+        </div>
+
         <div class="obs">
           <div class="obs__kicker">Что происходило, пока вы раскладывали</div>
           <div class="obs__text" id="obsText"></div>
@@ -286,6 +332,20 @@
           <a href="praktiki.html">Другие практики</a>
           <button class="rbtn rbtn--ghost rbtn--sm" id="againBtn">Пройти заново</button>
         </div>
+      </div>
+    </section>
+
+    <!-- галерея видна на всех трёх экранах: до игры она показывает, что тут делают
+         другие, после игры — место, куда попадает своя работа -->
+    <div id="galSentinel" aria-hidden="true"></div>
+    <section class="gal" id="gal" hidden>
+      <h2 class="gal__title">Что получилось у других</h2>
+      <p class="gal__sub">Композы, которые собрали до вас. Мы их не отбираем и не оцениваем —
+         каждая появляется здесь сразу.</p>
+      <div class="gal__wrap">
+        <button class="gal__nav gal__nav--prev" id="galPrev" aria-label="Предыдущие" hidden>‹</button>
+        <div class="gal__strip" id="galStrip"></div>
+        <button class="gal__nav gal__nav--next" id="galNext" aria-label="Следующие" hidden>›</button>
       </div>
     </section>
 
@@ -736,18 +796,19 @@ document.getElementById('doneBtn').onclick = ()=>{
 };
 
 /* ============ картинка ============ */
-function toPNG(cb){
+function toPNG(cb, scale){
   sel=null; render();
+  const k = scale || 2, w = Math.round(W*k), h = Math.round(H*k);
   const clone = field.cloneNode(true);
   clone.setAttribute('xmlns', SVGNS);
   /* без явных width/height браузер растрирует SVG как 150x150 и картинка выходит мыльной */
-  clone.setAttribute('width', W*2); clone.setAttribute('height', H*2);
+  clone.setAttribute('width', w); clone.setAttribute('height', h);
   const data = new XMLSerializer().serializeToString(clone);
   const img = new Image();
   img.onload = ()=>{
-    const cv=document.createElement('canvas'); cv.width=W*2; cv.height=H*2;
-    cv.getContext('2d').drawImage(img,0,0,W*2,H*2);
-    cv.toBlob(b=>cb(b), 'image/png');
+    const cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+    cv.getContext('2d').drawImage(img,0,0,w,h);
+    cv.toBlob(b=>cb(b, w, h), 'image/png');
   };
   img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
 }
@@ -854,6 +915,167 @@ leadForm.addEventListener('submit', async e=>{
     leadNote.textContent='Кажется, не дошло. Попробуйте ещё раз или напишите нам: @ianitavoit';
   }
 });
+
+/* ============ галерея «что получилось у других» ============
+   Без модерации: работа появляется сразу, а Яните в Телеграм падает ссылка «убрать».
+   Здесь — только техзащита от мусора: свои не чаще раза в три минуты и не больше трёх
+   в сутки, пустое поле не отправляется, картинка режется по весу. Серверные лимиты
+   стоят в приёмнике отдельно — на localStorage полагаться нельзя. */
+const GAL_GAP   = 3*60*1000;      /* пауза между своими отправками */
+const GAL_DAY   = 3;              /* и потолок на сутки */
+const GAL_BYTES = 700*1024;       /* картинка тяжелее — не пускаем */
+const GAL_SHOW  = 24;             /* сколько работ показываем в ленте */
+
+const galStrip=document.getElementById('galStrip'), galSec=document.getElementById('gal'),
+      galNote=document.getElementById('galNote'), galNick=document.getElementById('galNick'),
+      galSend=document.getElementById('galSend');
+
+/* постоянный id гостя — только чтобы считать частоту, ничего личного в нём нет */
+function galVid(){
+  let v = null;
+  try{ v = localStorage.getItem('kompoza_vid'); }catch(_){}
+  if(!v){
+    v = 'v' + Math.random().toString(36).slice(2,10) + Date.now().toString(36);
+    try{ localStorage.setItem('kompoza_vid', v); }catch(_){}
+  }
+  return v;
+}
+function galState(){
+  let s={}; try{ s = JSON.parse(localStorage.getItem('kompoza_gal')||'{}'); }catch(_){}
+  if(!s.day || Date.now()-s.day > 864e5){ s.day = Date.now(); s.cnt = 0; }
+  s.mine = Array.isArray(s.mine) ? s.mine : [];
+  return s;
+}
+function galSave(s){ try{ localStorage.setItem('kompoza_gal', JSON.stringify(s)); }catch(_){} }
+
+/* картинку отдаёт Диск: первым берём CDN-адрес, он быстрее, запасной — миниатюра */
+function galSrc(id, w){ return 'https://lh3.googleusercontent.com/d/' + id + '=w' + w; }
+function galAlt(id, w){ return 'https://drive.google.com/thumbnail?id=' + id + '&sz=w' + w; }
+
+function galRender(list){
+  if(!list.length){ galSec.hidden = true; return; }
+  const mine = galState().mine;
+  galStrip.innerHTML = '';
+  list.slice(0, GAL_SHOW).forEach(it=>{
+    const box = document.createElement('div'); box.className = 'gal__it';
+    const ph  = document.createElement('div'); ph.className = 'gal__ph';
+    const im  = document.createElement('img');
+    const hh  = 238, ratio = (it.w && it.h) ? it.w/it.h : 4/3;
+    const cw  = Math.max(120, Math.min(420, Math.round(hh*ratio)));
+    box.style.width = 'min(' + (cw + 20) + 'px, 78vw)';   /* место под картинку занято заранее */
+    im.width = cw; im.height = hh;
+    im.loading = 'lazy'; im.decoding = 'async';
+    im.alt = 'Композа' + (it.nick ? ' — ' + it.nick : '');
+    im.src = galSrc(it.id, 800);
+    im.onerror = function(){ if(!this.dataset.alt){ this.dataset.alt='1'; this.src = galAlt(it.id, 800); } };
+    ph.appendChild(im);
+    const cap = document.createElement('div'); cap.className = 'gal__cap';
+    const who = document.createElement('span');
+    who.innerHTML = it.nick ? '<b></b>' : 'без подписи';
+    if(it.nick) who.querySelector('b').textContent = it.nick;
+    const when = document.createElement('span');
+    when.textContent = mine.indexOf(it.id) >= 0 ? 'ваша' : (it.date || '');
+    cap.appendChild(who); cap.appendChild(when);
+    box.appendChild(ph); box.appendChild(cap);
+    galStrip.appendChild(box);
+  });
+  galSec.hidden = false;
+  galArrows();
+}
+function galArrows(){
+  const can = galStrip.scrollWidth > galStrip.clientWidth + 8;
+  document.getElementById('galPrev').hidden = !can;
+  document.getElementById('galNext').hidden = !can;
+}
+document.getElementById('galPrev').onclick = ()=> galStrip.scrollBy({left:-(galStrip.clientWidth*0.8), behavior:'smooth'});
+document.getElementById('galNext').onclick = ()=> galStrip.scrollBy({left: (galStrip.clientWidth*0.8), behavior:'smooth'});
+window.addEventListener('resize', galArrows);
+
+let galCache = null;
+async function galLoad(force){
+  try{
+    const r = await fetch(EP + '?list=gallery' + (force ? '&fresh=1&t=' + Date.now() : ''), {mode:'cors'});
+    const j = await r.json();
+    if(j && j.ok && Array.isArray(j.items)){
+      galCache = j.items; galRender(j.items);
+      /* приёмник ответил списком — значит галерею он держит, показываем кнопку.
+         Пока он умеет только «пинг», кнопки нет: лучше её отсутствие, чем кнопка,
+         которая всегда падает. */
+      document.getElementById('galPub').hidden = false;
+    }
+  }catch(_){ /* галереи просто не будет — страница работает и без неё */ }
+}
+
+/* на экране результата список нужен сразу: там же кнопка «В галерею» */
+document.getElementById('doneBtn').addEventListener('click', ()=>galLoad());
+
+/* в остальном грузим лениво: пока человек не долистал, сеть не трогаем */
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver((es, o)=>{
+    if(es.some(e=>e.isIntersecting)){ o.disconnect(); galLoad(); }
+  }, {rootMargin:'400px'});
+  io.observe(document.getElementById('galSentinel'));
+} else { galLoad(); }
+
+galSend.onclick = ()=>{
+  if(items.length < 2){
+    galNote.classList.remove('is-ok');
+    galNote.textContent = 'На поле пусто — соберите композу, тогда будет что показать';
+    return;
+  }
+  const s = galState(), now = Date.now();
+  if(now - (s.last||0) < GAL_GAP){
+    galNote.classList.remove('is-ok');
+    galNote.textContent = 'Только что уже отправляли. Следующую — минуты через три';
+    return;
+  }
+  if((s.cnt||0) >= GAL_DAY){
+    galNote.classList.remove('is-ok');
+    galNote.textContent = 'На сегодня хватит — три работы в галерее уже ваши :)';
+    return;
+  }
+  galSend.disabled = true;
+  galNote.classList.remove('is-ok'); galNote.textContent = 'Отправляю…';
+
+  /* 1000px по длинной стороне: для плоских пятен это 40-80 КБ, ленту не утяжеляет */
+  toPNG(async (blob, w, h)=>{
+    if(!blob || blob.size > GAL_BYTES){
+      galSend.disabled = false;
+      galNote.textContent = 'Картинка вышла слишком тяжёлой. Уберите пару форм и попробуйте снова';
+      return;
+    }
+    const dataUrl = await new Promise(res=>{
+      const fr = new FileReader(); fr.onload = ()=>res(fr.result); fr.readAsDataURL(blob);
+    });
+    try{
+      const r = await fetch(EP, { method:'POST', mode:'cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify({ type:'kompoza_gallery', vid: galVid(),
+                               nick: galNick.value.trim().slice(0,24),
+                               w: w, h: h, observation: lastObs, image: dataUrl }) });
+      const j = await r.json();
+      if(j && j.ok){
+        const st = galState();
+        st.last = Date.now(); st.cnt = (st.cnt||0) + 1;
+        if(j.id) st.mine.push(j.id);
+        galSave(st);
+        document.getElementById('galPub').querySelector('.gal-pub__row').style.display = 'none';
+        galNote.classList.add('is-ok');
+        galNote.textContent = 'Готово, ваша композа в галерее — она ниже на странице';
+        if(window.ym) ym(110592816,'reachGoal','kompoza_gallery');
+        setTimeout(()=>galLoad(true), 600);
+        setTimeout(()=>galSec.scrollIntoView({behavior:'smooth', block:'start'}), 1400);
+      } else {
+        galSend.disabled = false;
+        galNote.textContent = (j && j.msg) ? j.msg
+          : 'Кажется, не дошло. Попробуйте ещё раз или напишите нам: @ianitavoit';
+      }
+    }catch(_){
+      galSend.disabled = false;
+      galNote.textContent = 'Кажется, не дошло. Попробуйте ещё раз или напишите нам: @ianitavoit';
+    }
+  }, 1000/Math.max(W,H));
+};
 
 window.addEventListener('resize', ()=>{ if(!scr.play.hidden){ setViewport(); render(); } });
 setViewport();
