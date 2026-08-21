@@ -97,11 +97,26 @@
     .lead { margin-top:24px; background:#fff; border:1px solid rgba(23,24,26,.14); border-radius:18px; padding:24px 26px }
     .lead h3 { font-family:var(--serif); font-size:21px; font-weight:400 }
     .lead p { font-size:15px; color:#3a3b3d; margin-top:8px; max-width:52ch }
-    .lead__row { display:flex; gap:10px; margin-top:15px; flex-wrap:wrap }
-    .lead__row input { flex:1 1 200px; min-width:0; font:inherit; font-size:15.5px; padding:13px 17px;
-                       border:1px solid rgba(23,24,26,.2); border-radius:999px; background:var(--cream); color:var(--ink) }
-    .lead__row input:focus { outline:2px solid var(--terra); outline-offset:1px }
-    .lead__row input.is-bad { border-color:var(--terra) }
+    .lead__form { display:flex; gap:10px; margin-top:15px; flex-wrap:wrap }
+    .lead__form input { flex:1 1 170px; min-width:0; font:inherit; font-size:15.5px; padding:13px 17px;
+                        border:1px solid rgba(23,24,26,.2); border-radius:999px; background:var(--cream); color:var(--ink) }
+    .lead__form input:focus { outline:2px solid var(--terra); outline-offset:1px }
+    .lead__form input.is-bad { border-color:var(--terra) }
+
+    .bridge__acts { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap }
+    .rbtn--teal { background:var(--teal) }
+    .rbtn--teal:hover { background:var(--teal-dark,#214448) }
+
+    /* своя панель «поделиться» */
+    .share { margin-top:18px; text-align:center }
+    .share__label { font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+                    color:rgba(23,24,26,.45); font-weight:600 }
+    .share__row { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center }
+    .share__btn { display:inline-block; cursor:pointer; font:inherit; font-size:14px; font-weight:500;
+                  padding:9px 18px; border-radius:999px; border:1px solid rgba(23,24,26,.2);
+                  background:#fff; color:var(--ink); text-decoration:none; transition:.15s }
+    .share__btn:hover { border-color:var(--teal); color:var(--teal) }
+    .share__btn--copy { border-style:dashed }
     .lead__note { margin-top:11px; font-size:13.5px; color:rgba(23,24,26,.58); min-height:18px }
     .lead__note.is-ok { color:var(--teal); font-weight:600 }
     .lead__fine { margin-top:10px; font-size:12.5px; color:rgba(23,24,26,.45) }
@@ -207,7 +222,20 @@
         <div class="res__pic" id="resPic"></div>
         <div class="res__acts">
           <button class="rbtn" id="saveBtn">Сохранить картинку</button>
-          <button class="rbtn rbtn--ghost" id="shareBtn">Поделиться</button>
+          <button class="rbtn rbtn--ghost" id="sendPic" hidden>Отправить картинку</button>
+        </div>
+
+        <!-- свои кнопки вместо системной шторки: там список задаёт телефон, и в нём
+             оказывается всё подряд. Здесь ровно четыре адреса и копирование. -->
+        <div class="share">
+          <span class="share__label">Поделиться</span>
+          <div class="share__row">
+            <a class="share__btn" id="shTg" target="_blank" rel="noopener" title="Телеграм">Телеграм</a>
+            <a class="share__btn" id="shMax" target="_blank" rel="noopener" title="MAX">MAX</a>
+            <a class="share__btn" id="shWa" target="_blank" rel="noopener" title="WhatsApp">WhatsApp</a>
+            <a class="share__btn" id="shMail" title="Почта">Почта</a>
+            <button class="share__btn share__btn--copy" id="shCopy">Скопировать ссылку</button>
+          </div>
         </div>
 
         <div class="obs">
@@ -218,9 +246,10 @@
 
         <div class="what">
           <h2 class="what__title">Так что вы сейчас сделали</h2>
-          <p><b>Композа</b> — сокращённо от «композиции». Так называют упражнение, которое
-             художники гоняют задолго до всяких шедевров: никаких сюжетов, никакой «грустной
-             осени» — только пятна, линии и пустота между ними. Задача одна: чтобы держалось.</p>
+          <p><b>Композа</b> — сокращённо от «композиции». Так называют дисциплину, которой
+             художники занимаются задолго до всяких шедевров: никаких сюжетов, никакой «грустной
+             осени» — только пятна, линии и пустота между ними. Задача — найти гармонию,
+             интересный ход, идею.</p>
           <p>Выглядит как ерунда, а держит на себе всё. Кандинский полжизни доказывал, что круг
              с треугольником разговаривают не хуже людей. Ротко убрал из картины вообще всё,
              оставил два прямоугольника — и перед ними до сих пор плачут. Малевич поставил
@@ -229,16 +258,23 @@
              и десять цветов.</p>
         </div>
 
-        <p class="bridge">Примерно это и происходит на наших встречах — только руками,
-           с красками и холстом. И то, что складывается, потом разбирается вместе.</p>
+        <p class="bridge">Композицией, цветом и созданием собственных шедевров мы и занимаемся
+           на наших встречах — только руками, с красками и холстом.</p>
+        <div class="bridge__acts">
+          <button class="rbtn" id="wantMore">Прислать ещё одну практику?</button>
+          <a class="rbtn rbtn--teal" href="https://t.me/ESVIum" target="_blank" rel="noopener"
+             id="subBtn">Подписаться на канал</a>
+        </div>
 
         <div class="lead" id="lead">
           <h3>Прислать ещё одну практику?</h3>
-          <p>И заодно расскажем про ближайшую встречу. Как вас звать — решайте сами:
-             псевдоним подойдёт, художники так и делают.</p>
-          <form class="lead__row" id="leadForm" novalidate>
-            <input id="leadName" type="text" placeholder="Псевдоним" autocomplete="off" aria-label="Псевдоним">
-            <input id="leadWay" type="text" placeholder="Куда написать: @ник или почта" autocomplete="off" aria-label="Куда написать">
+          <p>И заодно расскажем про ближайшую встречу. Мессенджер или почта — что удобнее,
+             можно заполнить только одно.</p>
+          <form class="lead__form" id="leadForm" novalidate>
+            <input id="leadName" type="text" placeholder="Имя" autocomplete="name" aria-label="Имя">
+            <input id="leadTg" type="text" placeholder="Мессенджер: @ник или телефон"
+                   autocomplete="off" aria-label="Мессенджер">
+            <input id="leadMail" type="email" placeholder="Почта" autocomplete="email" aria-label="Почта">
             <button class="rbtn" type="submit" id="leadSend">Отправить</button>
           </form>
           <div class="lead__note" id="leadNote" role="status" aria-live="polite"></div>
@@ -724,21 +760,53 @@ document.getElementById('saveBtn').onclick = ()=>{
     if(window.ym) ym(110592816,'reachGoal','kompoza_save');
   });
 };
-document.getElementById('shareBtn').onclick = ()=>{
-  const url = 'https://voobrazhaemy.ru/praktika-kompoza.html';
-  toPNG(async blob=>{
-    const file = new File([blob],'moya-kompoza.png',{type:'image/png'});
-    if(navigator.canShare && navigator.canShare({files:[file]})){
-      try { await navigator.share({files:[file], title:'Разложите формы', text:'Собрал композицию — попробуйте и вы'}); return; }
-      catch(_){ /* закрыли шторку — молча выходим */ return; }
-    }
-    try {
-      await navigator.clipboard.writeText(url);
-      const b=document.getElementById('shareBtn'); const t=b.textContent;
-      b.textContent='Ссылка скопирована'; setTimeout(()=>b.textContent=t, 1900);
-    } catch(_){ window.prompt('Скопируйте ссылку:', url); }
+/* ===== поделиться =====
+   Ссылку раздаём своими кнопками: список задаём мы, а не телефон.
+   Картинку иначе как через системное меню не передать (мессенджеры файл по ссылке
+   не принимают), поэтому для неё — отдельная кнопка, и только если браузер умеет. */
+const SHARE_URL = 'https://voobrazhaemy.ru/praktika-kompoza.html?utm_source=share&utm_medium=button&utm_campaign=kompoza';
+const SHARE_TEXT = 'Собрал композу — попробуйте и вы';
+
+(function initShare(){
+  const u = encodeURIComponent(SHARE_URL), t = encodeURIComponent(SHARE_TEXT);
+  document.getElementById('shTg').href  = 'https://t.me/share/url?url=' + u + '&text=' + t;
+  document.getElementById('shMax').href = 'https://max.ru/:share?text=' + encodeURIComponent(SHARE_TEXT + ' ' + SHARE_URL);
+  document.getElementById('shWa').href  = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(SHARE_TEXT + ' ' + SHARE_URL);
+  document.getElementById('shMail').href = 'mailto:?subject=' + encodeURIComponent('Композа — арт-практика') +
+                                           '&body=' + encodeURIComponent(SHARE_TEXT + '\n' + SHARE_URL);
+  ['shTg','shMax','shWa','shMail'].forEach(id=>{
+    document.getElementById(id).addEventListener('click', ()=>{ if(window.ym) ym(110592816,'reachGoal','kompoza_share'); });
   });
+})();
+
+document.getElementById('shCopy').onclick = async ()=>{
+  const b = document.getElementById('shCopy'), was = b.textContent;
+  try { await navigator.clipboard.writeText(SHARE_URL); }
+  catch(_){ window.prompt('Скопируйте ссылку:', SHARE_URL); return; }
+  b.textContent = 'Скопировано'; setTimeout(()=>b.textContent = was, 1800);
+  if(window.ym) ym(110592816,'reachGoal','kompoza_share');
 };
+
+/* картинку показываем только там, где её реально можно отправить */
+if(navigator.canShare && navigator.canShare({ files:[new File([new Blob()],'x.png',{type:'image/png'})] })){
+  const btn = document.getElementById('sendPic');
+  btn.hidden = false;
+  btn.onclick = ()=> toPNG(async blob=>{
+    const file = new File([blob],'moya-kompoza.png',{type:'image/png'});
+    try { await navigator.share({ files:[file], text: SHARE_TEXT + ' ' + SHARE_URL });
+          if(window.ym) ym(110592816,'reachGoal','kompoza_share'); }
+    catch(_){ /* закрыли шторку — молча выходим */ }
+  });
+}
+
+/* «Прислать ещё одну практику?» — ведёт к форме и ставит курсор в первое поле */
+document.getElementById('wantMore').onclick = ()=>{
+  document.getElementById('lead').scrollIntoView({behavior:'smooth', block:'center'});
+  setTimeout(()=>document.getElementById('leadName').focus(), 500);
+};
+document.getElementById('subBtn').addEventListener('click', ()=>{
+  if(window.ym) ym(110592816,'reachGoal','tg_channel');
+});
 
 /* ============ контакт ============
    Тот же приёмник, что у остальных форм. Показываем успех ТОЛЬКО по реальному ответу:
@@ -746,26 +814,33 @@ document.getElementById('shareBtn').onclick = ()=>{
    а text/plain избавляет от preflight. */
 const EP = 'https://script.google.com/macros/s/AKfycbyeGNxQUFTBYNjt99ttlthK8rJKU8TBOXLARPi5QDHP7_NoJurgFymu06KO0fs2w45aDQ/exec';
 const leadForm=document.getElementById('leadForm'), leadName=document.getElementById('leadName'),
-      leadWay=document.getElementById('leadWay'), leadNote=document.getElementById('leadNote'),
-      leadSend=document.getElementById('leadSend');
+      leadTg=document.getElementById('leadTg'), leadMail=document.getElementById('leadMail'),
+      leadNote=document.getElementById('leadNote'), leadSend=document.getElementById('leadSend');
 
 leadForm.addEventListener('submit', async e=>{
   e.preventDefault();
-  const way = leadWay.value.trim();
-  if(!way){
-    leadWay.classList.add('is-bad'); leadWay.focus();
+  const tg = leadTg.value.trim(), mail = leadMail.value.trim();
+  if(!tg && !mail){                       /* хватит одного — не заставляем заполнять оба */
+    leadTg.classList.add('is-bad'); leadMail.classList.add('is-bad'); leadTg.focus();
     leadNote.classList.remove('is-ok');
-    leadNote.textContent='Впишите, куда написать: @ник в телеграме или почту';
+    leadNote.textContent='Оставьте мессенджер или почту — что удобнее';
     return;
   }
-  leadWay.classList.remove('is-bad');
+  if(mail && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){
+    leadMail.classList.add('is-bad'); leadMail.focus();
+    leadNote.classList.remove('is-ok');
+    leadNote.textContent='Проверьте почту: похоже, там опечатка';
+    return;
+  }
+  leadTg.classList.remove('is-bad'); leadMail.classList.remove('is-bad');
   leadSend.disabled = true;
   leadNote.classList.remove('is-ok'); leadNote.textContent='Отправляю…';
   try{
     const r = await fetch(EP, { method:'POST', mode:'cors',
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body: JSON.stringify({ type:'kompoza_lead', name:(leadName.value.trim()||'без имени'),
-                             contact:way, observation:lastObs }) });
+                             contact:[tg, mail].filter(Boolean).join(' · '),
+                             messenger:tg, email:mail, observation:lastObs }) });
     let ok=false; try{ ok = (await r.json()).ok === true; } catch(_){ ok=false; }
     if(ok){
       leadForm.style.display='none';
