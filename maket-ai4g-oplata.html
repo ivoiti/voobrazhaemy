@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Макет блока оплаты арт-коучинга для ai4g.ru</title>
+<meta name="robots" content="noindex, nofollow">
+<!--
+  ================================================================
+  МАКЕТ блока оплаты арт-коучинга для ai4g.ru — для Вики.
+  Не публичная страница: noindex, ссылок на неё с сайта нет.
+
+  Стили сняты с живых страниц ai4g (coaching-session / career-advice):
+  фон #190a33, кнопка-капсула #06ea6f с тёмным текстом в верхнем
+  регистре, Montserrat для заголовков и цены, PT Sans для текста.
+  Попап оплаты не трогаем — он у вас уже есть и работает.
+
+  Главное — блок «ЧТО ВСТАВИТЬ» ниже: разметка написана в ваших
+  классах и опирается на существующий payment-form.
+  ================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#190a33; --ink-2:#241145; --green:#06ea6f; --pink:#ff008a;
+    --white:#fff; --dim:#cfc9de; --line:rgba(255,255,255,.13);
+    --sans:'PT Sans',-apple-system,Segoe UI,sans-serif;
+    --head:'Montserrat',-apple-system,Segoe UI,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#0f0620;color:var(--white);font:400 17px/1.6 var(--sans)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  .flag{background:#ffdca8;color:#150931;font:600 14px/1.5 var(--head);
+        padding:12px 24px;text-align:center}
+  .flag b{font-weight:800}
+
+  /* ============ ПРЕВЬЮ: как это будет на ai4g ============ */
+  .pay{background:var(--ink);padding:72px 0 84px;text-align:center}
+  .pay__title{font:800 clamp(28px,4.4vw,42px)/1.15 var(--head);margin:0;letter-spacing:-.01em}
+  .pay__lead{margin:18px auto 0;max-width:56ch;font-size:18px;color:var(--white)}
+
+  .tiles{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:22px;text-align:center}
+  .tile{background:var(--ink-2);border:1px solid var(--line);border-radius:22px;
+        padding:34px 28px 32px;display:flex;flex-direction:column}
+  .tile__name{font:700 13px/1 var(--head);letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+  .tile__price{font:800 clamp(30px,4vw,40px)/1 var(--head);margin:16px 0 0}
+  .tile__note{margin:16px auto 0;color:var(--dim);font-size:16px;max-width:34ch;flex:1}
+  .tile .btn{margin-top:26px}
+
+  /* кнопка — ровно как на живых страницах ai4g */
+  .btn{display:inline-block;text-decoration:none;background:var(--green);color:#0d0821;
+       font:800 15px/1.15 var(--head);letter-spacing:.02em;text-transform:uppercase;
+       padding:20px 28px;border-radius:999px;transition:filter .15s, transform .15s}
+  .btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+
+  .pay__after{margin:38px auto 0;max-width:62ch;color:var(--dim);font-size:15.5px}
+  .pay__after a{color:var(--green)}
+
+  /* ============ ТЕХНИЧЕСКАЯ ЧАСТЬ ============ */
+  .tech{background:#fff;color:#150931;padding:56px 0 76px}
+  .tech h2{font:800 26px/1.2 var(--head);margin:0 0 8px}
+  .tech h3{font:700 18px/1.3 var(--head);margin:36px 0 8px}
+  .tech p,.tech li{font-size:16.5px;color:#2d2740}
+  .tech ol,.tech ul{padding-left:20px}
+  .tech li{margin-top:8px}
+  .tech code{background:#f2f0f7;padding:2px 6px;border-radius:5px;font-size:15px}
+  pre{background:#190a33;color:#e8e5f3;padding:20px 22px;border-radius:14px;
+      overflow-x:auto;font-size:14px;line-height:1.55;margin:12px 0 0}
+  pre b{color:var(--green);font-weight:700}
+  .note{background:#fff6e5;border-left:4px solid #ffb020;padding:14px 18px;
+        border-radius:0 10px 10px 0;margin-top:14px;font-size:16px}
+
+  @media (max-width:760px){
+    .tiles{grid-template-columns:1fr}
+    .pay{padding:48px 0 56px}
+  }
+</style>
+</head>
+<body>
+
+<div class="flag">
+  <b>Это макет</b> — блок оплаты арт-коучинга для ai4g.ru. Не публичная страница, поисковикам закрыта.
+</div>
+
+<!-- ============ ЧАСТЬ 1. КАК ВЫГЛЯДИТ ============ -->
+<section class="pay">
+  <div class="wrap">
+    <h2 class="pay__title">Готовы начать?</h2>
+    <p class="pay__lead">
+      Арт-коучинг Елены Семёновой и Яниты Войт. Выберите формат — после оплаты
+      мы напишем вам в течение дня и согласуем дату первой встречи.
+    </p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile__name">Разовая сессия</div>
+        <div class="tile__price">15 000 ₽</div>
+        <p class="tile__note">
+          Одна встреча на три с половиной часа: работа с холстом и краской,
+          а следом разбор того, что получилось. Материалы наши, опыт рисования
+          не нужен, работу забираете с собой.
+        </p>
+        <a href="#" class="btn">Оплатить сессию</a>
+      </div>
+
+      <div class="tile">
+        <div class="tile__name">Вся программа</div>
+        <div class="tile__price">60 000 ₽</div>
+        <p class="tile__note">
+          Пять сессий подряд — маршрут от первого автопортрета до собственной
+          серии работ. Сквозная линия вместо отдельных упражнений
+          и сопровождение между встречами.
+        </p>
+        <a href="#" class="btn">Оплатить программу</a>
+      </div>
+    </div>
+
+    <p class="pay__after">
+      Оплата проходит через защищённое соединение. Если что-то пошло не так —
+      напишите нам: <a href="mailto:info@ai4g.ru">info@ai4g.ru</a>.
+      Подробнее о программе — на сайте
+      <a href="https://voobrazhaemy.ru/">«Мы должны быть воображаемы»</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ ЧАСТЬ 2. ЧТО ВСТАВИТЬ ============ -->
+<section class="tech">
+  <div class="wrap">
+    <h2>Вике — что здесь нужно</h2>
+    <p>Новую механику писать не надо: универсальный попап оплаты
+       (<code>src/partials/payment-form.html</code>) уже умеет всё, что нужно.
+       Отличие от ваших страниц одно — тарифа два, поэтому вместо одной цены
+       и одной кнопки две карточки.</p>
+
+    <h3>1. Разметка — в ваших классах</h3>
+    <pre>&lt;!-- Оплата: арт-коучинг --&gt;
+&lt;section class="session__pay-section"&gt;
+  &lt;div class="session__pay-container session-pay__container"&gt;
+
+    &lt;h2 class="session__pay-title"&gt;Готовы начать?&lt;/h2&gt;
+    &lt;p class="session__pay-lead"&gt;
+      Арт-коучинг Елены Семёновой и Яниты Войт. Выберите формат —
+      после оплаты мы напишем вам в течение дня.
+    &lt;/p&gt;
+
+    &lt;div class="artpay__tiles"&gt;
+
+      &lt;div class="artpay__tile"&gt;
+        &lt;div class="artpay__name"&gt;Разовая сессия&lt;/div&gt;
+        &lt;div class="session__pay-price"&gt;15 000 ₽&lt;/div&gt;
+        &lt;p class="artpay__note"&gt;Одна встреча на три с половиной часа: работа
+           с холстом и краской, а следом разбор того, что получилось.&lt;/p&gt;
+        &lt;a href="#payment" class="session__link link session__link_green" data-fancybox
+           data-modal-title="Оплата арт-коуч сессии"
+           <b>data-sum="15000"</b>
+           <b>data-service="Арт-коучинг: разовая сессия"</b>&gt;
+          Оплатить сессию
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;div class="artpay__tile"&gt;
+        &lt;div class="artpay__name"&gt;Вся программа&lt;/div&gt;
+        &lt;div class="session__pay-price"&gt;60 000 ₽&lt;/div&gt;
+        &lt;p class="artpay__note"&gt;Пять сессий подряд — маршрут от первого
+           автопортрета до собственной серии работ.&lt;/p&gt;
+        &lt;a href="#payment" class="session__link link session__link_green" data-fancybox
+           data-modal-title="Оплата программы арт-коучинга"
+           <b>data-sum="60000"</b>
+           <b>data-service="Арт-коучинг: вся программа"</b>&gt;
+          Оплатить программу
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+
+    <div class="note">
+      Важны только <code>data-sum</code> и <code>data-service</code> — по ним попап
+      понимает, сколько списывать и что писать в назначении платежа. Тексты
+      и заголовки меняйте как удобно.
+    </div>
+
+    <h3>2. Весь новый CSS, который для этого нужен</h3>
+    <pre>.artpay__tiles{
+  display:grid; grid-template-columns:1fr 1fr; gap:22px;
+  margin-top:44px; text-align:center;
+}
+.artpay__tile{
+  background:#241145; border:1px solid rgba(255,255,255,.13);
+  border-radius:22px; padding:34px 28px 32px;
+  display:flex; flex-direction:column;
+}
+.artpay__name{
+  font-weight:700; font-size:13px; line-height:1;
+  letter-spacing:.16em; text-transform:uppercase; color:#06ea6f;
+}
+.artpay__note{ margin:16px auto 0; max-width:34ch; font-size:16px; flex:1; }
+.artpay__tile .session__link{ margin-top:26px; }
+
+@media (max-width:760px){
+  .artpay__tiles{ grid-template-columns:1fr; }
+}</pre>
+    <p>Цена берёт ваш существующий <code>.session__pay-price</code>, кнопка —
+       ваш <code>.session__link_green</code>. Всё остальное наследуется.</p>
+
+    <h3>3. Отдельная страница, а не блок на art-coaching.html</h3>
+    <p>Человек приходит с voobrazhaemy.ru, где уже всё прочитал и решил. Если он
+       попадёт на продающую страницу — начнёт читать заново, и часть отвалится.
+       Пусть будет короткая страница только с оплатой, например
+       <code>ai4g.ru/art-coaching-pay.html</code>.</p>
+    <p>Побочная польза: раз на неё ведёт только кнопка с voobrazhaemy, все платежи
+       оттуда — наши, и отдельная метка источника не нужна.</p>
+
+    <h3>4. Куда возвращать после оплаты</h3>
+    <ul>
+      <li>оплата прошла → <code>https://voobrazhaemy.ru/spasibo.html</code></li>
+      <li>оплата не прошла → <code>https://voobrazhaemy.ru/oplata-ne-proshla.html</code></li>
+    </ul>
+    <p>Обе страницы сделаем у себя, как только вы скажете, что такой возврат
+       настраивается.</p>
+
+    <h3>5. Уведомление об оплате — и Яните тоже</h3>
+    <p>Данные клиента уходят в PayKeeper, то есть в кабинет Лены. У Яниты их
+       не будет, а на сессии записывает она. Нужно, чтобы уведомление приходило
+       и ей — на почту или в телеграм, что проще.</p>
+    <p>Что должно быть внутри: имя, телефон, почта, что оплачено (сессия или
+       программа), сумма и время.</p>
+
+    <h3>6. Счётчик Метрики</h3>
+    <p>На страницу оплаты нужен счётчик проекта <b>110592816</b> — иначе видно
+       только, что человек ушёл с нашего сайта, и непонятно, дошёл ли он до кассы.
+       Перед <code>&lt;/body&gt;</code>:</p>
+    <pre>&lt;script type="text/javascript"&gt;
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j &lt; document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(110592816, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+&lt;/script&gt;
+&lt;noscript&gt;&lt;div&gt;&lt;img src="https://mc.yandex.ru/watch/110592816" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;&lt;/noscript&gt;</pre>
+    <p>И одна строчка, чтобы считалась цель по нажатию:</p>
+    <pre>&lt;script&gt;
+document.querySelectorAll('[data-service^="Арт-коучинг"]').forEach(function(a){
+  a.addEventListener('click', function(){
+    if (window.ym) ym(110592816, 'reachGoal', 'pay_click', { tarif: a.dataset.service });
+  });
+});
+&lt;/script&gt;</pre>
+    <div class="note">
+      Домен ai4g.ru в настройки счётчика добавим со своей стороны — от вас нужен
+      только код на странице.
+    </div>
+
+    <h3>7. Мелочи</h3>
+    <ul>
+      <li>Цена программы будет расти — менять её самим или через вас?</li>
+      <li>Возвраты: кто и как их делает, если человек передумал.</li>
+      <li>Приходит ли клиенту чек и откуда.</li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>
