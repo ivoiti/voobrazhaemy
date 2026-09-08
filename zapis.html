@@ -26,17 +26,26 @@
     .ztest { max-width: 900px; margin: 0 auto 30px; padding: 12px 18px; background: #FBF3D6; border: 1px solid #E7D48A; border-radius: 12px; font-size: 14px; color: #6b5a12; text-align: center; }
 
     /* календарь */
-    .zcal-legend { text-align: center; font-size: 14px; color: rgba(23,24,26,.6); margin-bottom: 26px; }
+    .zcal-legend { text-align: center; font-size: 14px; color: rgba(23,24,26,.6); margin-bottom: 22px; }
     .zcal-legend .dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--teal); vertical-align: -3px; margin-right: 6px; }
+    /* темы цикла: у каждой свой цвет, он же у дат в календаре */
+    .ztopics { max-width: 640px; margin: 0 auto 30px; display: grid; gap: 10px; }
+    .ztopic { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; line-height: 1.4; }
+    .ztopic i { flex: 0 0 auto; width: 14px; height: 14px; border-radius: 4px; background: var(--c); margin-top: 4px; }
+    .ztopic b { font-weight: 600; }
+    .ztopic span { color: rgba(23,24,26,.6); }
+    .zdates { max-width: 640px; margin: 0 auto 34px; font-size: 15px; line-height: 1.75; color: rgba(23,24,26,.75); }
+    .zdates b { font-weight: 600; color: var(--ink); }
     .zcal-wrap { display: flex; flex-wrap: wrap; gap: 30px 40px; justify-content: center; }
     .zcal-month { width: 300px; }
     .zcal-mtitle { font-family: var(--serif); font-size: 21px; text-align: center; margin-bottom: 14px; text-transform: capitalize; }
     .zcal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
     .zcal-wd { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: rgba(23,24,26,.4); text-align: center; padding-bottom: 8px; }
     .zcal-day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 15px; border-radius: 50%; color: rgba(23,24,26,.3); user-select: none; }
-    .zcal-day.is-open { color: var(--ink); cursor: pointer; border: 2px solid var(--teal); font-weight: 600; transition: background .15s, color .15s, transform .15s; }
-    .zcal-day.is-open:hover { background: var(--teal); color: #fff; transform: scale(1.06); }
-    .zcal-day.is-active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .zcal-day.is-open { color: var(--ink); cursor: pointer; border: 2px solid var(--c, var(--teal)); font-weight: 600; transition: background .15s, color .15s, transform .15s; }
+    .zcal-day.is-open:hover { background: var(--c, var(--teal)); color: #fff; transform: scale(1.06); }
+    .zcal-day.is-active { background: var(--c, var(--teal)); color: #fff; border-color: var(--c, var(--teal)); }
+    .zform__chosen em { font-style: normal; display: block; font-family: var(--sans); font-size: 15px; font-weight: 600; margin-top: 6px; color: var(--c, var(--teal)); }
 
     /* виджет заявки */
     .zform { margin: 34px auto 0; max-width: 560px; background: var(--cream-2); border-radius: 18px; padding: 28px 26px; display: none; }
@@ -101,7 +110,22 @@
 <div class="zwrap">
 
   <!-- КАЛЕНДАРЬ открытых дат -->
-  <div class="zcal-legend"><span class="dot"></span> бирюзовым отмечены свободные даты — нажмите, чтобы записаться</div>
+  <div class="ztopics">
+    <div class="ztopic" style="--c:#BF8A0D"><i></i><div><b>Цвет личности. Личность цвета</b> — <span>рисование цветом, пальцами без кистей</span></div></div>
+    <div class="ztopic" style="--c:#D2401E"><i></i><div><b>4 Я</b> — <span>автопортрет маслом</span></div></div>
+    <div class="ztopic" style="--c:#1D9E75"><i></i><div><b>Фрактал: узор, который повторяет себя</b> — <span>мандала</span></div></div>
+    <div class="ztopic" style="--c:#2F5D8C"><i></i><div><b>Деконструкция будущего</b> — <span>абстракция</span></div></div>
+    <div class="ztopic" style="--c:#6B4E71"><i></i><div><b>Карта Багуа</b> — <span>коллаж</span></div></div>
+    <div class="ztopic" style="--c:#B03A6E"><i></i><div><b>Искусство — это Я</b> — <span>реди-мейд</span></div></div>
+  </div>
+
+  <div class="zdates">
+    <b>Ближайшие даты.</b> Сентябрь: 6 — «Цвет личности. Личность цвета», 12 — «4 Я», 13 — «Карта Багуа», 20 — «Деконструкция будущего», 26 — «Цвет личности. Личность цвета».
+    Октябрь: 3 — «Карта Багуа», 4 — «Фрактал», 10 — «Карта Багуа», 11 — «4 Я», 17 — «4 Я», 18 — «Цвет личности. Личность цвета», 31 — «Деконструкция будущего». 1 ноября — «Искусство — это Я».
+    Все сессии идут в мастерской «Да-да!», Успенский пер., 5, с 12:00 до 15:30.
+  </div>
+
+  <div class="zcal-legend">Цветом отмечены даты сессий — нажмите на день, чтобы записаться</div>
   <div class="zcal-wrap" id="zcal" aria-live="polite">
     <p style="color:rgba(23,24,26,.5)">Загружаем даты…</p>
   </div>
@@ -170,8 +194,32 @@ const API = {
 const FAIL_MSG = 'Кажется, заявка не дошла. Попробуйте ещё раз или напишите нам в телеграм: @ianitavoit';
 
 /* ---- параметры расписания ---- */
-const SEASON_START = '2026-07-25';       // первая сессия нового цикла
-const SEASON_END   = '2026-10-31';       // «все субботы и воскресенья до октября»
+/* Темы цикла и их цвета — те же, что в печатном календаре сессий. */
+const THEMES = {
+  cvet:    { name: 'Цвет личности. Личность цвета',        sub: 'рисование цветом, пальцами без кистей', color: '#BF8A0D' },
+  ya:      { name: '4 Я',                                  sub: 'автопортрет маслом',                    color: '#D2401E' },
+  fraktal: { name: 'Фрактал: узор, который повторяет себя', sub: 'мандала',                              color: '#1D9E75' },
+  budush:  { name: 'Деконструкция будущего',               sub: 'абстракция',                            color: '#2F5D8C' },
+  bagua:   { name: 'Карта Багуа',                          sub: 'коллаж',                                color: '#6B4E71' },
+  redimeid:{ name: 'Искусство — это Я',                    sub: 'реди-мейд',                             color: '#B03A6E' }
+};
+/* Расписание сезона. Новые даты добавлять СЮДА и в статический список .zdates выше,
+   иначе поиск дат не увидит: он не исполняет JS. */
+const SESSIONS = [
+  { date: '2026-09-06', theme: 'cvet'     },
+  { date: '2026-09-12', theme: 'ya'       },
+  { date: '2026-09-13', theme: 'bagua'    },
+  { date: '2026-09-20', theme: 'budush'   },
+  { date: '2026-09-26', theme: 'cvet'     },
+  { date: '2026-10-03', theme: 'bagua'    },
+  { date: '2026-10-04', theme: 'fraktal'  },
+  { date: '2026-10-10', theme: 'bagua'    },
+  { date: '2026-10-11', theme: 'ya'       },
+  { date: '2026-10-17', theme: 'ya'       },
+  { date: '2026-10-18', theme: 'cvet'     },
+  { date: '2026-10-31', theme: 'budush'   },
+  { date: '2026-11-01', theme: 'redimeid' }
+];
 const TIME    = '12:00–15:30';
 const ADDRESS = 'мастерская «Да-да!», Успенский пер., 5, Москва';
 const RU_MONTHS = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
@@ -185,16 +233,13 @@ function colIndex(jsDay){ return (jsDay + 6) % 7; }   // пн=0 … вс=6
 
 let state = { chosenISO: null };
 
+/* Открытые даты = только те, что стоят в расписании и ещё не прошли. */
 function buildOpenDates() {
-  const start = new Date(SEASON_START + 'T00:00:00');
-  const end   = new Date(SEASON_END   + 'T00:00:00');
   const today = new Date(); today.setHours(0,0,0,0);
-  const from = start < today ? today : start;
-  const open = new Set();
-  for (let d = new Date(from); d <= end; d.setDate(d.getDate()+1)) {
-    const wd = d.getDay();
-    if (wd === 6 || wd === 0) open.add(iso(d.getFullYear(), d.getMonth(), d.getDate())); // сб/вс
-  }
+  const open = new Map();
+  SESSIONS.forEach(function (s) {
+    if (new Date(s.date + 'T00:00:00') >= today) open.set(s.date, s.theme);
+  });
   return open;
 }
 
@@ -207,8 +252,9 @@ function renderCalendar() {
     return;
   }
   // какие месяцы показывать — от текущего/стартового до конца сезона
-  const first = new Date([...open][0] + 'T00:00:00');
-  const last  = new Date(SEASON_END + 'T00:00:00');
+  const keys  = [...open.keys()];
+  const first = new Date(keys[0] + 'T00:00:00');
+  const last  = new Date(keys[keys.length - 1] + 'T00:00:00');
   let y = first.getFullYear(), m = first.getMonth();
   while (y < last.getFullYear() || (y === last.getFullYear() && m <= last.getMonth())) {
     box.appendChild(renderMonth(y, m, open));
@@ -239,7 +285,10 @@ function renderMonth(year, month, open) {
     cell.textContent = d;
     const key = iso(year, month, d);
     if (open.has(key)) {
+      const th = THEMES[open.get(key)];
       cell.classList.add('is-open');
+      cell.style.setProperty('--c', th.color);
+      cell.title = th.name;
       cell.dataset.iso = key;
       cell.setAttribute('role', 'button');
       cell.setAttribute('tabindex', '0');
@@ -263,8 +312,13 @@ function chooseDate(isoStr) {
   const cell = document.querySelector(`.zcal-day[data-iso="${isoStr}"]`);
   if (cell) cell.classList.add('is-active');
   const f = fmtLong(isoStr);
-  document.getElementById('zchosen').innerHTML =
-    `${f.day}, ${f.wd}<small>${TIME} · ${ADDRESS}</small>`;
+  const th = THEMES[buildOpenDates().get(isoStr)];
+  const chosen = document.getElementById('zchosen');
+  chosen.style.setProperty('--c', th ? th.color : 'var(--teal)');
+  chosen.innerHTML =
+    `${f.day}, ${f.wd}` +
+    (th ? `<em>${th.name} · ${th.sub}</em>` : '') +
+    `<small>${TIME} · ${ADDRESS}</small>`;
   const form = document.getElementById('zform');
   form.classList.add('is-open');
   form.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -277,7 +331,8 @@ document.getElementById('zsend').addEventListener('click', async () => {
   const msg = document.getElementById('zmsg');
   if (!state.chosenISO) { msg.textContent = 'Сначала выберите дату в календаре.'; return; }
   if (!name || !phone) { msg.textContent = 'Заполните имя и телефон.'; return; }
-  const booking = { type: 'session', dateISO: state.chosenISO, time: TIME, name, phone };
+  const th = THEMES[buildOpenDates().get(state.chosenISO)];
+  const booking = { type: 'session', dateISO: state.chosenISO, time: TIME, name, phone, theme: th ? th.name : '' };
   const btn = document.getElementById('zsend'), was = btn.textContent;
   btn.disabled = true; btn.textContent = 'Отправляю…';
   msg.style.color = 'rgba(23,24,26,.6)'; msg.textContent = 'Отправляю…';
