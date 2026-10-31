@@ -20,8 +20,8 @@ a { color: inherit; }
 .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 mark { background: none; color: var(--terra); font-weight: 600; }
 
-/* появление при скролле */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+/* Контент виден сразу, даже если JS задержался или не загрузился. */
+.reveal { opacity: 1; transform: none; }
 .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ============ NAV ============ */
