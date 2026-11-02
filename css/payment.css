@@ -1,0 +1,11 @@
+.payment-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.payment-link { display: inline-flex; align-items: center; justify-content: center; padding: 13px 20px; border: 1px solid var(--terra); border-radius: 999px; background: var(--terra); color: var(--cream); font-size: 14px; font-weight: 600; line-height: 1.4; text-align: center; text-decoration: none; }
+.payment-link:hover { background: var(--terra-dark); border-color: var(--terra-dark); }
+.payment-link--program { background: transparent; border-color: var(--teal); color: var(--teal); }
+.payment-link--program:hover { background: var(--teal); border-color: var(--teal); color: var(--cream); }
+.payment-link:focus-visible { outline: 3px solid var(--mustard); outline-offset: 4px; }
+.payment-note { margin-top: 12px; font-size: 13px; line-height: 1.6; color: rgba(23,24,26,.72); }
+.payment-panel { margin-bottom: 36px; padding: 28px; border: 1px solid rgba(42,85,90,.22); border-radius: 18px; background: #fffaf0; }
+.payment-panel h2 { margin-bottom: 10px; font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.2; }
+.payment-panel > p { max-width: 650px; }
+@media (max-width: 560px) { .payment-panel { padding: 22px 18px; } .payment-actions { flex-direction: column; } .payment-link { width: 100%; } }
