@@ -75,7 +75,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=15">
+  <link rel="stylesheet" href="css/style.css?v=16">
   <link rel="stylesheet" href="css/payment.css?v=1">
   <script src="js/payment.js?v=1" defer></script>
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
@@ -268,7 +268,7 @@
         <h3>Открытые сессии</h3>
         <p class="format__price">15 000 ₽ / сессия · 60 000 ₽ / программа из 5 сессий</p>
         <p class="format__next">Каждые выходные: субботы и воскресенья, 12:00–15:00 · мастерская «Да-да!»</p>
-        <p>3 часа: арт-практика + групповой коучинг, уносите свою работу. Группа до 5–6 человек. Ближайшие даты: 25.07, 26.07, 01.08, 02.08.</p>
+        <p>3,5 часа: арт-практика + групповой коучинг, уносите свою работу. Группа до 5–6 человек. Ближайшие даты: 8, 14, 15, 28 и 29 ноября.</p>
         <p class="format__book"><a href="zapis.html">Записаться →</a> <span>или <a href="#contacts">напишите нам</a></span></p>
         <div class="payment-actions">
           <a class="payment-link" href="https://ai4g.ru/art-coaching.html?pay=session&amp;utm_source=voobrazhaemy&amp;utm_medium=site&amp;utm_campaign=art-coaching&amp;utm_content=home" target="_blank" rel="noopener" data-payment="session" data-placement="home">Оплатить сессию · 15 000 ₽</a>
@@ -396,20 +396,25 @@
   <div class="footer__genre">форсайт-лаборатория идентичности</div>
 </footer>
 
-<!-- ВРЕМЕННЫЙ АНОНС «зеркальце». Снять = удалить этот блок + секцию .mirror-note в css/style.css + блок в js/main.js -->
-<aside class="mirror-note" id="mirrorNote">
-  <button class="mirror-note__close" type="button" aria-label="Закрыть">✕</button>
-  <div class="mirror-note__glass">
-    <span class="mirror-note__glare" aria-hidden="true"></span>
-    <p class="mirror-note__kicker">Арт-коучинг</p>
-    <p class="mirror-note__title">Обновили<br>расписание</p>
-    <p class="mirror-note__text">Каждые выходные —<br>субботы и воскресенья,<br>с 12:00 до 15:30</p>
-    <p class="mirror-note__dates">25.07 · 26.07 · 01.08 · 02.08</p>
-    <p class="mirror-note__small">группа до 5–6 человек</p>
-    <a class="mirror-note__btn" href="zapis.html">Записаться</a>
+<!-- Анонс расписания ноября и декабря -->
+<aside class="tree-note" id="treeNote" aria-label="Расписание арт-коучинга">
+  <button class="tree-note__close" type="button" aria-label="Закрыть анонс">×</button>
+  <svg class="tree-note__shape" viewBox="0 0 360 470" aria-hidden="true">
+    <path d="M180 24 L268 130 H244 L320 246 H288 L352 418 H210 V458 H150 V418 H8 L72 246 H40 L116 130 H92 Z" fill="#F3EBDD" stroke="#BF8A0D" stroke-width="3" stroke-linejoin="round"/>
+    <path d="m180 4 4 9 10 1-8 7 2 10-8-5-8 5 2-10-8-7 10-1z" fill="#C63B1E"/>
+    <g fill="#C63B1E"><circle cx="119" cy="156" r="5"/><circle cx="269" cy="275" r="5"/><circle cx="52" cy="388" r="5"/></g>
+    <g fill="#BF8A0D"><circle cx="230" cy="108" r="4"/><circle cx="91" cy="278" r="4"/><circle cx="309" cy="389" r="4"/></g>
+  </svg>
+  <div class="tree-note__content">
+    <p class="tree-note__kicker">Арт-коучинг</p>
+    <p class="tree-note__title">Время<br>для себя</p>
+    <p class="tree-note__text">Сессии в ноябре и декабре<br>12:00–15:30</p>
+    <p class="tree-note__dates">8 · 14 · 15 · 28 · 29 ноября</p>
+    <p class="tree-note__small">В декабре - новогодние темы</p>
+    <a class="tree-note__btn" href="zapis.html#zcal">Записаться</a>
   </div>
 </aside>
 
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=6"></script>
 </body>
 </html>

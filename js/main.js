@@ -45,13 +45,13 @@ document.querySelectorAll('.facet__media video').forEach((v) => {
   card.addEventListener('mouseleave', () => v.pause());
 });
 
-// ВРЕМЕННЫЙ АНОНС «зеркальце»: выплывает после первого скролла, один раз на посетителя
+// Сезонная елочка с расписанием: после первого скролла, закрытие запоминается отдельно от старого анонса
 (() => {
-  const note = document.getElementById('mirrorNote');
+  const note = document.getElementById('treeNote');
   if (!note) return;
 
   let closed = false;
-  try { closed = localStorage.getItem('mirrorNoteClosed') === '1'; } catch (e) {}
+  try { closed = localStorage.getItem('winterScheduleNoteClosed2026') === '1'; } catch (e) {}
   if (closed) { note.remove(); return; }
 
   const open = () => {
@@ -61,9 +61,9 @@ document.querySelectorAll('.facet__media video').forEach((v) => {
   };
   window.addEventListener('scroll', open, { passive: true });
 
-  note.querySelector('.mirror-note__close').addEventListener('click', () => {
+  note.querySelector('.tree-note__close').addEventListener('click', () => {
     note.classList.remove('is-open');
-    try { localStorage.setItem('mirrorNoteClosed', '1'); } catch (e) {}
+    try { localStorage.setItem('winterScheduleNoteClosed2026', '1'); } catch (e) {}
     setTimeout(() => note.remove(), 500);
   });
 })();
