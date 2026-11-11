@@ -50,6 +50,10 @@
     .zcal-day.is-active { background: var(--c, var(--teal)); color: #fff; border-color: var(--c, var(--teal)); }
     .zform__chosen em { font-style: normal; display: block; font-family: var(--sans); font-size: 15px; font-weight: 600; margin-top: 6px; color: var(--c, var(--teal)); }
 
+    .zcal-day.is-holiday { position:relative; border:1px solid rgba(23,24,26,.12); border-radius:8px; background:transparent; }
+    .zcal-day.is-holiday svg { position:absolute; width:100%; height:100%; color:var(--c); }
+    .zcal-day.is-holiday span { position:relative; color:white; z-index:1; font-size:13px; }
+    .zcal-day.is-holiday.is-active { outline:2px solid var(--c); outline-offset:2px; }
     /* виджет заявки */
     .zform { margin: 34px auto 0; max-width: 560px; background: var(--cream-2); border-radius: 18px; padding: 28px 26px; display: none; }
     .zform.is-open { display: block; animation: zfade .3s ease; }
@@ -124,13 +128,13 @@
 
   <!-- КАЛЕНДАРЬ открытых дат -->
   <div class="ztopics">
-    <div class="ztopic" style="--c:#BF8A0D"><i></i><div><b>Цвет личности. Личность цвета</b> — <span>рисование цветом, пальцами без кистей</span></div></div>
-    <div class="ztopic" style="--c:#D2401E"><i></i><div><b>4 Я</b> — <span>автопортрет маслом</span></div></div>
-    <div class="ztopic" style="--c:#1D9E75"><i></i><div><b>Фрактал: узор, который повторяет себя</b> — <span>мандала</span></div></div>
-    <div class="ztopic" style="--c:#2F5D8C"><i></i><div><b>Деконструкция будущего</b> — <span>абстракция</span></div></div>
-    <div class="ztopic" style="--c:#6B4E71"><i></i><div><b>Карта Багуа</b> — <span>коллаж</span></div></div>
-    <div class="ztopic" style="--c:#B03A6E"><i></i><div><b>Искусство — это Я</b> — <span>реди-мейд</span></div></div>
-  </div>
+<div class="ztopic" style="--c:#BF8A0D"><i></i><div><b>Рисунок цветом</b></div></div>
+<div class="ztopic" style="--c:#2F5D8C"><i></i><div><b>Абстракция</b></div></div>
+<div class="ztopic" style="--c:#D2401E"><i></i><div><b>Портрет</b></div></div>
+<div class="ztopic" style="--c:#6B4E71"><i></i><div><b>Коллаж</b></div></div>
+<div class="ztopic" style="--c:#1D9E75"><i></i><div><b>Мандала</b></div></div>
+<div class="ztopic" style="--c:#B03A6E"><i></i><div><b>Гравюра</b></div></div>
+</div>
 
   <div class="zdates"><b>Расписание ноября–декабря.</b> Дату подтвердим при записи. <a href="raspisanie.html">Посмотреть все встречи и новогодние практики →</a></div>
 
@@ -206,73 +210,73 @@ const FAIL_MSG = 'Кажется, заявка не дошла. Попробуй
 /* Темы цикла и их цвета — те же, что в печатном календаре сессий. */
 const THEMES = {
   "d20261101": {
-    "name": "Цвет личности. Личность цвета",
-    "sub": "рисунок цветом",
+    "name": "Рисунок цветом",
+    "sub": "",
     "color": "#BF8A0D"
   },
   "d20261108": {
-    "name": "Деконструкция будущего",
-    "sub": "абстракция",
+    "name": "Абстракция",
+    "sub": "",
     "color": "#2F5D8C"
   },
   "d20261114": {
-    "name": "4 Я",
-    "sub": "автопортрет маслом",
+    "name": "Портрет",
+    "sub": "",
     "color": "#D2401E"
   },
   "d20261115": {
-    "name": "Цвет личности. Личность цвета",
-    "sub": "рисунок цветом",
-    "color": "#BF8A0D"
+    "name": "Коллаж",
+    "sub": "",
+    "color": "#6B4E71"
   },
   "d20261128": {
-    "name": "Фрактал: узор, который повторяет себя",
-    "sub": "мандала",
+    "name": "Мандала",
+    "sub": "",
     "color": "#1D9E75"
   },
   "d20261129": {
-    "name": "4 Я",
-    "sub": "автопортрет маслом",
+    "name": "Портрет",
+    "sub": "",
     "color": "#D2401E"
   },
   "d20261205": {
-    "name": "Карта сокровищ",
-    "sub": "карта Багуа · коллаж",
+    "name": "Коллаж",
+    "sub": "",
     "color": "#6B4E71"
   },
   "d20261206": {
-    "name": "Гравюра в будущий год",
-    "sub": "линогравюра · желания на обороте",
+    "name": "Гравюра",
+    "sub": "",
     "color": "#B03A6E"
   },
   "d20261212": {
-    "name": "Амулет года",
-    "sub": "новогодняя мандала",
+    "name": "Мандала",
+    "sub": "",
     "color": "#1D9E75"
   },
   "d20261213": {
-    "name": "Заветное желание года",
-    "sub": "рисунок цветом",
+    "name": "Рисунок цветом",
+    "sub": "",
     "color": "#BF8A0D"
   },
   "d20261219": {
-    "name": "Карта сокровищ",
-    "sub": "карта Багуа · коллаж",
+    "name": "Коллаж",
+    "sub": "",
     "color": "#6B4E71"
   },
   "d20261220": {
-    "name": "Заветное желание года",
-    "sub": "рисунок цветом",
+    "name": "Рисунок цветом",
+    "sub": "",
     "color": "#BF8A0D"
   },
   "d20261226": {
-    "name": "Амулет года",
-    "sub": "новогодняя мандала",
+    "name": "Мандала",
+    "sub": "",
     "color": "#1D9E75"
   },
   "d20261227": {
-    "name": "Гравюра в будущий год",
-    "sub": "линогравюра · желания на обороте",
+    "name": "Гравюра",
+    "sub": "",
     "color": "#B03A6E"
   }
 };
@@ -404,6 +408,10 @@ function renderMonth(year, month, open) {
       cell.style.setProperty('--c', th.color);
       cell.title = th.name;
       cell.dataset.iso = key;
+      if (key.startsWith('2026-12-')) {
+        cell.classList.add('is-holiday');
+        cell.innerHTML = '<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M40 2 59 23H51L68 42H61L77 66H45V78H35V66H3L19 42H12L29 23H21Z" fill="currentColor"/></svg><span>' + d + '</span>';
+      }
       cell.setAttribute('role', 'button');
       cell.setAttribute('tabindex', '0');
       cell.addEventListener('click', () => chooseDate(key));
